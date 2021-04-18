@@ -53,17 +53,11 @@ public class Board {
     }
 
     public boolean checkOwnerShip(Field field,Player player){
-        if(player.equals(field.getOwner())){
-            return true;
-        }
-        return false;
+        return player.equals(field.getOwner());
     }
 
     public boolean checkStunnedPlayers(){
-        if(stunnedPlayers.isEmpty()){
-            return false;
-        }
-        return true;
+        return !stunnedPlayers.isEmpty();
     }
 
     public void passMoney(Player player1,Player player2,int money){

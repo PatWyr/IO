@@ -1,16 +1,18 @@
 package Model;
-
+import java.util.Arrays;
 import java.util.List;
+
 
 public class Game {
     private boolean running;
     private int round;
     private int playersNo;
-    private Board board;
+    private final Board board;
     private Player[] players;
     private boolean requestForRoll = false;
     private boolean requestForBuy = false;
 
+    //constructor for testing purpose
     public Game(boolean running, int round, int playersNo, List<String> names) {
         this.running = running;
         this.round = round;
@@ -22,14 +24,21 @@ public class Game {
         }
     }
 
-
-    public Game() {
+    //main constructor
+    public Game(boolean running, int round, int playersNo, List<String> names,Board board) {
+        this.running = running;
+        this.round = round;
+        this.playersNo = playersNo;
+        players = new Player[playersNo];
+        this.board = board;
+        for( int i=0;i<playersNo;i++){
+            players[i]=new Player(names.get(i));
+        }
     }
 
     public void setRequestForRoll(boolean request) {
         this.requestForRoll = request;
     }
-
 
     //Ask functions to GUI
     public void askForRoll(){
@@ -40,12 +49,15 @@ public class Game {
         setRequestForBuy(true);
     }
 
-
     public void setRequestForBuy(boolean requestForBuy) {
         this.requestForBuy = requestForBuy;
     }
 
-    public void start(){
+    public Board getBoard() {
+        return board;
+    }
+
+    public void start(int i, int len){
         int turn = 0;
         int players1 = getPlayersNo();
         do{
@@ -55,21 +67,33 @@ public class Game {
             }
             if(requestForBuy){
                 if(board.getOneField(players[turn].getPosition()).getOwner() == null) {
-                    players[turn].buyField(board.getOneField(players[turn].getPosition()));
+                    players[turn].buyField((NormalField) board.getOneField(players[turn].getPosition()));
                 } else {
                     //TODO
                     //Mozna by tu dodac jakas kontrole
-                    System.out.printf("Blad");
+                    System.out.print("Blad");
                 }
 
             }
             if(turn == players1){
                turn = 0;
             }
+            if(endControl()){
+                break;
+            }
             setRequestForRoll(false);
             setRequestForBuy(false);
+            i++;
+        } while (len>i);
+    }
 
-        } while (running);
+    public boolean endControl() {
+        if(board.getLaps()>3){
+            return true;
+        } if(Arrays.stream(players).anyMatch(Player::isLost)){
+            //TODO
+        }
+        return false;
     }
 
     public void playerRound(int id) {

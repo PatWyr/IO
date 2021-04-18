@@ -35,9 +35,9 @@ public class Player {
         return random.nextInt(5)+1;
     }
 
-    public void buyField(Field field){
+    public void buyField(NormalField field){
+         field.setOwner(this);
     }
-
 
     public boolean isStun() {
         return stun;
