@@ -1,4 +1,6 @@
 package Model;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 import javafx.application.Application;
@@ -7,9 +9,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
@@ -25,6 +30,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
     Button buttonHistoryOfWinners;
     Button buttonChangeBackground;
     Button buttonStartGame;
+    Group root;
 
     ComboBox<String> comboboxChooseColorOfPawns;
 
@@ -33,6 +39,8 @@ public class main extends Application implements EventHandler<ActionEvent>{
 
     String style = "-fx-background-color: #a9a9a9;"
             + "-fx-font-size: 38;-fx-border-color: #000000; -fx-border-width: 3px;";
+    String style2 = "-fx-background-color: #a9a9a9;"
+            + "-fx-font-size: 20;-fx-border-color: #000000; -fx-border-width: 3px;";
 
     public void main() {
         launch();
@@ -49,7 +57,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
         buttonStartGame.setStyle(style);
 
         VBox layout = new VBox(10);
-        scene = new Scene(layout,1600, 800);
+        scene = new Scene(layout,1700, 900);
         window = stage;
         window.setTitle("Monopoly");
         layout.setPadding(new Insets(15, 15, 15, 15));
@@ -123,7 +131,6 @@ public class main extends Application implements EventHandler<ActionEvent>{
         comboboxChooseNumberOfPlayers.setStyle(style);
         buttonChooseNumberOfPlayers.setStyle(style);
         comboboxChooseNumberOfPlayers.getItems().addAll(
-                "1",
                 "2",
                 "3",
                 "4"
@@ -134,9 +141,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
         layout.getChildren().addAll(comboboxChooseNumberOfPlayers,buttonChooseNumberOfPlayers);
 
         buttonChooseNumberOfPlayers.setOnAction(event -> {
-            if(comboboxChooseNumberOfPlayers.getValue().equals("1")){
-                NumberOfPlayers = 1;
-            }else if(comboboxChooseNumberOfPlayers.getValue().equals("2")){
+            if(comboboxChooseNumberOfPlayers.getValue().equals("2")){
                 NumberOfPlayers = 2;
             }else if(comboboxChooseNumberOfPlayers.getValue().equals("3")){
                 NumberOfPlayers = 3;
@@ -189,21 +194,112 @@ public class main extends Application implements EventHandler<ActionEvent>{
         layout.getChildren().addAll(button);
         button.setOnAction(event -> {
             layout.getChildren().clear();
-            game(layout);
+            try {
+                window.close();
+                game();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         });
     }
-    public void game(VBox layout){
-        Button buttonRoll = new Button("set");
-        Button buttonBuy = new Button("set");
+    public void game() throws FileNotFoundException {
 
-        buttonBuy.setStyle(style);
-        buttonRoll.setStyle(style);
 
-//        buttonRoll.setOnAction(event -> );
+        Button buttonRoll = new Button("Roll");
+        Button buttonBuy = new Button("Buy");
+
+        buttonBuy.setStyle(style2);
+        buttonRoll.setStyle(style2);
+
+        Image image = new Image(new FileInputStream("abc.jpg"));
+        Image image1 = new Image(new FileInputStream("BluePawn.png"));
+        Image image2 = new Image(new FileInputStream("RedPawn.png"));
+        Image image3 = new Image(new FileInputStream("YellowPawn.png"));
+        Image image4 = new Image(new FileInputStream("GreenPawn.png"));
+        ImageView imageView = new ImageView(image);
+        ImageView imageView1 = new ImageView(image1);
+        ImageView imageView2 = new ImageView(image2);
+        ImageView imageView3 = new ImageView(image3);
+        ImageView imageView4 = new ImageView(image4);
+        imageView.setX(500);
+        imageView.setY(100);
+        imageView.setFitHeight(700);
+        imageView.setFitWidth(700);
+        buttonRoll.setLayoutX(700);
+        buttonRoll.setLayoutY(820);
+
+
+        if(NumberOfPlayers==2) {
+            imageView1.setX(1150);
+            imageView1.setY(750);
+
+            imageView2.setX(1150);
+            imageView2.setY(700);
+            root = new Group(imageView,imageView1,imageView2);
+            root.getChildren().add(buttonRoll);
+
+
+        }else if(NumberOfPlayers==3){
+            imageView1.setX(1150);
+            imageView1.setY(750);
+
+            imageView2.setX(1150);
+            imageView2.setY(700);
+
+            imageView3.setX(1100);
+            imageView3.setY(750);
+            root = new Group(imageView,imageView1,imageView2,imageView3);
+            root.getChildren().add(buttonRoll);
+
+
+        }else if(NumberOfPlayers==4){
+            imageView1.setX(1150);
+            imageView1.setY(750);
+
+            imageView2.setX(1150);
+            imageView2.setY(700);
+
+            imageView3.setX(1100);
+            imageView3.setY(750);
+
+            imageView4.setX(1100);
+            imageView4.setY(700);
+            root = new Group(imageView,imageView1,imageView2,imageView3,imageView4);
+            root.getChildren().add(buttonRoll);
+
+        }
+
+        Stage stageGame = new Stage();
+        stageGame.setTitle("History");
+        Scene sceneGame = new Scene(root, 1700, 900);
+        stageGame.setScene(sceneGame);
+        stageGame.show();
+
+        buttonRoll.setOnAction(event -> Roll(imageView1,imageView2,imageView3,imageView4));
 //        buttonBuy.setOnAction(event -> );
 
     }
 
+    public void Roll(ImageView a,ImageView b,ImageView c,ImageView d){
+        int ax=100;
+        int ay=100;
+
+        if(NumberOfPlayers==2) {
+
+
+
+
+        }else if(NumberOfPlayers==3){
+
+
+
+
+        }else if(NumberOfPlayers==4){
+
+
+        }
+
+    }
 
     @Override
     public void handle(ActionEvent event) {
