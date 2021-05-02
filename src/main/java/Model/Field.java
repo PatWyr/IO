@@ -10,7 +10,7 @@ public abstract class Field {
     }
 
     public void fieldAction(){
-        //TODO
+        System.out.println("Wykonuje akcje");
     }
 
     public Player getOwner(){
