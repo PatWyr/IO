@@ -61,7 +61,7 @@ public class Game {
     }
 
     public void requestForBuy() {
-        if (board.getOneField(players[turn].getPosition()).getOwner() == null) {
+        if (board.getOneField(players[turn].getPosition()).getOwner() == null && board.getPlayerPosition(players[turn]) != 0) {
             players[turn].buyField((NormalField) board.getOneField(players[turn].getPosition()));
         }
     }
