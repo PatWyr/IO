@@ -7,11 +7,12 @@ public class Game {
     private boolean running;
     private int round;
     private int playersNo;
-    private final Board board;
+    private  Board board = null;
     private Player[] players;
     private boolean requestForRoll = false;
     private boolean requestForBuy = false;
     private int turn = 0;
+    Judge judge = Judge.getInstance(this,board);
 
     public int getTurn() {
         return turn;

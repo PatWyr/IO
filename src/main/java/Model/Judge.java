@@ -6,7 +6,6 @@ public class Judge {
 
     private static Board board;
     private static Game game;
-    private static Judge judge = new Judge(game,board);
 
 
     public Judge(Game game,Board board) {
@@ -14,8 +13,8 @@ public class Judge {
         this.game = game;
     }
 
-    public static Judge getInstance(){
-        return judge;
+    public static Judge getInstance(Game game,Board board){
+        return new Judge(game,board);
     }
 
     public boolean checkWinner(List<Player> players){
@@ -37,10 +36,10 @@ public class Judge {
     public boolean checkLost(List<Player> players){
         for(int i=0;i< game.getPlayersNo() ; i++){
             if(players.get(i).getMoney()<0){
+                Player loser = players.get(i);
                 players.get(i).setLost(true);
                 players.get(i).setMoney(0);
-                //mozliwe ze do poprawy
-                players.get(i).setStunLen(10000);
+                players.remove(i);
                 return true;
             }
         }

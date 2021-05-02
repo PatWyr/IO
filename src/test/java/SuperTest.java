@@ -1,6 +1,8 @@
 import Model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 import java.util.List;
 import static org.junit.Assert.*;
 
@@ -37,6 +39,10 @@ public class SuperTest {
         System.out.println(game.getPlayer(0).toString());
         System.out.println(game.getPlayer(1).toString());
 
+        Judge judge = Judge.getInstance(game,board);
+        game.getPlayer(0).setMoney(-10);
+        //judge.checkLost(Arrays.asList(game.getPlayers()));
+        //System.out.println(game.getPlayers().length);
 
 
     }
