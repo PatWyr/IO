@@ -30,6 +30,21 @@ public class Game {
         }
     }
 
+    public void RemovePlayer() {
+        Player[] newplayers= new Player[playersNo-1];
+        int z =0;
+        for( int i=0;i<playersNo;i++){
+            if(!players[i].isLost()){
+                newplayers[z]= players[i];
+                z++;
+            }
+        }
+        playersNo=playersNo-1;
+        players=newplayers;
+        turn-=1;
+        nextTurn();
+    }
+
     //main constructor
     public Game(boolean running, int round, int playersNo, List<String> names,Board board) {
         this.running = running;

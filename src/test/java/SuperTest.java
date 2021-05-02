@@ -33,16 +33,36 @@ public class SuperTest {
         game.nextTurn();
         System.out.println(game.getTurn());
         game.requestForRoll();
-
-        System.out.println();
-
-        System.out.println(game.getPlayer(0).toString());
-        System.out.println(game.getPlayer(1).toString());
-
+//        System.out.println(game.getPlayer(0).toString());
+//        System.out.println(game.getPlayer(1).toString());
         Judge judge = Judge.getInstance(game,board);
-        game.getPlayer(0).setMoney(-10);
-        //judge.checkLost(Arrays.asList(game.getPlayers()));
-        //System.out.println(game.getPlayers().length);
+        game.nextTurn();
+        game.nextTurn();
+        game.getPlayer(3).setMoney(-10);
+//        System.out.println(game.getPlayer(3).toString());
+        judge.checkLost(Arrays.asList(game.getPlayers()));
+//        System.out.println(game.getPlayers().length);
+//        System.out.println(game.getPlayer(0).toString());
+//        System.out.println(game.getPlayer(1).toString());
+//        System.out.println(game.getPlayer(2).toString());
+        game.requestForRoll();
+//        System.out.println(game.getPlayer(0).toString());
+//        System.out.println(game.getPlayer(1).toString());
+//        System.out.println(game.getPlayer(2).toString());
+        game.nextTurn();
+        game.getPlayer(1).setMoney(-20);
+        judge.checkLost(Arrays.asList(game.getPlayers()));
+//        System.out.println(game.getPlayer(0).toString());
+//        System.out.println(game.getPlayer(1).toString());
+        game.requestForRoll();
+//        System.out.println(game.getPlayer(0).toString());
+//        System.out.println(game.getPlayer(1).toString());
+        game.getPlayer(0).setECTS(30);
+        judge.checkWinner(Arrays.asList(game.getPlayers()));
+//        System.out.println(game.getPlayer(0).isLost());
+//        System.out.println(game.getPlayer(1).isLost());
+
+
 
 
     }
