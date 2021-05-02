@@ -16,7 +16,15 @@ public class Board {
         prepareBoard();
     }
 
-    public void prepareBoard(){
+    public void addGameToFields(Game game) {
+        for(Field field : fields){
+            field.addGame(game);
+        }
+
+    }
+
+
+    public void prepareBoard() {
         fields.add(new NormalField(0,"Start",0,0,null));
         fields.add(new NormalField(1,"Komputerowe wspomaganie projektowania z elementami normalizacji",50,1,null));
         fields.add(new NormalField(2,"Kulturowe i etyczne aspekty informatyzacji",100,2,null));
@@ -45,6 +53,7 @@ public class Board {
         fields.add(new SpecialField(25,"Wez karte"));
         fields.add(new NormalField(26,"Algorytmy i struktury danych",300,6,null));
         fields.add(new NormalField(27,"Matematyka",400,8,null));
+
     }
 
     public int getPlayerPosition(Player player){

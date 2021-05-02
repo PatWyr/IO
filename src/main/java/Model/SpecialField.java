@@ -2,7 +2,6 @@ package Model;
 
 import Cards.Card;
 import Cards.ListOfCards;
-
 import java.util.Random;
 
 public class SpecialField extends Field {

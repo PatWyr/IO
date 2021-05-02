@@ -3,6 +3,7 @@ package Model;
 public abstract class Field {
     protected int position;
     protected String name;
+    protected Game game;
 
     public Field(int position, String name) {
         this.position = position;
@@ -27,6 +28,10 @@ public abstract class Field {
 
     public String getName() {
         return name;
+    }
+
+    public void addGame(Game game){
+        this.game=game;
     }
 
     public void setName(String name) {
