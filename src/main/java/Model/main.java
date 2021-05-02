@@ -33,6 +33,24 @@ public class main extends Application implements EventHandler<ActionEvent>{
     Button buttonChangeBackground;
     Button buttonStartGame;
     Group root;
+    Text textP11;
+    Text textP12;
+    Text textP13;
+
+    Text textP21;
+    Text textP22;
+    Text textP23;
+
+    Text textP31;
+    Text textP32;
+    Text textP33;
+
+    Text textP41;
+    Text textP42;
+    Text textP43;
+
+
+
     private List<String> names = new ArrayList<>();
     private List<String> Order = new ArrayList<>();
 //    private List<Integer> Coordinates = List.of(-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,0,-100,0,-100,0,-100,0,
@@ -43,6 +61,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
     ComboBox<String> comboboxChooseColorOfPawns;
 
     int NumberOfPlayers = 0;
+    int FakeNumberOfPlayers =0;
     int TurnCalculator = 0;
 
     int Piece1X=0;
@@ -228,11 +247,14 @@ public class main extends Application implements EventHandler<ActionEvent>{
         });
     }
     public void game() throws FileNotFoundException {
+
         board = new Board();
         game = new Game(true,0,NumberOfPlayers,names,board);
         System.out.println(names);
         System.out.println(Order);
         board.addGameToFields(game);
+
+
 
         Button buttonRoll = new Button("Roll");
         Button buttonBuy = new Button("Buy");
@@ -281,10 +303,21 @@ public class main extends Application implements EventHandler<ActionEvent>{
         ImageView imageView3 = new ImageView(image3);
         ImageView imageView4 = new ImageView(image4);
 
+        imageView.setX(450);
+        imageView.setY(100);
+        imageView.setFitHeight(800);
+        imageView.setFitWidth(800);
+        buttonRoll.setLayoutX(700);
+        buttonRoll.setLayoutY(920);
+        buttonNextTurn.setLayoutX(780);
+        buttonNextTurn.setLayoutY(920);
+        FakeNumberOfPlayers = NumberOfPlayers;
+
 
         if(NumberOfPlayers==2){
             ImageViewList.add(imageView1);
             ImageViewList.add(imageView2);
+
         }else if(NumberOfPlayers==3){
             ImageViewList.add(imageView1);
             ImageViewList.add(imageView2);
@@ -294,16 +327,12 @@ public class main extends Application implements EventHandler<ActionEvent>{
             ImageViewList.add(imageView2);
             ImageViewList.add(imageView3);
             ImageViewList.add(imageView4);
+
+
         }
 
-        imageView.setX(450);
-        imageView.setY(100);
-        imageView.setFitHeight(800);
-        imageView.setFitWidth(800);
-        buttonRoll.setLayoutX(700);
-        buttonRoll.setLayoutY(920);
-        buttonNextTurn.setLayoutX(780);
-        buttonNextTurn.setLayoutY(920);
+
+
 
 
         if(NumberOfPlayers==2) {
@@ -315,6 +344,37 @@ public class main extends Application implements EventHandler<ActionEvent>{
             root = new Group(imageView,imageView1,imageView2);
             root.getChildren().add(buttonRoll);
             root.getChildren().add(buttonNextTurn);
+
+            textP11 = new Text("Player : "+names.get(0)+" Color : "+Order.get(0));
+            textP12 = new Text(String.valueOf(game.getPlayer(0).getMoney()));
+            textP13 = new Text(String.valueOf(game.getPlayer(0).getECTS()));
+
+            textP21 = new Text("Player : "+names.get(1)+" Color : "+Order.get(1));
+            textP22 = new Text(String.valueOf(game.getPlayer(1).getMoney()));
+            textP23 = new Text(String.valueOf(game.getPlayer(1).getECTS()));
+
+            textP11.setX(20);
+            textP11.setY(100);
+            textP12.setX(20);
+            textP12.setY(140);
+            textP13.setX(20);
+            textP13.setY(180);
+
+            textP21.setX(20);
+            textP21.setY(820);
+            textP22.setX(20);
+            textP22.setY(860);
+            textP23.setX(20);
+            textP23.setY(900);
+            root.getChildren().addAll(textP11,textP12,textP13,textP21,textP22,textP23);
+            textP11.setStyle(style2);
+            textP12.setStyle(style2);
+            textP13.setStyle(style2);
+
+            textP21.setStyle(style2);
+            textP22.setStyle(style2);
+            textP23.setStyle(style2);
+
 
 
         }else if(NumberOfPlayers==3){
@@ -329,6 +389,51 @@ public class main extends Application implements EventHandler<ActionEvent>{
             root = new Group(imageView,imageView1,imageView2,imageView3);
             root.getChildren().add(buttonRoll);
             root.getChildren().add(buttonNextTurn);
+
+            textP11 = new Text("Player : "+names.get(0)+" Color : "+Order.get(0));
+            textP12 = new Text(String.valueOf(game.getPlayer(0).getMoney()));
+            textP13 = new Text(String.valueOf(game.getPlayer(0).getECTS()));
+
+            textP21 = new Text("Player : "+names.get(1)+" Color : "+Order.get(1));
+            textP22 = new Text(String.valueOf(game.getPlayer(1).getMoney()));
+            textP23 = new Text(String.valueOf(game.getPlayer(1).getECTS()));
+
+            textP31 = new Text("Player : "+names.get(2)+" Color : "+Order.get(2));
+            textP32 = new Text(String.valueOf(game.getPlayer(2).getMoney()));
+            textP33 = new Text(String.valueOf(game.getPlayer(2).getECTS()));
+
+            textP11.setX(20);
+            textP11.setY(100);
+            textP12.setX(20);
+            textP12.setY(140);
+            textP13.setX(20);
+            textP13.setY(180);
+
+            textP21.setX(20);
+            textP21.setY(820);
+            textP22.setX(20);
+            textP22.setY(860);
+            textP23.setX(20);
+            textP23.setY(900);
+
+            textP31.setX(1270);
+            textP31.setY(100);
+            textP32.setX(1270);
+            textP32.setY(140);
+            textP33.setX(1270);
+            textP33.setY(180);
+            root.getChildren().addAll(textP11,textP12,textP13,textP21,textP22,textP23,textP31,textP32,textP33);
+            textP11.setStyle(style2);
+            textP12.setStyle(style2);
+            textP13.setStyle(style2);
+
+            textP21.setStyle(style2);
+            textP22.setStyle(style2);
+            textP23.setStyle(style2);
+
+            textP31.setStyle(style2);
+            textP32.setStyle(style2);
+            textP33.setStyle(style2);
 
 
         }else if(NumberOfPlayers==4){
@@ -346,8 +451,68 @@ public class main extends Application implements EventHandler<ActionEvent>{
             root = new Group(imageView,imageView1,imageView2,imageView3,imageView4);
             root.getChildren().add(buttonRoll);
             root.getChildren().add(buttonNextTurn);
+            textP11 = new Text("Player : "+names.get(0)+" Color : "+Order.get(0));
+            textP12 = new Text(String.valueOf(game.getPlayer(0).getMoney()));
+            textP13 = new Text(String.valueOf(game.getPlayer(0).getECTS()));
+
+            textP21 = new Text("Player : "+names.get(1)+" Color : "+Order.get(1));
+            textP22 = new Text(String.valueOf(game.getPlayer(1).getMoney()));
+            textP23 = new Text(String.valueOf(game.getPlayer(1).getECTS()));
+
+            textP31 = new Text("Player : "+names.get(2)+" Color : "+Order.get(2));
+            textP32 = new Text(String.valueOf(game.getPlayer(2).getMoney()));
+            textP33 = new Text(String.valueOf(game.getPlayer(2).getECTS()));
+
+            textP41 = new Text("Player : "+names.get(3)+" Color : "+Order.get(3));
+            textP42 = new Text(String.valueOf(game.getPlayer(3).getMoney()));
+            textP43 = new Text(String.valueOf(game.getPlayer(3).getECTS()));
+            textP11.setX(20);
+            textP11.setY(100);
+            textP12.setX(20);
+            textP12.setY(140);
+            textP13.setX(20);
+            textP13.setY(180);
+
+            textP21.setX(20);
+            textP21.setY(820);
+            textP22.setX(20);
+            textP22.setY(860);
+            textP23.setX(20);
+            textP23.setY(900);
+
+            textP31.setX(1270);
+            textP31.setY(100);
+            textP32.setX(1270);
+            textP32.setY(140);
+            textP33.setX(1270);
+            textP33.setY(180);
+
+            textP41.setX(1270);
+            textP41.setY(820);
+            textP42.setX(1270);
+            textP42.setY(860);
+            textP43.setX(1270);
+            textP43.setY(900);
+            root.getChildren().addAll(textP11,textP12,textP13,textP21,textP22,textP23,textP31,textP32,textP33,textP41,textP42,textP43);
+            textP11.setStyle(style2);
+            textP12.setStyle(style2);
+            textP13.setStyle(style2);
+
+            textP21.setStyle(style2);
+            textP22.setStyle(style2);
+            textP23.setStyle(style2);
+
+            textP31.setStyle(style2);
+            textP32.setStyle(style2);
+            textP33.setStyle(style2);
+
+            textP41.setStyle(style2);
+            textP42.setStyle(style2);
+            textP43.setStyle(style2);
 
         }
+
+
 
         Stage stageGame = new Stage();
         stageGame.setTitle("Monopoly");
@@ -357,6 +522,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
 
         buttonRoll.setOnAction(event -> Roll(ImageViewList.get(TurnCalculator%NumberOfPlayers)));
 //        buttonBuy.setOnAction(event -> );
+        buttonNextTurn.setOnAction(event -> game.nextTurn());
 
     }
 
@@ -365,10 +531,51 @@ public class main extends Application implements EventHandler<ActionEvent>{
         int position2 = game.getPlayer(TurnCalculator%NumberOfPlayers).getPosition();
         int roll =game.requestForRoll();
         int position = game.getPlayer(TurnCalculator%NumberOfPlayers).getPosition();
+        System.out.println("roll"+roll);
         System.out.println(position2);
+        System.out.println(position);
+        if(position-position2<-3){
+            move(a,position-position2,0);
+            move(a,position,position);
+        } else {
+            move(a,position-position2,position);
+        }
+        game.nextTurn();
+        if(FakeNumberOfPlayers==2){
+            textP12.setText(String.valueOf(game.getPlayer(0).getMoney()));
+            textP13.setText(String.valueOf(game.getPlayer(0).getECTS()));
+
+            textP22.setText(String.valueOf(game.getPlayer(1).getMoney()));
+            textP23.setText(String.valueOf(game.getPlayer(1).getECTS()));
 
 
-        move(a,position);
+        }else if(FakeNumberOfPlayers==3){
+            textP12.setText(String.valueOf(game.getPlayer(0).getMoney()));
+            textP13.setText(String.valueOf(game.getPlayer(0).getECTS()));
+
+            textP22.setText(String.valueOf(game.getPlayer(1).getMoney()));
+            textP23.setText(String.valueOf(game.getPlayer(1).getECTS()));
+
+            textP32.setText(String.valueOf(game.getPlayer(2).getMoney()));
+            textP33.setText(String.valueOf(game.getPlayer(2).getECTS()));
+
+        }else if(FakeNumberOfPlayers==4){
+            textP12.setText(String.valueOf(game.getPlayer(0).getMoney()));
+            textP13.setText(String.valueOf(game.getPlayer(0).getECTS()));
+
+            textP22.setText(String.valueOf(game.getPlayer(1).getMoney()));
+            textP23.setText(String.valueOf(game.getPlayer(1).getECTS()));
+
+            textP32.setText(String.valueOf(game.getPlayer(2).getMoney()));
+            textP33.setText(String.valueOf(game.getPlayer(2).getECTS()));
+
+            textP42.setText(String.valueOf(game.getPlayer(3).getMoney()));
+            textP43.setText(String.valueOf(game.getPlayer(3).getECTS()));
+
+        }
+
+
+
         TurnCalculator++;
     }
 
@@ -378,67 +585,162 @@ public class main extends Application implements EventHandler<ActionEvent>{
 
 
 
-    public void move(ImageView a,int roll){
-        System.out.println(roll);
-        System.out.println(Order.get(TurnCalculator%NumberOfPlayers));
-//        for(int x =0; x<roll;x++){
-            if(Order.get(TurnCalculator%NumberOfPlayers).equals("RED")){
-//                if(Piece1X == 56 ){
-//                    Piece1X = 0;
-//                    Piece1Y = 1;
-//                }
-//                 Piece1X += 2;
-//                 Piece1Y += 2;
-//                 a.setX(a.getX() + Coordinates.get(Piece1X));
-//                 a.setY(a.getY() + Coordinates.get(Piece1Y));
-                 Piece1X = 2*roll;
-                 Piece1Y = 2*roll+1;
-                 a.setX(a.getX() + Coordinates.get(Piece1X));
-                 a.setY(a.getY() + Coordinates.get(Piece1Y));
-            }else if(Order.get(TurnCalculator%NumberOfPlayers).equals("BLUE")){
-//                if(Piece2X == 56 ){
-//                    Piece2X = 0;
-//                    Piece2Y = 1;
-//                }
-//                 Piece2X += 2;
-//                 Piece2Y += 2;
-//                 a.setX(a.getX() + Coordinates.get(Piece2X));
-//                 a.setY(a.getY() + Coordinates.get(Piece2Y));
-                 Piece2X = 2*roll;
-                 Piece2Y = 2*roll+1;
-                 a.setX(a.getX() + Coordinates.get(Piece2X));
-                 a.setY(a.getY() + Coordinates.get(Piece2Y));
-            }else if(Order.get(TurnCalculator%NumberOfPlayers).equals("GREEN")){
-//                if(Piece3X == 56 ){
-//                    Piece3X = 0;
-//                    Piece3Y = 1;
-//                }
-//                 Piece3X += 2;
-//                 Piece3Y += 2;
-//                 a.setX(a.getX() + Coordinates.get(Piece3X));
-//                 a.setY(a.getY() + Coordinates.get(Piece3Y));
-                 Piece3X = 2*roll;
-                 Piece3Y = 2*roll+1;
-                 a.setX(a.getX() + Coordinates.get(Piece3X));
-                 a.setY(a.getY() + Coordinates.get(Piece3Y));
-            }else if(Order.get(TurnCalculator%NumberOfPlayers).equals("YELLOW")){
-//                if(Piece4X == 56 ){
-//                    Piece4X = 0;
-//                    Piece4Y = 1;
-//                }
-//                 Piece4X += 2;
-//                 Piece4Y += 2;
-//                 a.setX(a.getX() + Coordinates.get(Piece4X));
-//                 a.setY(a.getY() + Coordinates.get(Piece4Y));
-                Piece4X = 2*roll;
-                Piece4Y = 2*roll+1;
-                a.setX(a.getX() + Coordinates.get(Piece4X));
-                a.setY(a.getY() + Coordinates.get(Piece4Y));
+    public void move(ImageView a,int roll,int position){
+//        System.out.println(roll);
+        //System.out.println(Order.get(TurnCalculator%NumberOfPlayers));
+        System.out.println("pozycja to : "+position);
+        if(position==0){
+            if(TurnCalculator%NumberOfPlayers==0) {
+                Piece1X = 0;
+                Piece1Y = 1;
+                a.setX(1200);
+                a.setY(800);
+                return;
+            }else if(TurnCalculator%NumberOfPlayers==1){
+                Piece2X = 0;
+                Piece2Y = 1;
+                a.setX(1200);
+                a.setY(800);
+                return;
+            }else if(TurnCalculator%NumberOfPlayers==2){
+                Piece3X = 0;
+                Piece3Y = 1;
+                a.setX(1150);
+                a.setY(850);
+                return;
+            } else if(TurnCalculator%NumberOfPlayers==3){
+                Piece4X = 0;
+                Piece4Y = 1;
+                a.setX(1150);
+                a.setY(800);
+                return;
             }
 
+//                if (Order.get(TurnCalculator % NumberOfPlayers).equals("RED")) {
+//                    Piece1X = 0;
+//                    Piece1Y = 1;
+//                    a.setX(Piece1X);
+//                    a.setY(Piece1Y);
+//                    return;
+//
+//                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("BLUE")) {
+//                    Piece2X = 0;
+//                    Piece2Y = 1;
+//                    a.setX(Piece2X);
+//                    a.setY(Piece2Y);
+//                    return;
+//
+//                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("GREEN")) {
+//                    Piece3X = 0;
+//                    Piece3Y = 1;
+//                    a.setX(Piece3X);
+//                    a.setY(Piece3Y);
+//                    return;
+//
+//                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("YELLOW")) {
+//                    Piece4X = 0;
+//                    Piece4Y = 1;
+//                    a.setX(Piece4X);
+//                    a.setY(Piece4Y);
+//                    return;
+//                }
+
+
+
+        }
+        if(roll>=0) {
+            for (int x = 0; x < roll; x++) {
+                if (Order.get(TurnCalculator % NumberOfPlayers).equals("RED")) {
+                    if (Piece1X == 56) {
+                        Piece1X = 0;
+                        Piece1Y = 1;
+                    }
+                    Piece1X += 2;
+                    Piece1Y += 2;
+                    a.setX(a.getX() + Coordinates.get(Piece1X));
+                    a.setY(a.getY() + Coordinates.get(Piece1Y));
+
+                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("BLUE")) {
+                    if (Piece2X == 56) {
+                        Piece2X = 0;
+                        Piece2Y = 1;
+                    }
+                    Piece2X += 2;
+                    Piece2Y += 2;
+                    a.setX(a.getX() + Coordinates.get(Piece2X));
+                    a.setY(a.getY() + Coordinates.get(Piece2Y));
+
+                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("GREEN")) {
+                    if (Piece3X == 56) {
+                        Piece3X = 0;
+                        Piece3Y = 1;
+                    }
+                    Piece3X += 2;
+                    Piece3Y += 2;
+                    a.setX(a.getX() + Coordinates.get(Piece3X));
+                    a.setY(a.getY() + Coordinates.get(Piece3Y));
+
+                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("YELLOW")) {
+                    if (Piece4X == 56) {
+                        Piece4X = 0;
+                        Piece4Y = 1;
+                    }
+                    Piece4X += 2;
+                    Piece4Y += 2;
+                    a.setX(a.getX() + Coordinates.get(Piece4X));
+                    a.setY(a.getY() + Coordinates.get(Piece4Y));
+
+                }
+
+            }
+        }else {
+            for (int x = 0; x > roll; x--) {
+                if (Order.get(TurnCalculator % NumberOfPlayers).equals("RED")) {
+                    Piece1X -= 2;
+                    Piece1Y -= 2;
+                    if (Piece1X < 0) {
+                        Piece1X = 0;
+                        Piece1Y = 1;
+                    }
+                    a.setX(a.getX() + Coordinates.get(Piece1X));
+                    a.setY(a.getY() + Coordinates.get(Piece1Y));
+
+                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("BLUE")) {
+                    Piece2X -= 2;
+                    Piece2Y -= 2;
+                    if(Piece2X < 0){
+                        Piece2X = 0;
+                        Piece2Y = 1;
+                    }
+                    a.setX(a.getX() + Coordinates.get(Piece2X));
+                    a.setY(a.getY() + Coordinates.get(Piece2Y));
+
+                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("GREEN")) {
+                    Piece3X -= 2;
+                    Piece3Y -= 2;
+                    if (Piece3X < 0) {
+                        Piece3X = 0;
+                        Piece3Y = 1;
+                    }
+                    a.setX(a.getX() + Coordinates.get(Piece3X));
+                    a.setY(a.getY() + Coordinates.get(Piece3Y));
+
+                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("YELLOW")) {
+                    Piece4X -= 2;
+                    Piece4Y -= 2;
+                    if (Piece4X < 0) {
+                        Piece4X = 0;
+                        Piece4Y = 1;
+                    }
+                    a.setX(a.getX() + Coordinates.get(Piece4X));
+                    a.setY(a.getY() + Coordinates.get(Piece4Y));
+
+                }
+
+            }
         }
 
-//    }
+    }
 
     @Override
     public void handle(ActionEvent event) {
