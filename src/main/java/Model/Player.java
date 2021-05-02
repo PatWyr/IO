@@ -86,4 +86,17 @@ public class Player {
     public void setPosition(int position) {
         this.position = position;
     }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "stun=" + stun +
+                ", stunLen=" + stunLen +
+                ", lost=" + lost +
+                ", name='" + name + '\'' +
+                ", ECTS=" + ECTS +
+                ", money=" + money +
+                ", position=" + position +
+                '}';
+    }
 }
