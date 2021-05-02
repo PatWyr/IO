@@ -31,10 +31,27 @@ public class main extends Application implements EventHandler<ActionEvent>{
     Button buttonChangeBackground;
     Button buttonStartGame;
     Group root;
+    private List<String> names = new ArrayList<>();
+    private List<String> Order = new ArrayList<>();
+    private List<Integer> Coordinates = List.of(-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,0,-100,0,-100,0,-100,0,
+            -100,0,-100,0,-100,0,-100,100,0,100,0,100,0,100,0,100,0,100,0,100,0,0,100,0,100,0,100,0,100,0,100,0,100,0,100);
 
     ComboBox<String> comboboxChooseColorOfPawns;
 
     int NumberOfPlayers = 0;
+    int TurnCalculator = 0;
+
+    int Piece1X=0;
+    int Piece1Y=1;
+
+    int Piece2X=0;
+    int Piece2Y=1;
+
+    int Piece3X=0;
+    int Piece3Y=1;
+
+    int Piece4X=0;
+    int Piece4Y=1;
 
 
     String style = "-fx-background-color: #a9a9a9;"
@@ -184,9 +201,12 @@ public class main extends Application implements EventHandler<ActionEvent>{
             gridPane.add(button,5,i);
             layout.getChildren().addAll(gridPane);
             button.setOnAction(event -> {
-                System.out.println(textField.getText());
-                /////////////// Setujesz!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! kolor ty debilu oraz nazwe pionka nie zrobione!!!!!!!!!!!!!!!!!!!!!
+                String xd = textField.getText();
+                names.add(xd);
+                Order.add(comboboxChooseColorOfPawn.getValue());
+
             });
+
 
         }
         Button button = new Button("done");
@@ -203,99 +223,191 @@ public class main extends Application implements EventHandler<ActionEvent>{
         });
     }
     public void game() throws FileNotFoundException {
+        System.out.println(names);
+        System.out.println(Order);
+        Board board = new Board();
+        Game game = new Game(true,0,NumberOfPlayers,names,board);
+        board.addGameToFields(game);
 
 
         Button buttonRoll = new Button("Roll");
         Button buttonBuy = new Button("Buy");
+        Button buttonNextTurn = new Button("Next Turn");
 
         buttonBuy.setStyle(style2);
         buttonRoll.setStyle(style2);
+        buttonNextTurn.setStyle(style2);
+        String First;
+        String Second;
+        String Third;
+        String Forth;
+        List<FileInputStream> InputStream = new ArrayList<>();
+        List<ImageView> ImageViewList = new ArrayList<>();
 
-        Image image = new Image(new FileInputStream("abc.jpg"));
-        Image image1 = new Image(new FileInputStream("BluePawn.png"));
-        Image image2 = new Image(new FileInputStream("RedPawn.png"));
-        Image image3 = new Image(new FileInputStream("YellowPawn.png"));
-        Image image4 = new Image(new FileInputStream("GreenPawn.png"));
+        for(int x =0; x < NumberOfPlayers;x++){
+            if(Order.get(x).equals("RED")){
+                InputStream.add(new FileInputStream("RedPawn.png"));
+            }else if(Order.get(x).equals("BLUE")){
+                InputStream.add(new FileInputStream("BluePawn.png"));
+            }else if(Order.get(x).equals("GREEN")){
+                InputStream.add(new FileInputStream("GreenPawn.png"));
+            }else if(Order.get(x).equals("YELLOW")){
+                InputStream.add(new FileInputStream("YellowPawn.png"));
+            }
+        }
+        if(NumberOfPlayers==2){
+            InputStream.add(new FileInputStream("YellowPawn.png"));
+            InputStream.add(new FileInputStream("YellowPawn.png"));
+        }
+        if(NumberOfPlayers==3){
+            InputStream.add(new FileInputStream("YellowPawn.png"));
+        }
+
+        System.out.println(InputStream);
+
+//        Image image = new Image(new FileInputStream("abc.png"));
+        Image image = new Image(new FileInputStream("Plansza800x800.png"));
+        Image image1 = new Image(InputStream.get(0));
+        Image image2 = new Image(InputStream.get(1));
+        Image image3 = new Image(InputStream.get(2));
+        Image image4 = new Image(InputStream.get(3));
         ImageView imageView = new ImageView(image);
         ImageView imageView1 = new ImageView(image1);
         ImageView imageView2 = new ImageView(image2);
         ImageView imageView3 = new ImageView(image3);
         ImageView imageView4 = new ImageView(image4);
-        imageView.setX(500);
+
+
+        if(NumberOfPlayers==2){
+            ImageViewList.add(imageView1);
+            ImageViewList.add(imageView2);
+        }else if(NumberOfPlayers==3){
+            ImageViewList.add(imageView1);
+            ImageViewList.add(imageView2);
+            ImageViewList.add(imageView3);
+        }else if(NumberOfPlayers==4){
+            ImageViewList.add(imageView1);
+            ImageViewList.add(imageView2);
+            ImageViewList.add(imageView3);
+            ImageViewList.add(imageView4);
+        }
+
+        imageView.setX(450);
         imageView.setY(100);
-        imageView.setFitHeight(700);
-        imageView.setFitWidth(700);
+        imageView.setFitHeight(800);
+        imageView.setFitWidth(800);
         buttonRoll.setLayoutX(700);
-        buttonRoll.setLayoutY(820);
+        buttonRoll.setLayoutY(920);
+        buttonNextTurn.setLayoutX(780);
+        buttonNextTurn.setLayoutY(920);
 
 
         if(NumberOfPlayers==2) {
-            imageView1.setX(1150);
-            imageView1.setY(750);
+            imageView1.setX(1200);
+            imageView1.setY(850);
 
-            imageView2.setX(1150);
-            imageView2.setY(700);
+            imageView2.setX(1200);
+            imageView2.setY(800);
             root = new Group(imageView,imageView1,imageView2);
             root.getChildren().add(buttonRoll);
+            root.getChildren().add(buttonNextTurn);
 
 
         }else if(NumberOfPlayers==3){
-            imageView1.setX(1150);
-            imageView1.setY(750);
+            imageView1.setX(1200);
+            imageView1.setY(850);
 
-            imageView2.setX(1150);
-            imageView2.setY(700);
+            imageView2.setX(1200);
+            imageView2.setY(800);
 
-            imageView3.setX(1100);
-            imageView3.setY(750);
+            imageView3.setX(1150);
+            imageView3.setY(850);
             root = new Group(imageView,imageView1,imageView2,imageView3);
             root.getChildren().add(buttonRoll);
+            root.getChildren().add(buttonNextTurn);
 
 
         }else if(NumberOfPlayers==4){
-            imageView1.setX(1150);
-            imageView1.setY(750);
+            imageView1.setX(1200);
+            imageView1.setY(850);
 
-            imageView2.setX(1150);
-            imageView2.setY(700);
+            imageView2.setX(1200);
+            imageView2.setY(800);
 
-            imageView3.setX(1100);
-            imageView3.setY(750);
+            imageView3.setX(1150);
+            imageView3.setY(850);
 
-            imageView4.setX(1100);
-            imageView4.setY(700);
+            imageView4.setX(1150);
+            imageView4.setY(800);
             root = new Group(imageView,imageView1,imageView2,imageView3,imageView4);
             root.getChildren().add(buttonRoll);
+            root.getChildren().add(buttonNextTurn);
 
         }
 
         Stage stageGame = new Stage();
-        stageGame.setTitle("History");
-        Scene sceneGame = new Scene(root, 1700, 900);
+        stageGame.setTitle("Monopoly");
+        Scene sceneGame = new Scene(root, 1700, 1000);
         stageGame.setScene(sceneGame);
         stageGame.show();
 
-        buttonRoll.setOnAction(event -> Roll(imageView1,imageView2,imageView3,imageView4));
+        buttonRoll.setOnAction(event -> Roll(ImageViewList.get(TurnCalculator%NumberOfPlayers)));
 //        buttonBuy.setOnAction(event -> );
 
     }
 
-    public void Roll(ImageView a,ImageView b,ImageView c,ImageView d){
+    public void Roll(ImageView a){
         int ax=100;
         int ay=100;
-
-        if(NumberOfPlayers==2) {
-
-
-
-
-        }else if(NumberOfPlayers==3){
+        move(a,1);
+        TurnCalculator++;
+    }
 
 
 
 
-        }else if(NumberOfPlayers==4){
 
+
+
+    public void move(ImageView a,int roll){
+        for(int x =0; x<roll;x++){
+            if(Order.get(TurnCalculator%NumberOfPlayers).equals("RED")){
+                if(Piece1X == 56 ){
+                    Piece1X = 0;
+                    Piece1Y = 1;
+                }
+                 Piece1X += 2;
+                 Piece1Y += 2;
+                 a.setX(a.getX() + Coordinates.get(Piece1X));
+                 a.setY(a.getY() + Coordinates.get(Piece1Y));
+            }else if(Order.get(TurnCalculator%NumberOfPlayers).equals("BLUE")){
+                if(Piece2X == 56 ){
+                    Piece2X = 0;
+                    Piece2Y = 1;
+                }
+                 Piece2X += 2;
+                 Piece2Y += 2;
+                 a.setX(a.getX() + Coordinates.get(Piece2X));
+                 a.setY(a.getY() + Coordinates.get(Piece2Y));
+            }else if(Order.get(TurnCalculator%NumberOfPlayers).equals("GREEN")){
+                if(Piece3X == 56 ){
+                    Piece3X = 0;
+                    Piece3Y = 1;
+                }
+                 Piece3X += 2;
+                 Piece3Y += 2;
+                 a.setX(a.getX() + Coordinates.get(Piece3X));
+                 a.setY(a.getY() + Coordinates.get(Piece3Y));
+            }else if(Order.get(TurnCalculator%NumberOfPlayers).equals("YELLOW")){
+                if(Piece4X == 56 ){
+                    Piece4X = 0;
+                    Piece4Y = 1;
+                }
+                 Piece4X += 2;
+                 Piece4Y += 2;
+                 a.setX(a.getX() + Coordinates.get(Piece4X));
+                 a.setY(a.getY() + Coordinates.get(Piece4Y));
+            }
 
         }
 
