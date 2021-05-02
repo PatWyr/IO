@@ -20,7 +20,7 @@ public class Board {
     }
 
     public void prepareBoard(){
-        //TODO
+        Field field1 = new NormalField(1,"Komputerowe wspomaganie projektowania z elementami normalizacji",50,1,null);
     }
 
     public int getPlayerPosition(Player player){
