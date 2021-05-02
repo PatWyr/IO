@@ -11,6 +11,11 @@ public class Game {
     private Player[] players;
     private boolean requestForRoll = false;
     private boolean requestForBuy = false;
+    private int turn = 0;
+
+    public int getTurn() {
+        return turn;
+    }
 
     //constructor for testing purpose
     public Game(boolean running, int round, int playersNo, List<String> names) {
@@ -58,7 +63,6 @@ public class Game {
     }
 
     public void start(int i, int len){
-        int turn = 0;
         int players1 = getPlayersNo();
         do{
             round++;

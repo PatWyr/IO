@@ -21,7 +21,7 @@ public class BoardTest {
 
     @Test
     public void createTest(){
-        assertEquals(30,board.getListSize());
+        assertEquals(28,board.getListSize());
     }
 
     @Test

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
-    private final int fieldNo=30;
+    private final int fieldNo=28;
     private int laps;
     List<Field> fields = new ArrayList<>();
     List<Field> fieldsFree = new ArrayList<>();
@@ -13,14 +13,38 @@ public class Board {
 
     public Board() {
         this.laps = 0;
-        //Funkcja do testu
-        for(int i=0;i<fieldNo;i++){
-            fields.add(new NormalField(i,"Testowe pola",100,10,null));
-        }
+        prepareBoard();
     }
 
     public void prepareBoard(){
-        //TODO
+        fields.add(new NormalField(0,"Start",0,0,null));
+        fields.add(new NormalField(1,"Komputerowe wspomaganie projektowania z elementami normalizacji",50,1,null));
+        fields.add(new NormalField(2,"Kulturowe i etyczne aspekty informatyzacji",100,2,null));
+        fields.add(new SpecialField(3,"Wez karte"));
+        fields.add(new NormalField(4,"Podstawy zarzadzania projektam",100,2,null));
+        fields.add(new NormalField(5,"Podstawy analizy cyklu zycia",100,2,null));
+        fields.add(new NormalField(6,"Pracownia problemowa",100,2,null));
+        fields.add(new SpecialField(7,"Platny parking"));
+        fields.add(new NormalField(8,"Wprowadzenie do informatyki",150,3,null));
+        fields.add(new NormalField(9,"Podstawy grafiki komputerowej",150,3,null));
+        fields.add(new NormalField(10,"Systemy wbudowne",150,3,null));
+        fields.add(new SpecialField(11,"Wez karte"));
+        fields.add(new NormalField(12,"Telekomunikacja i przetwarzanie sygnalow",200,4,null));
+        fields.add(new NormalField(13,"Technologie XML",200,4,null));
+        fields.add(new SpecialField(14,"Wez karte"));
+        fields.add(new NormalField(15,"Fizyka I",200,4,null));
+        fields.add(new NormalField(16,"Architektura komputerow i oprgorawmoania niskopoziomowego",200,4,null));
+        fields.add(new SpecialField(17,"Wez karte"));
+        fields.add(new NormalField(18,"Matematyka dyskretna",200,4,null));
+        fields.add(new NormalField(19,"Programowanie obiektowe",250,5,null));
+        fields.add(new NormalField(20,"Systemy wbudowane",250,5,null));
+        fields.add(new SpecialField(21, "Przerwa obiadowa"));
+        fields.add(new NormalField(22,"Podstawy sieci komputerowych",250,5,null));
+        fields.add(new NormalField(23,"Programowanie komponentowe",300,6,null));
+        fields.add(new NormalField(24,"Inzynieria oprogramowania",300,6,null));
+        fields.add(new SpecialField(25,"Wez karte"));
+        fields.add(new NormalField(26,"Algorytmy i struktury danych",300,6,null));
+        fields.add(new NormalField(27,"Matematyka",400,8,null));
     }
 
     public int getPlayerPosition(Player player){
@@ -127,6 +151,7 @@ public class Board {
                 .append(fieldsOwned)
                 .append(stunnedPlayers)
                 .toHashCode();
+
     }
 
     @Override

@@ -54,4 +54,20 @@ public abstract class Card {
     public int getECTSDown() {
         return ECTSDown;
     }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "PlayerID=" + PlayerID +
+                ", CardUrl='" + CardUrl + '\'' +
+                ", forward=" + forward +
+                ", Backward=" + Backward +
+                ", GoStart=" + GoStart +
+                ", Prison=" + Prison +
+                ", MoneyUp=" + MoneyUp +
+                ", MoneyDown=" + MoneyDown +
+                ", ECTSUp=" + ECTSUp +
+                ", ECTSDown=" + ECTSDown +
+                '}';
+    }
 }
