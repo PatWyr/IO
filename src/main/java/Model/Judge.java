@@ -3,12 +3,19 @@ package Model;
 import java.util.List;
 
 public class Judge {
-    private Board board;
-    private Game game;
+
+    private static Board board;
+    private static Game game;
+    private static Judge judge = new Judge(game,board);
+
 
     public Judge(Game game,Board board) {
         this.board = board;
         this.game = game;
+    }
+
+    public static Judge getInstance(){
+        return judge;
     }
 
     public boolean checkWinner(List<Player> players){
