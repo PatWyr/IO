@@ -63,8 +63,8 @@ public class Board {
     public void movePlayer(Player player,int number){
         int currentposition=player.getPosition();
         currentposition = currentposition+number;
-        if(currentposition > 30){
-            currentposition = currentposition-30;
+        if(currentposition >= 28){
+            currentposition = currentposition-28;
             int currentmoney = player.getMoney();
             currentmoney = currentmoney + 100;
             player.setMoney(currentmoney);

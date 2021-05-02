@@ -27,12 +27,16 @@ public class main extends Application implements EventHandler<ActionEvent>{
     Stage window;
     Scene scene;
 
+    Board board;
+    Game game;
     Button buttonHistoryOfWinners;
     Button buttonChangeBackground;
     Button buttonStartGame;
     Group root;
     private List<String> names = new ArrayList<>();
     private List<String> Order = new ArrayList<>();
+//    private List<Integer> Coordinates = List.of(-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,0,-100,0,-100,0,-100,0,
+//            -100,0,-100,0,-100,0,-100,100,0,100,0,100,0,100,0,100,0,100,0,100,0,0,100,0,100,0,100,0,100,0,100,0,100,0,100);
     private List<Integer> Coordinates = List.of(-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,0,-100,0,-100,0,-100,0,
             -100,0,-100,0,-100,0,-100,100,0,100,0,100,0,100,0,100,0,100,0,100,0,0,100,0,100,0,100,0,100,0,100,0,100,0,100);
 
@@ -52,6 +56,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
 
     int Piece4X=0;
     int Piece4Y=1;
+
 
 
     String style = "-fx-background-color: #a9a9a9;"
@@ -223,12 +228,11 @@ public class main extends Application implements EventHandler<ActionEvent>{
         });
     }
     public void game() throws FileNotFoundException {
+        board = new Board();
+        game = new Game(true,0,NumberOfPlayers,names,board);
         System.out.println(names);
         System.out.println(Order);
-        Board board = new Board();
-        Game game = new Game(true,0,NumberOfPlayers,names,board);
         board.addGameToFields(game);
-
 
         Button buttonRoll = new Button("Roll");
         Button buttonBuy = new Button("Buy");
@@ -357,9 +361,14 @@ public class main extends Application implements EventHandler<ActionEvent>{
     }
 
     public void Roll(ImageView a){
-        int ax=100;
-        int ay=100;
-        move(a,1);
+        System.out.println("calcualtor"+TurnCalculator%NumberOfPlayers);
+        int position2 = game.getPlayer(TurnCalculator%NumberOfPlayers).getPosition();
+        int roll =game.requestForRoll();
+        int position = game.getPlayer(TurnCalculator%NumberOfPlayers).getPosition();
+        System.out.println(position2);
+
+
+        move(a,position);
         TurnCalculator++;
     }
 
@@ -370,48 +379,66 @@ public class main extends Application implements EventHandler<ActionEvent>{
 
 
     public void move(ImageView a,int roll){
-        for(int x =0; x<roll;x++){
+        System.out.println(roll);
+        System.out.println(Order.get(TurnCalculator%NumberOfPlayers));
+//        for(int x =0; x<roll;x++){
             if(Order.get(TurnCalculator%NumberOfPlayers).equals("RED")){
-                if(Piece1X == 56 ){
-                    Piece1X = 0;
-                    Piece1Y = 1;
-                }
-                 Piece1X += 2;
-                 Piece1Y += 2;
+//                if(Piece1X == 56 ){
+//                    Piece1X = 0;
+//                    Piece1Y = 1;
+//                }
+//                 Piece1X += 2;
+//                 Piece1Y += 2;
+//                 a.setX(a.getX() + Coordinates.get(Piece1X));
+//                 a.setY(a.getY() + Coordinates.get(Piece1Y));
+                 Piece1X = 2*roll;
+                 Piece1Y = 2*roll+1;
                  a.setX(a.getX() + Coordinates.get(Piece1X));
                  a.setY(a.getY() + Coordinates.get(Piece1Y));
             }else if(Order.get(TurnCalculator%NumberOfPlayers).equals("BLUE")){
-                if(Piece2X == 56 ){
-                    Piece2X = 0;
-                    Piece2Y = 1;
-                }
-                 Piece2X += 2;
-                 Piece2Y += 2;
+//                if(Piece2X == 56 ){
+//                    Piece2X = 0;
+//                    Piece2Y = 1;
+//                }
+//                 Piece2X += 2;
+//                 Piece2Y += 2;
+//                 a.setX(a.getX() + Coordinates.get(Piece2X));
+//                 a.setY(a.getY() + Coordinates.get(Piece2Y));
+                 Piece2X = 2*roll;
+                 Piece2Y = 2*roll+1;
                  a.setX(a.getX() + Coordinates.get(Piece2X));
                  a.setY(a.getY() + Coordinates.get(Piece2Y));
             }else if(Order.get(TurnCalculator%NumberOfPlayers).equals("GREEN")){
-                if(Piece3X == 56 ){
-                    Piece3X = 0;
-                    Piece3Y = 1;
-                }
-                 Piece3X += 2;
-                 Piece3Y += 2;
+//                if(Piece3X == 56 ){
+//                    Piece3X = 0;
+//                    Piece3Y = 1;
+//                }
+//                 Piece3X += 2;
+//                 Piece3Y += 2;
+//                 a.setX(a.getX() + Coordinates.get(Piece3X));
+//                 a.setY(a.getY() + Coordinates.get(Piece3Y));
+                 Piece3X = 2*roll;
+                 Piece3Y = 2*roll+1;
                  a.setX(a.getX() + Coordinates.get(Piece3X));
                  a.setY(a.getY() + Coordinates.get(Piece3Y));
             }else if(Order.get(TurnCalculator%NumberOfPlayers).equals("YELLOW")){
-                if(Piece4X == 56 ){
-                    Piece4X = 0;
-                    Piece4Y = 1;
-                }
-                 Piece4X += 2;
-                 Piece4Y += 2;
-                 a.setX(a.getX() + Coordinates.get(Piece4X));
-                 a.setY(a.getY() + Coordinates.get(Piece4Y));
+//                if(Piece4X == 56 ){
+//                    Piece4X = 0;
+//                    Piece4Y = 1;
+//                }
+//                 Piece4X += 2;
+//                 Piece4Y += 2;
+//                 a.setX(a.getX() + Coordinates.get(Piece4X));
+//                 a.setY(a.getY() + Coordinates.get(Piece4Y));
+                Piece4X = 2*roll;
+                Piece4Y = 2*roll+1;
+                a.setX(a.getX() + Coordinates.get(Piece4X));
+                a.setY(a.getY() + Coordinates.get(Piece4Y));
             }
 
         }
 
-    }
+//    }
 
     @Override
     public void handle(ActionEvent event) {

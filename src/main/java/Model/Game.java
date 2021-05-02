@@ -57,8 +57,8 @@ public class Game {
         }
     }
 
-    public void requestForRoll() {
-        playerRound(turn);
+    public int requestForRoll() {
+        return playerRound(turn);
     }
 
     public void nextTurn() {
@@ -97,10 +97,11 @@ public class Game {
         return false;
     }
 
-    public void playerRound(int id) {
+    public int playerRound(int id) {
         int roll = players[id].rollDice();
         board.movePlayer(players[id],roll);
         board.getOneField(players[id].getPosition()).fieldAction();
+        return roll;
     }
 
 
