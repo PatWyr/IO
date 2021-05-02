@@ -15,7 +15,10 @@ public class NormalField extends Field{
     @Override
     public void fieldAction() {
         super.fieldAction();
-        //TODO
+        if(getOwner() != null) {
+            int i = game.getTurn();
+            game.getBoard().passMoney(game.getPlayer(i),owner,getCost());
+        }
     }
 
     public int getCost() {

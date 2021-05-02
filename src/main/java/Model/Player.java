@@ -36,7 +36,12 @@ public class Player {
     }
 
     public void buyField(NormalField field){
-         field.setOwner(this);
+        int tmp;
+         if(field.getCost()<=this.getMoney()) {
+             field.setOwner(this);
+             tmp = this.getECTS();
+             setECTS(tmp + field.getECTS());
+         }
     }
 
     public boolean isStun() {
