@@ -62,7 +62,7 @@ public class SpecialField extends Field {
             System.out.println("EctsDown");
             var = player.getECTS();
             var += tmp.getECTSDown();
-            player.setMoney(var);
+            player.setECTS(var);
             return;
         }
     }

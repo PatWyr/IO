@@ -41,55 +41,36 @@ public class Game {
         }
     }
 
-    public void setRequestForRoll(boolean request) {
-        this.requestForRoll = request;
+    public void requestForRoll() {
+        playerRound(turn);
     }
 
-    //Ask functions to GUI
-    public void askForRoll(){
-        setRequestForRoll(true);
+    public void nextTurn() {
+        if(turn == players.length-1){
+            turn = 0;
+        } else {
+            turn++;
+        }
     }
 
-    public void askForBuy(){
-        setRequestForBuy(true);
+    public boolean isDostepne() {
+        if (board.getOneField(players[turn].getPosition()) instanceof NormalField && board.getOneField(players[turn].getPosition()).getOwner() == null) {
+            return true;
+        }
+        return false;
     }
 
-    public void setRequestForBuy(boolean requestForBuy) {
-        this.requestForBuy = requestForBuy;
+    public void requestForBuy() {
+        if (board.getOneField(players[turn].getPosition()).getOwner() == null && board.getPlayerPosition(players[turn]) != 0) {
+            players[turn].buyField((NormalField) board.getOneField(players[turn].getPosition()));
+        }
     }
 
     public Board getBoard() {
         return board;
     }
 
-    public void start(int i, int len){
-        int players1 = getPlayersNo();
-        do{
-            round++;
-            if(requestForRoll){
-                playerRound(turn);
-            }
-            if(requestForBuy){
-                if(board.getOneField(players[turn].getPosition()).getOwner() == null) {
-                    players[turn].buyField((NormalField) board.getOneField(players[turn].getPosition()));
-                } else {
-                    //TODO
-                    //Mozna by tu dodac jakas kontrole
-                    System.out.print("Blad");
-                }
 
-            }
-            if(turn == players1){
-               turn = 0;
-            }
-            if(endControl()){
-                break;
-            }
-            setRequestForRoll(false);
-            setRequestForBuy(false);
-            i++;
-        } while (len>i);
-    }
 
     public boolean endControl() {
         if(board.getLaps()>3){
@@ -103,6 +84,7 @@ public class Game {
     public void playerRound(int id) {
         int roll = players[id].rollDice();
         board.movePlayer(players[id],roll);
+        board.getOneField(players[id].getPosition()).fieldAction();
     }
 
 
