@@ -15,7 +15,9 @@ public class NormalField extends Field{
     @Override
     public void fieldAction() {
         super.fieldAction();
+
         if(getOwner() != null) {
+            System.out.println("Zmiana kaski");
             int i = game.getTurn();
             game.getBoard().passMoney(game.getPlayer(i),owner,getCost());
         }
@@ -44,5 +46,17 @@ public class NormalField extends Field{
 
     public void setOwner(Player owner) {
         this.owner = owner;
+    }
+
+    @Override
+    public String toString() {
+        return "NormalField{" +
+                "position=" + position +
+                ", name='" + name + '\'' +
+                ", game=" + game +
+                ", cost=" + cost +
+                ", ECTS=" + ECTS +
+                ", owner=" + owner +
+                '}';
     }
 }

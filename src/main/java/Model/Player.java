@@ -32,12 +32,15 @@ public class Player {
 
     public int rollDice(){
         Random random = new Random();
-        return random.nextInt(5)+1;
+        return random.nextInt(6)+1;
     }
 
     public void buyField(NormalField field){
         int tmp;
+        int money;
          if(field.getCost()<=this.getMoney()) {
+             money = this.getMoney();
+             this.setMoney(money - field.getCost());
              field.setOwner(this);
              tmp = this.getECTS();
              setECTS(tmp + field.getECTS());
