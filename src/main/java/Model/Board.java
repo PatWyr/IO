@@ -72,13 +72,6 @@ public class Board {
         player.setPosition(currentposition);
     }
 
-    public void getFieldAction(Field field){
-        //TODO
-    }
-
-    public void getFieldActon(int position){
-        //TODO
-    }
 
     public void stunPlayer(int duration,Player player){
         player.setStun(true);
