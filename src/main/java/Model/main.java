@@ -13,11 +13,14 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.ColorInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -32,7 +35,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
     Button buttonHistoryOfWinners;
     Button buttonChangeBackground;
     Button buttonStartGame;
-    Group root;
+    Pane root;
     Text textP11;
     Text textP12;
     Text textP13;
@@ -53,12 +56,9 @@ public class main extends Application implements EventHandler<ActionEvent>{
 
     private List<String> names = new ArrayList<>();
     private List<String> Order = new ArrayList<>();
-//    private List<Integer> Coordinates = List.of(-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,0,-100,0,-100,0,-100,0,
-//            -100,0,-100,0,-100,0,-100,100,0,100,0,100,0,100,0,100,0,100,0,100,0,0,100,0,100,0,100,0,100,0,100,0,100,0,100);
     private List<Integer> Coordinates = List.of(-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,0,-100,0,-100,0,-100,0,
             -100,0,-100,0,-100,0,-100,100,0,100,0,100,0,100,0,100,0,100,0,100,0,0,100,0,100,0,100,0,100,0,100,0,100,0,100);
 
-    ComboBox<String> comboboxChooseColorOfPawns;
 
     int NumberOfPlayers = 0;
     int FakeNumberOfPlayers =0;
@@ -77,11 +77,12 @@ public class main extends Application implements EventHandler<ActionEvent>{
     int Piece4Y=1;
 
 
-
     String style = "-fx-background-color: #a9a9a9;"
             + "-fx-font-size: 38;-fx-border-color: #000000; -fx-border-width: 3px;";
     String style2 = "-fx-background-color: #a9a9a9;"
             + "-fx-font-size: 20;-fx-border-color: #000000; -fx-border-width: 3px;";
+
+    String style3 = "-fx-background-color: grey";
 
     public void main() {
         launch();
@@ -157,16 +158,20 @@ public class main extends Application implements EventHandler<ActionEvent>{
         buttonChangeColor.setOnAction(event -> {
             if(comboboxChangeColor.getValue().equals("RED")){
                 layout.setStyle(("-fx-background-color: Red"));
+                style3 = "-fx-background-color: Red";
             }else if(comboboxChangeColor.getValue().equals("BLUE")){
                 layout.setStyle(("-fx-background-color: Blue"));
+                style3 = "-fx-background-color: Blue";
             }else if(comboboxChangeColor.getValue().equals("GREEN")){
                 layout.setStyle(("-fx-background-color: Green"));
+                style3 = "-fx-background-color: Green";
             }
             stageChangeBackground.close();
         });
 
     }
     public void startGame(VBox layout){
+
         Button buttonChooseNumberOfPlayers = new Button("Set number of players");
         ComboBox<String> comboboxChooseNumberOfPlayers = new ComboBox<>();
         comboboxChooseNumberOfPlayers.setStyle(style);
@@ -260,13 +265,18 @@ public class main extends Application implements EventHandler<ActionEvent>{
         Button buttonBuy = new Button("Buy");
         Button buttonNextTurn = new Button("Next Turn");
 
+        Text roll = new Text();
+        Text PlayerTurn = new Text();
+        roll.setX(1000);
+        roll.setY(50);
+        PlayerTurn.setX(600);
+        PlayerTurn.setY(50);
+        roll.setStyle(style);
+        PlayerTurn.setStyle(style);
+
         buttonBuy.setStyle(style2);
         buttonRoll.setStyle(style2);
         buttonNextTurn.setStyle(style2);
-        String First;
-        String Second;
-        String Third;
-        String Forth;
         List<FileInputStream> InputStream = new ArrayList<>();
         List<ImageView> ImageViewList = new ArrayList<>();
 
@@ -344,7 +354,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
 
             imageView2.setX(1200);
             imageView2.setY(800);
-            root = new Group(imageView,imageView1,imageView2);
+            root = new Pane(imageView,imageView1,imageView2);
             root.getChildren().add(buttonRoll);
             root.getChildren().add(buttonNextTurn);
             root.getChildren().add(buttonBuy);
@@ -377,7 +387,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
             textP21.setStyle(style2);
             textP22.setStyle(style2);
             textP23.setStyle(style2);
-
+            root.setStyle(style3);
 
 
         }else if(NumberOfPlayers==3){
@@ -389,7 +399,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
 
             imageView3.setX(1150);
             imageView3.setY(850);
-            root = new Group(imageView,imageView1,imageView2,imageView3);
+            root = new Pane(imageView,imageView1,imageView2,imageView3);
             root.getChildren().add(buttonRoll);
             root.getChildren().add(buttonNextTurn);
             root.getChildren().add(buttonBuy);
@@ -437,7 +447,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
             textP31.setStyle(style2);
             textP32.setStyle(style2);
             textP33.setStyle(style2);
-
+            root.setStyle(style3);
 
         }else if(NumberOfPlayers==4){
             imageView1.setX(1200);
@@ -451,7 +461,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
 
             imageView4.setX(1150);
             imageView4.setY(800);
-            root = new Group(imageView,imageView1,imageView2,imageView3,imageView4);
+            root = new Pane(imageView,imageView1,imageView2,imageView3,imageView4);
             root.getChildren().add(buttonRoll);
             root.getChildren().add(buttonNextTurn);
             root.getChildren().add(buttonBuy);
@@ -513,10 +523,12 @@ public class main extends Application implements EventHandler<ActionEvent>{
             textP41.setStyle(style2);
             textP42.setStyle(style2);
             textP43.setStyle(style2);
+            root.setStyle(style3);
 
         }
-
-
+        buttonNextTurn.setDisable(true);
+        root.getChildren().add(PlayerTurn);
+        root.getChildren().add(roll);
 
         Stage stageGame = new Stage();
         stageGame.setTitle("Monopoly");
@@ -524,7 +536,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
         stageGame.setScene(sceneGame);
         stageGame.show();
 
-        buttonRoll.setOnAction(event -> Roll(ImageViewList.get(TurnCalculator%NumberOfPlayers),buttonBuy,buttonRoll,buttonNextTurn));
+        buttonRoll.setOnAction(event -> Roll(ImageViewList.get(TurnCalculator%NumberOfPlayers),buttonBuy,buttonRoll,buttonNextTurn,roll,PlayerTurn));
         buttonBuy.setOnAction(event -> buy(buttonBuy));
         buttonNextTurn.setOnAction(event -> {
             game.nextTurn();
@@ -576,15 +588,14 @@ public class main extends Application implements EventHandler<ActionEvent>{
 
     }
 
-    public void Roll(ImageView a,Button button,Button button1,Button button2){
+    public void Roll(ImageView a,Button button,Button button1,Button button2,Text roll2,Text player){
 
-        System.out.println("calcualtor"+TurnCalculator%NumberOfPlayers);
         int position2 = game.getPlayer(TurnCalculator%NumberOfPlayers).getPosition();
         int roll =game.requestForRoll();
         int position = game.getPlayer(TurnCalculator%NumberOfPlayers).getPosition();
-        System.out.println("roll"+roll);
-        System.out.println(position2);
-        System.out.println(position);
+        System.out.println("ilegraczy : "+game.getPlayersNo());
+        System.out.println("roll : "+roll);
+        System.out.println("przed ruchem : "+position2);
         if(position-position2<-3){
             move(a,position-position2,0);
             move(a,position,position);
@@ -596,6 +607,10 @@ public class main extends Application implements EventHandler<ActionEvent>{
         }
         button1.setDisable(true);
         button2.setDisable(false);
+        roll2.setText(" Rolled : "+String.valueOf(roll));
+        player.setText("Player : "+names.get(TurnCalculator%NumberOfPlayers));
+
+
 //        game.nextTurn();
         if(FakeNumberOfPlayers==2){
             textP12.setText(String.valueOf(game.getPlayer(0).getMoney()));
@@ -642,15 +657,17 @@ public class main extends Application implements EventHandler<ActionEvent>{
 
 
     public void move(ImageView a,int roll,int position){
-//        System.out.println(roll);
-        //System.out.println(Order.get(TurnCalculator%NumberOfPlayers));
         System.out.println("pozycja to : "+position);
+        System.out.println("X : "+a.getX());
+        System.out.println("Y : "+a.getY());
+        System.out.println("Tura : "+TurnCalculator%NumberOfPlayers);
+
         if(position==0){
             if(TurnCalculator%NumberOfPlayers==0) {
                 Piece1X = 0;
                 Piece1Y = 1;
                 a.setX(1200);
-                a.setY(800);
+                a.setY(850);
                 return;
             }else if(TurnCalculator%NumberOfPlayers==1){
                 Piece2X = 0;
@@ -672,41 +689,10 @@ public class main extends Application implements EventHandler<ActionEvent>{
                 return;
             }
 
-//                if (Order.get(TurnCalculator % NumberOfPlayers).equals("RED")) {
-//                    Piece1X = 0;
-//                    Piece1Y = 1;
-//                    a.setX(Piece1X);
-//                    a.setY(Piece1Y);
-//                    return;
-//
-//                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("BLUE")) {
-//                    Piece2X = 0;
-//                    Piece2Y = 1;
-//                    a.setX(Piece2X);
-//                    a.setY(Piece2Y);
-//                    return;
-//
-//                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("GREEN")) {
-//                    Piece3X = 0;
-//                    Piece3Y = 1;
-//                    a.setX(Piece3X);
-//                    a.setY(Piece3Y);
-//                    return;
-//
-//                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("YELLOW")) {
-//                    Piece4X = 0;
-//                    Piece4Y = 1;
-//                    a.setX(Piece4X);
-//                    a.setY(Piece4Y);
-//                    return;
-//                }
-
-
-
         }
-        if(roll>=0) {
+        if(roll>=0 && position !=0) {
             for (int x = 0; x < roll; x++) {
-                if (Order.get(TurnCalculator % NumberOfPlayers).equals("RED")) {
+                if (TurnCalculator%NumberOfPlayers==0) {
                     if (Piece1X == 56) {
                         Piece1X = 0;
                         Piece1Y = 1;
@@ -716,8 +702,8 @@ public class main extends Application implements EventHandler<ActionEvent>{
                     a.setX(a.getX() + Coordinates.get(Piece1X));
                     a.setY(a.getY() + Coordinates.get(Piece1Y));
 
-                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("BLUE")) {
-                    if (Piece2X == 56) {
+                } else if (TurnCalculator%NumberOfPlayers==1) {
+                    if (Piece2X >= 56) {
                         Piece2X = 0;
                         Piece2Y = 1;
                     }
@@ -726,8 +712,8 @@ public class main extends Application implements EventHandler<ActionEvent>{
                     a.setX(a.getX() + Coordinates.get(Piece2X));
                     a.setY(a.getY() + Coordinates.get(Piece2Y));
 
-                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("GREEN")) {
-                    if (Piece3X == 56) {
+                } else if (TurnCalculator%NumberOfPlayers==2) {
+                    if (Piece3X >= 56) {
                         Piece3X = 0;
                         Piece3Y = 1;
                     }
@@ -736,8 +722,8 @@ public class main extends Application implements EventHandler<ActionEvent>{
                     a.setX(a.getX() + Coordinates.get(Piece3X));
                     a.setY(a.getY() + Coordinates.get(Piece3Y));
 
-                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("YELLOW")) {
-                    if (Piece4X == 56) {
+                } else if (TurnCalculator%NumberOfPlayers==3) {
+                    if (Piece4X >= 56) {
                         Piece4X = 0;
                         Piece4Y = 1;
                     }
@@ -751,7 +737,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
             }
         }else {
             for (int x = 0; x > roll; x--) {
-                if (Order.get(TurnCalculator % NumberOfPlayers).equals("RED")) {
+                if (TurnCalculator%NumberOfPlayers==0) {
                     Piece1X -= 2;
                     Piece1Y -= 2;
                     if (Piece1X < 0) {
@@ -761,7 +747,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
                     a.setX(a.getX() + Coordinates.get(Piece1X));
                     a.setY(a.getY() + Coordinates.get(Piece1Y));
 
-                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("BLUE")) {
+                } else if (TurnCalculator%NumberOfPlayers==1) {
                     Piece2X -= 2;
                     Piece2Y -= 2;
                     if(Piece2X < 0){
@@ -771,7 +757,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
                     a.setX(a.getX() + Coordinates.get(Piece2X));
                     a.setY(a.getY() + Coordinates.get(Piece2Y));
 
-                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("GREEN")) {
+                } else if (TurnCalculator%NumberOfPlayers==2) {
                     Piece3X -= 2;
                     Piece3Y -= 2;
                     if (Piece3X < 0) {
@@ -781,7 +767,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
                     a.setX(a.getX() + Coordinates.get(Piece3X));
                     a.setY(a.getY() + Coordinates.get(Piece3Y));
 
-                } else if (Order.get(TurnCalculator % NumberOfPlayers).equals("YELLOW")) {
+                } else if (TurnCalculator%NumberOfPlayers==3) {
                     Piece4X -= 2;
                     Piece4Y -= 2;
                     if (Piece4X < 0) {
@@ -795,6 +781,9 @@ public class main extends Application implements EventHandler<ActionEvent>{
 
             }
         }
+        System.out.println("X : "+a.getX());
+        System.out.println("Y : "+a.getY());
+        System.out.println("---------------------------------------");
 
     }
 
