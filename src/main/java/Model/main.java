@@ -631,8 +631,34 @@ public class main extends Application implements EventHandler<ActionEvent>{
         if(judge.checkWinner(Arrays.asList(game.getPlayers()))){
             EndGame(Game);
         }
-        if(game.getPlayer(TurnCalculator%NumberOfPlayers).getMoney()<-1000){
+        if(game.getPlayer(TurnCalculator%NumberOfPlayers).getMoney()<-500){
             game.getPlayer(TurnCalculator%NumberOfPlayers).setECTS(game.getPlayer(TurnCalculator%NumberOfPlayers).getECTS()-10);
+            game.getPlayer(TurnCalculator%NumberOfPlayers).setMoney(0);
+            Button buttonOmega = new Button("ok");
+            buttonOmega.setStyle(style2);
+//            Image image = new Image(new FileInputStream(null);
+//            ImageView imageView4 = new ImageView(image);
+//            imageView4.setX(0);
+//            imageView4.setY(0);
+            Text text = new Text("XD");
+            text.setStyle(style3);
+            text.setX(420);
+            text.setY(500);
+            buttonOmega.setLayoutX(420);
+            buttonOmega.setLayoutY(600);
+            Pane pane = new Pane(text,buttonOmega);
+            pane.setStyle(style3);
+            Stage stageCard = new Stage();
+            stageCard.initStyle(StageStyle.UNDECORATED);
+            stageCard.setTitle("Monopoly");
+            Scene sceneCard = new Scene(pane, 842, 700);
+            stageCard.setScene(sceneCard);
+            stageCard.show();
+            buttonOmega.setOnAction(event -> {
+                stageCard.close();
+            });
+
+
         }
 
 
