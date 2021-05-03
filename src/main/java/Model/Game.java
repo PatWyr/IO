@@ -205,5 +205,16 @@ public class Game {
     //A dziala to mniej wiecej tak
     //Game game2 = new Game.Builder().running(true).round(0).playerNo(2).board(null).players(null).build();
 
+    public String getBoughtFields(Player player) {
+        String mess = "";
+        for(int i =0 ;i<28; i++){
+            if(board.getOneField(i).getOwner()==player) {
+                mess+=board.getOneField(i).getName();
+                mess+="\n";
+            }
+        }
+        return mess;
+    }
+
 
 }
