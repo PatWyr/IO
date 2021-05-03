@@ -23,6 +23,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
 
 import javax.sound.sampled.*;
 import javax.sound.sampled.DataLine.Info;
@@ -31,6 +33,9 @@ import javax.swing.*;
 import javax.swing.text.Style;
 import static javax.sound.sampled.AudioSystem.getAudioInputStream;
 import static javax.sound.sampled.AudioFormat.Encoding.PCM_SIGNED;
+
+
+
 public class main extends Application implements EventHandler<ActionEvent>{
     Stage window;
     Scene scene;
@@ -289,8 +294,26 @@ public class main extends Application implements EventHandler<ActionEvent>{
             }
         });
     }
-    public void game() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 
+    public void  music() {
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        FileInputStream fileInputStream = new FileInputStream("xd.mp3");
+                        Player player = new Player(fileInputStream);
+                        player.play();
+
+
+                    } catch (JavaLayerException | FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            thread.start();
+
+    }
+    public void game() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 
 
         board = new Board();
@@ -628,10 +651,12 @@ public class main extends Application implements EventHandler<ActionEvent>{
         buttonMusic.setOnAction(event -> {
             if (music){
                 buttonMusic.setGraphic(viewOFF);
+
                 music=false;
 
             }else {
                 buttonMusic.setGraphic(viewON);
+                music();
                 music=true;
 
             }
@@ -739,7 +764,8 @@ public class main extends Application implements EventHandler<ActionEvent>{
         int position2 = game.getPlayer(TurnCalculator%NumberOfPlayers).getPosition();
         int roll =game.requestForRoll();
         int position = game.getPlayer(TurnCalculator%NumberOfPlayers).getPosition();
-        game.getPlayer(TurnCalculator%NumberOfPlayers).setECTS(30);
+//        game.getPlayer(TurnCalculator%NumberOfPlayers).setECTS(30);
+//        game.getPlayer(TurnCalculator%NumberOfPlayers).setMoney(-100000);
         System.out.println("xdd"+game.getPlayer(TurnCalculator%NumberOfPlayers).getECTS());
         if(judge.checkWinner(Arrays.asList(game.getPlayers()))){
             EndGame(Game);

@@ -29,8 +29,8 @@ public class Board implements Observable {
 
     public void prepareBoard() {
         fields.add(new NormalField(0,"Start",0,0,null));
-        fields.add(new NormalField(1,"Komputerowe wspomaganie projektowania z elementami normalizacji",50,1,null));
-        fields.add(new NormalField(2,"Kulturowe i etyczne aspekty informatyzacji",100,2,null));
+        fields.add(new NormalField(1,"Komputerowe wspomaganie",50,1,null));
+        fields.add(new NormalField(2,"Kulturowe i etyczne aspekty",100,2,null));
         fields.add(new SpecialField(3,"Wez karte"));
         fields.add(new NormalField(4,"Podstawy zarzadzania projektam",100,2,null));
         fields.add(new NormalField(5,"Podstawy analizy cyklu zycia",100,2,null));
@@ -40,11 +40,11 @@ public class Board implements Observable {
         fields.add(new NormalField(9,"Podstawy grafiki komputerowej",150,3,null));
         fields.add(new NormalField(10,"Systemy wbudowne",150,3,null));
         fields.add(new SpecialField(11,"Wez karte"));
-        fields.add(new NormalField(12,"Telekomunikacja i przetwarzanie sygnalow",200,4,null));
+        fields.add(new NormalField(12,"Telekomunikacja i przetwarzanie",200,4,null));
         fields.add(new NormalField(13,"Technologie XML",200,4,null));
         fields.add(new SpecialField(14,"Wez karte"));
         fields.add(new NormalField(15,"Fizyka I",200,4,null));
-        fields.add(new NormalField(16,"Architektura komputerow i oprgorawmoania niskopoziomowego",200,4,null));
+        fields.add(new NormalField(16,"Architektura komputerow",200,4,null));
         fields.add(new SpecialField(17,"Wez karte"));
         fields.add(new NormalField(18,"Matematyka dyskretna",200,4,null));
         fields.add(new NormalField(19,"Programowanie obiektowe",250,5,null));
