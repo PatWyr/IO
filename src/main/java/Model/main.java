@@ -1,8 +1,5 @@
 package Model;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.*;
 import javafx.application.Application;
@@ -124,17 +121,37 @@ public class main extends Application implements EventHandler<ActionEvent>{
         window.show();
 
         buttonChangeBackground.setOnAction(event -> changeBackground(layout));
-        buttonHistoryOfWinners.setOnAction(event -> historyOfWinners());
+        buttonHistoryOfWinners.setOnAction(event -> {
+            try {
+                historyOfWinners();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
         buttonStartGame.setOnAction(event -> startGame(layout));
     }
-    public void historyOfWinners(){
+    public void historyOfWinners() throws FileNotFoundException {
         Stage stageHistoryOfWinners = new Stage();
         stageHistoryOfWinners.setTitle("History");
         Button buttonClose = new Button("Close");
+        File myObj = new File("History.txt");
+        Scanner myReader = new Scanner(myObj);
+        String data="";
+        while (myReader.hasNextLine()) {
+            data += myReader.nextLine();
+            data += "\n";
+            System.out.println(data);
+        }
+        myReader.close();
+
+
+
+        Text text = new Text(data);
+        text.setStyle(style);
         buttonClose.setStyle(style);
 
         VBox layoutHistoryOfWinners = new VBox(10);
-        layoutHistoryOfWinners.getChildren().addAll(buttonClose);
+        layoutHistoryOfWinners.getChildren().addAll(text,buttonClose);
         layoutHistoryOfWinners.setStyle(("-fx-background-color: grey"));
         Scene sceneHistoryOfWinners = new Scene(layoutHistoryOfWinners, 1200, 600);
         stageHistoryOfWinners.setScene(sceneHistoryOfWinners);
@@ -700,6 +717,13 @@ public class main extends Application implements EventHandler<ActionEvent>{
             stageCard.close();
         });
         buttonOmega3.setOnAction(event -> {
+            try {
+                FileWriter myWriter = new FileWriter("History.txt");
+                myWriter.write("Name : "+names.get((TurnCalculator%NumberOfPlayers)-1)+" Won with ECTS : "+game.getPlayer((TurnCalculator%NumberOfPlayers)-1).getECTS() );
+                myWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
         });
 
@@ -715,6 +739,8 @@ public class main extends Application implements EventHandler<ActionEvent>{
         int position2 = game.getPlayer(TurnCalculator%NumberOfPlayers).getPosition();
         int roll =game.requestForRoll();
         int position = game.getPlayer(TurnCalculator%NumberOfPlayers).getPosition();
+        game.getPlayer(TurnCalculator%NumberOfPlayers).setECTS(30);
+        System.out.println("xdd"+game.getPlayer(TurnCalculator%NumberOfPlayers).getECTS());
         if(judge.checkWinner(Arrays.asList(game.getPlayers()))){
             EndGame(Game);
         }
