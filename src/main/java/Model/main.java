@@ -1,7 +1,9 @@
 package Model;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -25,9 +27,13 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.sound.sampled.*;
+import javax.sound.sampled.DataLine.Info;
+
 import javax.swing.*;
 import javax.swing.text.Style;
-
+import static javax.sound.sampled.AudioSystem.getAudioInputStream;
+import static javax.sound.sampled.AudioFormat.Encoding.PCM_SIGNED;
 public class main extends Application implements EventHandler<ActionEvent>{
     Stage window;
     Scene scene;
@@ -56,6 +62,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
     Text textP42;
     Text textP43;
     Text textP44;
+    boolean music = false;
 
 
 
@@ -256,10 +263,18 @@ public class main extends Application implements EventHandler<ActionEvent>{
                 game();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+            } catch (UnsupportedAudioFileException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (LineUnavailableException e) {
+                e.printStackTrace();
             }
         });
     }
-    public void game() throws FileNotFoundException {
+    public void game() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+
+
 
         board = new Board();
         game = new Game(true,0,NumberOfPlayers,names,board);
@@ -269,6 +284,15 @@ public class main extends Application implements EventHandler<ActionEvent>{
         Button buttonRoll = new Button("Roll");
         Button buttonBuy = new Button("Buy");
         Button buttonNextTurn = new Button("Next Turn");
+        Button buttonMusic = new Button();
+        Image imgON = new Image(new FileInputStream("Volume.png"));
+        ImageView viewON = new ImageView(imgON);
+        Image imgOFF = new Image(new FileInputStream("NoVolume.png"));
+        ImageView viewOFF = new ImageView(imgOFF);
+
+        buttonMusic.setGraphic(viewOFF);
+        buttonMusic.setLayoutX(1600);
+        buttonMusic.setLayoutY(0);
 
         Text roll = new Text();
         Text PlayerTurn = new Text();
@@ -351,7 +375,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
 
             imageView2.setX(1200);
             imageView2.setY(800);
-            root = new Pane(imageView,imageView1,imageView2);
+            root = new Pane(imageView,imageView1,imageView2,buttonMusic);
             root.getChildren().add(buttonRoll);
             root.getChildren().add(buttonNextTurn);
             root.getChildren().add(buttonBuy);
@@ -406,7 +430,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
 
             imageView3.setX(1150);
             imageView3.setY(850);
-            root = new Pane(imageView,imageView1,imageView2,imageView3);
+            root = new Pane(imageView,imageView1,imageView2,imageView3,buttonMusic);
             root.getChildren().add(buttonRoll);
             root.getChildren().add(buttonNextTurn);
             root.getChildren().add(buttonBuy);
@@ -480,7 +504,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
 
             imageView4.setX(1150);
             imageView4.setY(800);
-            root = new Pane(imageView,imageView1,imageView2,imageView3,imageView4);
+            root = new Pane(imageView,imageView1,imageView2,imageView3,imageView4,buttonMusic);
             root.getChildren().add(buttonRoll);
             root.getChildren().add(buttonNextTurn);
             root.getChildren().add(buttonBuy);
@@ -583,6 +607,17 @@ public class main extends Application implements EventHandler<ActionEvent>{
             game.nextTurn();
             changeTurn(buttonBuy,buttonRoll,buttonNextTurn);
 
+        });
+        buttonMusic.setOnAction(event -> {
+            if (music){
+                buttonMusic.setGraphic(viewOFF);
+                music=false;
+
+            }else {
+                buttonMusic.setGraphic(viewON);
+                music=true;
+
+            }
         });
 
     }
