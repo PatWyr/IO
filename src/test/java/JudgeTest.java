@@ -20,7 +20,7 @@ public class JudgeTest {
     public void prepare(){
         game = new Game(true,0,4,names);
         board = new Board();
-        judge = new Judge(game,board);
+        judge = Judge.getInstance(game,board);
     }
 
     @Test

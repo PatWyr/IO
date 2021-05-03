@@ -1,15 +1,18 @@
 package Model;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class Board {
+public class Board implements Observable {
     private final int fieldNo=28;
     private int laps;
     List<Field> fields = new ArrayList<>();
     List<Field> fieldsFree = new ArrayList<>();
     List<Field> fieldsOwned = new ArrayList<>();
     List<Player> stunnedPlayers = new ArrayList<>();
+    private Set<Observer> observers = new HashSet<>();
 
     public Board() {
         this.laps = 0;
@@ -70,6 +73,7 @@ public class Board {
             player.setMoney(currentmoney);
         }
         player.setPosition(currentposition);
+        notifyObservers();
     }
 
 
@@ -170,5 +174,20 @@ public class Board {
 
     public int getListSize(){
         return fields.size();
+    }
+
+    @Override
+    public void attach(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void detach(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        observers.forEach(Observer::update);
     }
 }

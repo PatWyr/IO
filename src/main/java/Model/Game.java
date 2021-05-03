@@ -3,6 +3,8 @@ import java.util.Arrays;
 import java.util.List;
 
 
+//wzorzec builder Inner Static Fluent Builder
+
 public class Game {
     private boolean running;
     private int round;
@@ -16,6 +18,9 @@ public class Game {
 
     public int getTurn() {
         return turn;
+    }
+
+    public Game() {
     }
 
     //constructor for testing purpose
@@ -144,4 +149,53 @@ public class Game {
     public void setPlayers(Player[] players) {
         this.players = players;
     }
+
+
+    //wzorzec builder Inner Static Fluent Builder
+    public static final class Builder{
+        private boolean running;
+        private int round;
+        private int playersNo;
+        private  Board board = null;
+        private Player[] players;
+
+        public Builder running(boolean running) {
+            this.running = running;
+            return this;
+        }
+
+        public Builder round(int round) {
+            this.round = round;
+            return this;
+        }
+
+        public Builder playerNo(int playersNo) {
+            this.playersNo = playersNo;
+            return this;
+        }
+
+        public Builder board(Board board) {
+            this.board = board;
+            return this;
+        }
+
+        public Builder players(Player[] players) {
+            this.players = players;
+            return this;
+        }
+
+        public Game build (){
+            Game game = new Game();
+            game.running = this.running;
+            game.round = this.round;
+            game.playersNo = this.playersNo;
+            game.board = this.board;
+            game.players = this.players;
+            return game;
+        }
+    }
+    //A dziala to mniej wiecej tak
+    //Game game2 = new Game.Builder().running(true).round(0).playerNo(2).board(null).players(null).build();
+
+
 }

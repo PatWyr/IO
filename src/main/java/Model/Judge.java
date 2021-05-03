@@ -2,13 +2,15 @@ package Model;
 
 import java.util.List;
 
+
+//singleton
 public class Judge {
 
     private static Board board;
     private static Game game;
     private static Judge judge;
 
-    public Judge(Game game,Board board) {
+    private Judge(Game game,Board board) {
         this.board = board;
         this.game = game;
     }
