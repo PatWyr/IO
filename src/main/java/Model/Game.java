@@ -20,6 +20,9 @@ public class Game {
         return turn;
     }
 
+    public Game() {
+    }
+
     //constructor for testing purpose
     public Game(boolean running, int round, int playersNo, List<String> names) {
         this.running = running;
@@ -181,8 +184,18 @@ public class Game {
             return this;
         }
 
-
+        public Game build (){
+            Game game = new Game();
+            game.running = this.running;
+            game.round = this.round;
+            game.playersNo = this.playersNo;
+            game.board = this.board;
+            game.players = this.players;
+            return game;
+        }
     }
+    //A dziala to mniej wiecej tak
+    //Game game2 = new Game.Builder().running(true).round(0).playerNo(2).board(null).players(null).build();
 
 
 }
