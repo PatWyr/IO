@@ -531,7 +531,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
 
         buttonRoll.setOnAction(event -> {
             try {
-                Roll(ImageViewList.get(TurnCalculator%NumberOfPlayers),buttonBuy,buttonRoll,buttonNextTurn,roll,PlayerTurn,stageGame);
+                Roll(ImageViewList.get(TurnCalculator%NumberOfPlayers),buttonBuy,buttonRoll,buttonNextTurn,roll,PlayerTurn,stageGame,ImageViewList);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -618,33 +618,22 @@ public class main extends Application implements EventHandler<ActionEvent>{
 
     }
 
-    public void Roll(ImageView a,Button button,Button button1,Button button2,Text roll2,Text player,Stage Game) throws FileNotFoundException {
+    public void Roll(ImageView a,Button button,Button button1,Button button2,Text roll2,Text player,Stage Game,List<ImageView> ImageViewList) throws FileNotFoundException {
+        if(NumberOfPlayers<2){
+            EndGame(Game);
+        }
+
         Judge judge = Judge.getInstance(game,board);
         game.getPlayer(TurnCalculator%NumberOfPlayers).setCurrentCard(null);
         int position2 = game.getPlayer(TurnCalculator%NumberOfPlayers).getPosition();
         int roll =game.requestForRoll();
         int position = game.getPlayer(TurnCalculator%NumberOfPlayers).getPosition();
-//        game.getPlayer(TurnCalculator%NumberOfPlayers).setECTS(30);
-        game.getPlayer(TurnCalculator%NumberOfPlayers).setMoney(-10);
-
-        if(judge.checkLost(Arrays.asList(game.getPlayers()))){
-            if(NumberOfPlayers<2){
-                EndGame(Game);
-            }
-            System.out.println("cc"+NumberOfPlayers);
-            NumberOfPlayers--;
-            System.out.println("cc"+NumberOfPlayers);
-            System.out.println(a.getImage());
-            a.setImage(null);
-            button1.setDisable(false);
-            TurnCalculator++;
-            return;
-        }
-
         if(judge.checkWinner(Arrays.asList(game.getPlayers()))){
             EndGame(Game);
         }
-
+        if(game.getPlayer(TurnCalculator%NumberOfPlayers).getMoney()<-1000){
+            game.getPlayer(TurnCalculator%NumberOfPlayers).setECTS(game.getPlayer(TurnCalculator%NumberOfPlayers).getECTS()-10);
+        }
 
 
         if(game.getPlayer(TurnCalculator%NumberOfPlayers).getCurrentCard()!= null){
@@ -669,6 +658,8 @@ public class main extends Application implements EventHandler<ActionEvent>{
                 stageCard.close();
             });
         }
+
+
         System.out.println("ilegraczy : "+game.getPlayersNo());
         System.out.println("roll : "+roll);
         System.out.println("przed ruchem : "+position2);

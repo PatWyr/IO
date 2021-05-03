@@ -39,16 +39,4 @@ public class Judge {
         }
         return false;
     }
-
-    public boolean checkLost(List<Player> players){
-        for(int i=0;i< game.getPlayersNo() ; i++){
-            if(players.get(i).getMoney()<0){
-                players.get(i).setLost(true);
-                players.get(i).setMoney(0);
-                game.RemovePlayer();
-                return true;
-            }
-        }
-        return false;
-    }
 }

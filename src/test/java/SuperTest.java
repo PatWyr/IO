@@ -41,7 +41,6 @@ public class SuperTest {
         game.getPlayer(3).setMoney(-10);
 //        System.out.println(game.getPlayer(3).toString());
         System.out.println("LOST");
-        judge.checkLost(Arrays.asList(game.getPlayers()));
 //        System.out.println(game.getPlayers().length);
 //        System.out.println(game.getPlayer(0).toString());
 //        System.out.println(game.getPlayer(1).toString());
@@ -52,7 +51,6 @@ public class SuperTest {
 //        System.out.println(game.getPlayer(2).toString());
         game.nextTurn();
         game.getPlayer(1).setMoney(-20);
-        judge.checkLost(Arrays.asList(game.getPlayers()));
 //        System.out.println(game.getPlayer(0).toString());
 //        System.out.println(game.getPlayer(1).toString());
         game.requestForRoll();

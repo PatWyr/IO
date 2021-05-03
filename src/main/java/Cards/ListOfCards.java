@@ -16,8 +16,8 @@ public class ListOfCards {
         Card Card5 = new CardC();
         Card Card6 = new CardC();
 
-        Card Card7 = new CardD();
-        Card Card8 = new CardD();
+//        Card Card7 = new CardD();
+//        Card Card8 = new CardD();
 
         Card Card9 = new CardE();
         Card Card10 = new CardE();
@@ -37,8 +37,8 @@ public class ListOfCards {
         ListOfCards.add(Card4);
         ListOfCards.add(Card5);
         ListOfCards.add(Card6);
-        ListOfCards.add(Card7);
-        ListOfCards.add(Card8);
+//        ListOfCards.add(Card7);
+//        ListOfCards.add(Card8);
         ListOfCards.add(Card9);
         ListOfCards.add(Card10);
         ListOfCards.add(Card11);
