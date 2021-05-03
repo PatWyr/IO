@@ -40,18 +40,22 @@ public class main extends Application implements EventHandler<ActionEvent>{
     Text textP11;
     Text textP12;
     Text textP13;
+    Text textP14;
 
     Text textP21;
     Text textP22;
     Text textP23;
+    Text textP24;
 
     Text textP31;
     Text textP32;
     Text textP33;
+    Text textP34;
 
     Text textP41;
     Text textP42;
     Text textP43;
+    Text textP44;
 
 
 
@@ -354,10 +358,12 @@ public class main extends Application implements EventHandler<ActionEvent>{
             textP11 = new Text("Player : "+names.get(0)+" Color : "+Order.get(0));
             textP12 = new Text(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
             textP13 = new Text(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
+            textP14 = new Text(String.valueOf(""));
 
             textP21 = new Text("Player : "+names.get(1)+" Color : "+Order.get(1));
             textP22 = new Text(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
             textP23 = new Text(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
+            textP24 = new Text(String.valueOf(""));
 
             textP11.setX(20);
             textP11.setY(100);
@@ -365,6 +371,8 @@ public class main extends Application implements EventHandler<ActionEvent>{
             textP12.setY(140);
             textP13.setX(20);
             textP13.setY(180);
+            textP14.setX(20);
+            textP14.setY(220);
 
             textP21.setX(20);
             textP21.setY(820);
@@ -372,14 +380,20 @@ public class main extends Application implements EventHandler<ActionEvent>{
             textP22.setY(860);
             textP23.setX(20);
             textP23.setY(900);
-            root.getChildren().addAll(textP11,textP12,textP13,textP21,textP22,textP23);
+            textP24.setX(20);
+            textP24.setY(940);
+            root.getChildren().addAll(textP11,textP12,textP13,textP14,textP21,textP22,textP23,textP24);
             textP11.setStyle(style2);
             textP12.setStyle(style2);
             textP13.setStyle(style2);
+            textP14.setStyle(style2);
 
             textP21.setStyle(style2);
             textP22.setStyle(style2);
             textP23.setStyle(style2);
+            textP24.setStyle(style2);
+
+
             root.setStyle(style3);
 
 
@@ -399,14 +413,17 @@ public class main extends Application implements EventHandler<ActionEvent>{
             textP11 = new Text("Player : "+names.get(0)+" Color : "+Order.get(0));
             textP12 = new Text(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
             textP13 = new Text(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
+            textP14 = new Text(String.valueOf(""));
 
             textP21 = new Text("Player : "+names.get(1)+" Color : "+Order.get(1));
             textP22 = new Text(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
             textP23 = new Text(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
+            textP24 = new Text(String.valueOf(""));
 
             textP31 = new Text("Player : "+names.get(2)+" Color : "+Order.get(2));
             textP32 = new Text(String.valueOf("Money : "+game.getPlayer(2).getMoney()));
             textP33 = new Text(String.valueOf("ECTS : "+game.getPlayer(2).getECTS()));
+            textP34 = new Text(String.valueOf(""));
 
             textP11.setX(20);
             textP11.setY(100);
@@ -414,6 +431,8 @@ public class main extends Application implements EventHandler<ActionEvent>{
             textP12.setY(140);
             textP13.setX(20);
             textP13.setY(180);
+            textP14.setX(20);
+            textP14.setY(220);
 
             textP21.setX(20);
             textP21.setY(820);
@@ -421,6 +440,8 @@ public class main extends Application implements EventHandler<ActionEvent>{
             textP22.setY(860);
             textP23.setX(20);
             textP23.setY(900);
+            textP24.setX(20);
+            textP24.setY(940);
 
             textP31.setX(1270);
             textP31.setY(100);
@@ -428,18 +449,23 @@ public class main extends Application implements EventHandler<ActionEvent>{
             textP32.setY(140);
             textP33.setX(1270);
             textP33.setY(180);
-            root.getChildren().addAll(textP11,textP12,textP13,textP21,textP22,textP23,textP31,textP32,textP33);
+            textP34.setX(1270);
+            textP34.setY(220);
+            root.getChildren().addAll(textP11,textP12,textP13,textP14,textP21,textP22,textP23,textP24,textP31,textP32,textP33,textP34);
             textP11.setStyle(style2);
             textP12.setStyle(style2);
             textP13.setStyle(style2);
+            textP14.setStyle(style2);
 
             textP21.setStyle(style2);
             textP22.setStyle(style2);
             textP23.setStyle(style2);
+            textP24.setStyle(style2);
 
             textP31.setStyle(style2);
             textP32.setStyle(style2);
             textP33.setStyle(style2);
+            textP34.setStyle(style2);
             root.setStyle(style3);
 
         }else if(NumberOfPlayers==4){
@@ -461,24 +487,30 @@ public class main extends Application implements EventHandler<ActionEvent>{
             textP11 = new Text("Player : "+names.get(0)+" Color : "+Order.get(0));
             textP12 = new Text(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
             textP13 = new Text(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
+            textP14 = new Text(String.valueOf(""));
 
             textP21 = new Text("Player : "+names.get(1)+" Color : "+Order.get(1));
             textP22 = new Text(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
             textP23 = new Text(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
+            textP24 = new Text(String.valueOf(""));
 
             textP31 = new Text("Player : "+names.get(2)+" Color : "+Order.get(2));
             textP32 = new Text(String.valueOf("Money : "+game.getPlayer(2).getMoney()));
             textP33 = new Text(String.valueOf("ECTS : "+game.getPlayer(2).getECTS()));
+            textP34 = new Text(String.valueOf(""));
 
             textP41 = new Text("Player : "+names.get(3)+" Color : "+Order.get(3));
             textP42 = new Text(String.valueOf("Money : "+game.getPlayer(3).getMoney()));
             textP43 = new Text(String.valueOf("ECTS : "+game.getPlayer(3).getECTS()));
+            textP44 = new Text(String.valueOf(""));
             textP11.setX(20);
             textP11.setY(100);
             textP12.setX(20);
             textP12.setY(140);
             textP13.setX(20);
             textP13.setY(180);
+            textP14.setX(20);
+            textP14.setY(220);
 
             textP21.setX(20);
             textP21.setY(820);
@@ -486,6 +518,8 @@ public class main extends Application implements EventHandler<ActionEvent>{
             textP22.setY(860);
             textP23.setX(20);
             textP23.setY(900);
+            textP24.setX(20);
+            textP24.setY(940);
 
             textP31.setX(1270);
             textP31.setY(100);
@@ -493,6 +527,8 @@ public class main extends Application implements EventHandler<ActionEvent>{
             textP32.setY(140);
             textP33.setX(1270);
             textP33.setY(180);
+            textP34.setX(1270);
+            textP34.setY(220);
 
             textP41.setX(1270);
             textP41.setY(820);
@@ -500,22 +536,28 @@ public class main extends Application implements EventHandler<ActionEvent>{
             textP42.setY(860);
             textP43.setX(1270);
             textP43.setY(900);
-            root.getChildren().addAll(textP11,textP12,textP13,textP21,textP22,textP23,textP31,textP32,textP33,textP41,textP42,textP43);
+            textP44.setX(1270);
+            textP44.setY(940);
+            root.getChildren().addAll(textP11,textP12,textP13,textP14,textP21,textP22,textP23,textP24,textP31,textP32,textP33,textP34,textP41,textP42,textP43,textP44);
             textP11.setStyle(style2);
             textP12.setStyle(style2);
             textP13.setStyle(style2);
+            textP14.setStyle(style2);
 
             textP21.setStyle(style2);
             textP22.setStyle(style2);
             textP23.setStyle(style2);
+            textP24.setStyle(style2);
 
             textP31.setStyle(style2);
             textP32.setStyle(style2);
             textP33.setStyle(style2);
+            textP34.setStyle(style2);
 
             textP41.setStyle(style2);
             textP42.setStyle(style2);
             textP43.setStyle(style2);
+            textP44.setStyle(style2);
             root.setStyle(style3);
 
         }
@@ -553,35 +595,45 @@ public class main extends Application implements EventHandler<ActionEvent>{
         game.requestForBuy();
         button.setDisable(true);
         if(FakeNumberOfPlayers==2){
+
             textP12.setText(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
             textP13.setText(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
+            textP14.setText(String.valueOf(game.getBoughtFields(game.getPlayer(0))));
 
             textP22.setText(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
             textP23.setText(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
-
+            textP24.setText(String.valueOf(game.getBoughtFields(game.getPlayer(1))));
 
         }else if(FakeNumberOfPlayers==3){
+
             textP12.setText(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
             textP13.setText(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
+            textP14.setText(String.valueOf(game.getBoughtFields(game.getPlayer(0))));
 
             textP22.setText(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
             textP23.setText(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
+            textP24.setText(String.valueOf(game.getBoughtFields(game.getPlayer(1))));
 
             textP32.setText(String.valueOf("Money : "+game.getPlayer(2).getMoney()));
             textP33.setText(String.valueOf("ECTS : "+game.getPlayer(2).getECTS()));
+            textP34.setText(String.valueOf(game.getBoughtFields(game.getPlayer(2))));
 
         }else if(FakeNumberOfPlayers==4){
             textP12.setText(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
             textP13.setText(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
+            textP14.setText(String.valueOf(game.getBoughtFields(game.getPlayer(0))));
 
             textP22.setText(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
             textP23.setText(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
+            textP24.setText(String.valueOf(game.getBoughtFields(game.getPlayer(1))));
 
             textP32.setText(String.valueOf("Money : "+game.getPlayer(2).getMoney()));
             textP33.setText(String.valueOf("ECTS : "+game.getPlayer(2).getECTS()));
+            textP34.setText(String.valueOf(game.getBoughtFields(game.getPlayer(2))));
 
             textP42.setText(String.valueOf("Money : "+game.getPlayer(3).getMoney()));
             textP43.setText(String.valueOf("ECTS : "+game.getPlayer(3).getECTS()));
+            textP44.setText(String.valueOf(game.getBoughtFields(game.getPlayer(3))));
 
         }
 
@@ -636,17 +688,13 @@ public class main extends Application implements EventHandler<ActionEvent>{
             game.getPlayer(TurnCalculator%NumberOfPlayers).setMoney(0);
             Button buttonOmega = new Button("ok");
             buttonOmega.setStyle(style2);
-//            Image image = new Image(new FileInputStream(null);
-//            ImageView imageView4 = new ImageView(image);
-//            imageView4.setX(0);
-//            imageView4.setY(0);
-            Text text = new Text("XD");
-            text.setStyle(style3);
-            text.setX(420);
-            text.setY(500);
+            Image image = new Image(new FileInputStream("kebap.png"));
+            ImageView imageView4 = new ImageView(image);
+            imageView4.setX(0);
+            imageView4.setY(0);
             buttonOmega.setLayoutX(420);
             buttonOmega.setLayoutY(600);
-            Pane pane = new Pane(text,buttonOmega);
+            Pane pane = new Pane(imageView4,buttonOmega);
             pane.setStyle(style3);
             Stage stageCard = new Stage();
             stageCard.initStyle(StageStyle.UNDECORATED);
