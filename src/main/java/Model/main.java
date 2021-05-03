@@ -23,13 +23,14 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import javax.swing.*;
 import javax.swing.text.Style;
 
 public class main extends Application implements EventHandler<ActionEvent>{
     Stage window;
     Scene scene;
-
     Board board;
     Game game;
     Button buttonHistoryOfWinners;
@@ -83,6 +84,9 @@ public class main extends Application implements EventHandler<ActionEvent>{
             + "-fx-font-size: 20;-fx-border-color: #000000; -fx-border-width: 3px;";
 
     String style3 = "-fx-background-color: grey";
+
+    String style4 = "-fx-background-color: #a9a9a9;"
+            + "-fx-font-size: 52;-fx-border-color: #000000; -fx-border-width: 5px;";
 
     public void main() {
         launch();
@@ -258,9 +262,6 @@ public class main extends Application implements EventHandler<ActionEvent>{
         System.out.println(names);
         System.out.println(Order);
         board.addGameToFields(game);
-
-
-
         Button buttonRoll = new Button("Roll");
         Button buttonBuy = new Button("Buy");
         Button buttonNextTurn = new Button("Next Turn");
@@ -300,8 +301,6 @@ public class main extends Application implements EventHandler<ActionEvent>{
         }
 
         System.out.println(InputStream);
-
-//        Image image = new Image(new FileInputStream("abc.png"));
         Image image = new Image(new FileInputStream("Plansza800x800.png"));
         Image image1 = new Image(InputStream.get(0));
         Image image2 = new Image(InputStream.get(1));
@@ -340,13 +339,7 @@ public class main extends Application implements EventHandler<ActionEvent>{
             ImageViewList.add(imageView2);
             ImageViewList.add(imageView3);
             ImageViewList.add(imageView4);
-
-
         }
-
-
-
-
 
         if(NumberOfPlayers==2) {
             imageView1.setX(1200);
@@ -359,12 +352,12 @@ public class main extends Application implements EventHandler<ActionEvent>{
             root.getChildren().add(buttonNextTurn);
             root.getChildren().add(buttonBuy);
             textP11 = new Text("Player : "+names.get(0)+" Color : "+Order.get(0));
-            textP12 = new Text(String.valueOf(game.getPlayer(0).getMoney()));
-            textP13 = new Text(String.valueOf(game.getPlayer(0).getECTS()));
+            textP12 = new Text(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
+            textP13 = new Text(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
 
             textP21 = new Text("Player : "+names.get(1)+" Color : "+Order.get(1));
-            textP22 = new Text(String.valueOf(game.getPlayer(1).getMoney()));
-            textP23 = new Text(String.valueOf(game.getPlayer(1).getECTS()));
+            textP22 = new Text(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
+            textP23 = new Text(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
 
             textP11.setX(20);
             textP11.setY(100);
@@ -404,16 +397,16 @@ public class main extends Application implements EventHandler<ActionEvent>{
             root.getChildren().add(buttonNextTurn);
             root.getChildren().add(buttonBuy);
             textP11 = new Text("Player : "+names.get(0)+" Color : "+Order.get(0));
-            textP12 = new Text(String.valueOf(game.getPlayer(0).getMoney()));
-            textP13 = new Text(String.valueOf(game.getPlayer(0).getECTS()));
+            textP12 = new Text(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
+            textP13 = new Text(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
 
             textP21 = new Text("Player : "+names.get(1)+" Color : "+Order.get(1));
-            textP22 = new Text(String.valueOf(game.getPlayer(1).getMoney()));
-            textP23 = new Text(String.valueOf(game.getPlayer(1).getECTS()));
+            textP22 = new Text(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
+            textP23 = new Text(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
 
             textP31 = new Text("Player : "+names.get(2)+" Color : "+Order.get(2));
-            textP32 = new Text(String.valueOf(game.getPlayer(2).getMoney()));
-            textP33 = new Text(String.valueOf(game.getPlayer(2).getECTS()));
+            textP32 = new Text(String.valueOf("Money : "+game.getPlayer(2).getMoney()));
+            textP33 = new Text(String.valueOf("ECTS : "+game.getPlayer(2).getECTS()));
 
             textP11.setX(20);
             textP11.setY(100);
@@ -466,20 +459,20 @@ public class main extends Application implements EventHandler<ActionEvent>{
             root.getChildren().add(buttonNextTurn);
             root.getChildren().add(buttonBuy);
             textP11 = new Text("Player : "+names.get(0)+" Color : "+Order.get(0));
-            textP12 = new Text(String.valueOf(game.getPlayer(0).getMoney()));
-            textP13 = new Text(String.valueOf(game.getPlayer(0).getECTS()));
+            textP12 = new Text(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
+            textP13 = new Text(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
 
             textP21 = new Text("Player : "+names.get(1)+" Color : "+Order.get(1));
-            textP22 = new Text(String.valueOf(game.getPlayer(1).getMoney()));
-            textP23 = new Text(String.valueOf(game.getPlayer(1).getECTS()));
+            textP22 = new Text(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
+            textP23 = new Text(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
 
             textP31 = new Text("Player : "+names.get(2)+" Color : "+Order.get(2));
-            textP32 = new Text(String.valueOf(game.getPlayer(2).getMoney()));
-            textP33 = new Text(String.valueOf(game.getPlayer(2).getECTS()));
+            textP32 = new Text(String.valueOf("Money : "+game.getPlayer(2).getMoney()));
+            textP33 = new Text(String.valueOf("ECTS : "+game.getPlayer(2).getECTS()));
 
             textP41 = new Text("Player : "+names.get(3)+" Color : "+Order.get(3));
-            textP42 = new Text(String.valueOf(game.getPlayer(3).getMoney()));
-            textP43 = new Text(String.valueOf(game.getPlayer(3).getECTS()));
+            textP42 = new Text(String.valueOf("Money : "+game.getPlayer(3).getMoney()));
+            textP43 = new Text(String.valueOf("ECTS : "+game.getPlayer(3).getECTS()));
             textP11.setX(20);
             textP11.setY(100);
             textP12.setX(20);
@@ -536,7 +529,13 @@ public class main extends Application implements EventHandler<ActionEvent>{
         stageGame.setScene(sceneGame);
         stageGame.show();
 
-        buttonRoll.setOnAction(event -> Roll(ImageViewList.get(TurnCalculator%NumberOfPlayers),buttonBuy,buttonRoll,buttonNextTurn,roll,PlayerTurn));
+        buttonRoll.setOnAction(event -> {
+            try {
+                Roll(ImageViewList.get(TurnCalculator%NumberOfPlayers),buttonBuy,buttonRoll,buttonNextTurn,roll,PlayerTurn,stageGame);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
         buttonBuy.setOnAction(event -> buy(buttonBuy));
         buttonNextTurn.setOnAction(event -> {
             game.nextTurn();
@@ -554,45 +553,122 @@ public class main extends Application implements EventHandler<ActionEvent>{
         game.requestForBuy();
         button.setDisable(true);
         if(FakeNumberOfPlayers==2){
-            textP12.setText(String.valueOf(game.getPlayer(0).getMoney()));
-            textP13.setText(String.valueOf(game.getPlayer(0).getECTS()));
+            textP12.setText(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
+            textP13.setText(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
 
-            textP22.setText(String.valueOf(game.getPlayer(1).getMoney()));
-            textP23.setText(String.valueOf(game.getPlayer(1).getECTS()));
+            textP22.setText(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
+            textP23.setText(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
 
 
         }else if(FakeNumberOfPlayers==3){
-            textP12.setText(String.valueOf(game.getPlayer(0).getMoney()));
-            textP13.setText(String.valueOf(game.getPlayer(0).getECTS()));
+            textP12.setText(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
+            textP13.setText(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
 
-            textP22.setText(String.valueOf(game.getPlayer(1).getMoney()));
-            textP23.setText(String.valueOf(game.getPlayer(1).getECTS()));
+            textP22.setText(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
+            textP23.setText(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
 
-            textP32.setText(String.valueOf(game.getPlayer(2).getMoney()));
-            textP33.setText(String.valueOf(game.getPlayer(2).getECTS()));
+            textP32.setText(String.valueOf("Money : "+game.getPlayer(2).getMoney()));
+            textP33.setText(String.valueOf("ECTS : "+game.getPlayer(2).getECTS()));
 
         }else if(FakeNumberOfPlayers==4){
-            textP12.setText(String.valueOf(game.getPlayer(0).getMoney()));
-            textP13.setText(String.valueOf(game.getPlayer(0).getECTS()));
+            textP12.setText(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
+            textP13.setText(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
 
-            textP22.setText(String.valueOf(game.getPlayer(1).getMoney()));
-            textP23.setText(String.valueOf(game.getPlayer(1).getECTS()));
+            textP22.setText(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
+            textP23.setText(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
 
-            textP32.setText(String.valueOf(game.getPlayer(2).getMoney()));
-            textP33.setText(String.valueOf(game.getPlayer(2).getECTS()));
+            textP32.setText(String.valueOf("Money : "+game.getPlayer(2).getMoney()));
+            textP33.setText(String.valueOf("ECTS : "+game.getPlayer(2).getECTS()));
 
-            textP42.setText(String.valueOf(game.getPlayer(3).getMoney()));
-            textP43.setText(String.valueOf(game.getPlayer(3).getECTS()));
+            textP42.setText(String.valueOf("Money : "+game.getPlayer(3).getMoney()));
+            textP43.setText(String.valueOf("ECTS : "+game.getPlayer(3).getECTS()));
 
         }
 
     }
 
-    public void Roll(ImageView a,Button button,Button button1,Button button2,Text roll2,Text player){
+    public void EndGame(Stage stage ){
+        stage.close();
+        Button buttonOmega2 = new Button("END");
+        Button buttonOmega3 = new Button("Save to history");
+        buttonOmega2.setStyle(style2);
+        buttonOmega3.setStyle(style2);
+        buttonOmega2.setLayoutX(150);
+        buttonOmega2.setLayoutY(350);
+        buttonOmega3.setLayoutX(250);
+        buttonOmega3.setLayoutY(350);
+        Text text = new Text("The Winner is  : "+names.get(TurnCalculator%NumberOfPlayers)+ "!!!!");
+        text.setStyle(style);
+        text.setX(50);
+        text.setY(100);
+        Pane pane = new Pane(text,buttonOmega2,buttonOmega3);
+        pane.setStyle(style3);
+        Stage stageCard = new Stage();
+        stageCard.initStyle(StageStyle.UNDECORATED);
+        stageCard.setTitle("Monopoly");
+        Scene sceneCard = new Scene(pane, 500, 500);
+        stageCard.setScene(sceneCard);
+        stageCard.show();
+        buttonOmega2.setOnAction(event -> {
+            stageCard.close();
+        });
+        buttonOmega3.setOnAction(event -> {
 
+        });
+
+    }
+
+    public void Roll(ImageView a,Button button,Button button1,Button button2,Text roll2,Text player,Stage Game) throws FileNotFoundException {
+        Judge judge = Judge.getInstance(game,board);
+        game.getPlayer(TurnCalculator%NumberOfPlayers).setCurrentCard(null);
         int position2 = game.getPlayer(TurnCalculator%NumberOfPlayers).getPosition();
         int roll =game.requestForRoll();
         int position = game.getPlayer(TurnCalculator%NumberOfPlayers).getPosition();
+//        game.getPlayer(TurnCalculator%NumberOfPlayers).setECTS(30);
+        game.getPlayer(TurnCalculator%NumberOfPlayers).setMoney(-10);
+
+        if(judge.checkLost(Arrays.asList(game.getPlayers()))){
+            if(NumberOfPlayers<2){
+                EndGame(Game);
+            }
+            System.out.println("cc"+NumberOfPlayers);
+            NumberOfPlayers--;
+            System.out.println("cc"+NumberOfPlayers);
+            System.out.println(a.getImage());
+            a.setImage(null);
+            button1.setDisable(false);
+            TurnCalculator++;
+            return;
+        }
+
+        if(judge.checkWinner(Arrays.asList(game.getPlayers()))){
+            EndGame(Game);
+        }
+
+
+
+        if(game.getPlayer(TurnCalculator%NumberOfPlayers).getCurrentCard()!= null){
+
+            Button buttonOmega = new Button("ok");
+            buttonOmega.setStyle(style2);
+            Image image = new Image(new FileInputStream(game.getPlayer(TurnCalculator%NumberOfPlayers).getCurrentCard().getCardUrl()));
+            ImageView imageView4 = new ImageView(image);
+            imageView4.setX(0);
+            imageView4.setY(0);
+            buttonOmega.setLayoutX(420);
+            buttonOmega.setLayoutY(600);
+            Pane pane = new Pane(imageView4,buttonOmega);
+            pane.setStyle(style3);
+            Stage stageCard = new Stage();
+            stageCard.initStyle(StageStyle.UNDECORATED);
+            stageCard.setTitle("Monopoly");
+            Scene sceneCard = new Scene(pane, 842, 700);
+            stageCard.setScene(sceneCard);
+            stageCard.show();
+            buttonOmega.setOnAction(event -> {
+                stageCard.close();
+            });
+        }
         System.out.println("ilegraczy : "+game.getPlayersNo());
         System.out.println("roll : "+roll);
         System.out.println("przed ruchem : "+position2);
@@ -610,43 +686,38 @@ public class main extends Application implements EventHandler<ActionEvent>{
         roll2.setText(" Rolled : "+String.valueOf(roll));
         player.setText("Player : "+names.get(TurnCalculator%NumberOfPlayers));
 
-
-//        game.nextTurn();
         if(FakeNumberOfPlayers==2){
-            textP12.setText(String.valueOf(game.getPlayer(0).getMoney()));
-            textP13.setText(String.valueOf(game.getPlayer(0).getECTS()));
+            textP12.setText(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
+            textP13.setText(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
 
-            textP22.setText(String.valueOf(game.getPlayer(1).getMoney()));
-            textP23.setText(String.valueOf(game.getPlayer(1).getECTS()));
+            textP22.setText(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
+            textP23.setText(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
 
 
         }else if(FakeNumberOfPlayers==3){
-            textP12.setText(String.valueOf(game.getPlayer(0).getMoney()));
-            textP13.setText(String.valueOf(game.getPlayer(0).getECTS()));
+            textP12.setText(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
+            textP13.setText(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
 
-            textP22.setText(String.valueOf(game.getPlayer(1).getMoney()));
-            textP23.setText(String.valueOf(game.getPlayer(1).getECTS()));
+            textP22.setText(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
+            textP23.setText(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
 
-            textP32.setText(String.valueOf(game.getPlayer(2).getMoney()));
-            textP33.setText(String.valueOf(game.getPlayer(2).getECTS()));
+            textP32.setText(String.valueOf("Money : "+game.getPlayer(2).getMoney()));
+            textP33.setText(String.valueOf("ECTS : "+game.getPlayer(2).getECTS()));
 
         }else if(FakeNumberOfPlayers==4){
-            textP12.setText(String.valueOf(game.getPlayer(0).getMoney()));
-            textP13.setText(String.valueOf(game.getPlayer(0).getECTS()));
+            textP12.setText(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
+            textP13.setText(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
 
-            textP22.setText(String.valueOf(game.getPlayer(1).getMoney()));
-            textP23.setText(String.valueOf(game.getPlayer(1).getECTS()));
+            textP22.setText(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
+            textP23.setText(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
 
-            textP32.setText(String.valueOf(game.getPlayer(2).getMoney()));
-            textP33.setText(String.valueOf(game.getPlayer(2).getECTS()));
+            textP32.setText(String.valueOf("Money : "+game.getPlayer(2).getMoney()));
+            textP33.setText(String.valueOf("ECTS : "+game.getPlayer(2).getECTS()));
 
-            textP42.setText(String.valueOf(game.getPlayer(3).getMoney()));
-            textP43.setText(String.valueOf(game.getPlayer(3).getECTS()));
+            textP42.setText(String.valueOf("Money : "+game.getPlayer(3).getMoney()));
+            textP43.setText(String.valueOf("ECTS : "+game.getPlayer(3).getECTS()));
 
         }
-
-
-
         TurnCalculator++;
     }
 
@@ -744,8 +815,8 @@ public class main extends Application implements EventHandler<ActionEvent>{
                         Piece1X = 0;
                         Piece1Y = 1;
                     }
-                    a.setX(a.getX() + Coordinates.get(Piece1X));
-                    a.setY(a.getY() + Coordinates.get(Piece1Y));
+                    a.setX(a.getX() - Coordinates.get(Piece1X));
+                    a.setY(a.getY() - Coordinates.get(Piece1Y));
 
                 } else if (TurnCalculator%NumberOfPlayers==1) {
                     Piece2X -= 2;
@@ -754,8 +825,8 @@ public class main extends Application implements EventHandler<ActionEvent>{
                         Piece2X = 0;
                         Piece2Y = 1;
                     }
-                    a.setX(a.getX() + Coordinates.get(Piece2X));
-                    a.setY(a.getY() + Coordinates.get(Piece2Y));
+                    a.setX(a.getX() - Coordinates.get(Piece2X));
+                    a.setY(a.getY() - Coordinates.get(Piece2Y));
 
                 } else if (TurnCalculator%NumberOfPlayers==2) {
                     Piece3X -= 2;
@@ -764,8 +835,8 @@ public class main extends Application implements EventHandler<ActionEvent>{
                         Piece3X = 0;
                         Piece3Y = 1;
                     }
-                    a.setX(a.getX() + Coordinates.get(Piece3X));
-                    a.setY(a.getY() + Coordinates.get(Piece3Y));
+                    a.setX(a.getX() - Coordinates.get(Piece3X));
+                    a.setY(a.getY() - Coordinates.get(Piece3Y));
 
                 } else if (TurnCalculator%NumberOfPlayers==3) {
                     Piece4X -= 2;
@@ -774,8 +845,8 @@ public class main extends Application implements EventHandler<ActionEvent>{
                         Piece4X = 0;
                         Piece4Y = 1;
                     }
-                    a.setX(a.getX() + Coordinates.get(Piece4X));
-                    a.setY(a.getY() + Coordinates.get(Piece4Y));
+                    a.setX(a.getX() - Coordinates.get(Piece4X));
+                    a.setY(a.getY() - Coordinates.get(Piece4Y));
 
                 }
 

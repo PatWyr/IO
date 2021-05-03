@@ -1,6 +1,7 @@
 package Model;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
 
 //wzorzec builder Inner Static Fluent Builder
@@ -14,7 +15,7 @@ public class Game {
     private boolean requestForRoll = false;
     private boolean requestForBuy = false;
     private int turn = 0;
-    Judge judge = Judge.getInstance(this,board);
+//    Judge judge = Judge.getInstance(this,board);
 
     public int getTurn() {
         return turn;
@@ -41,10 +42,12 @@ public class Game {
         for( int i=0;i<playersNo;i++){
             if(!players[i].isLost()){
                 newplayers[z]= players[i];
+//                System.out.println(newplayers[z].toString());
                 z++;
             }
         }
         playersNo=playersNo-1;
+        System.out.println(playersNo);
         players=newplayers;
         turn-=1;
         nextTurn();
@@ -72,6 +75,10 @@ public class Game {
         } else {
             turn++;
         }
+//        if(Arrays.stream(players).anyMatch(player -> player.getPosition()>27)){
+//            int tmp = board.getLaps();
+//            board.setLaps(tmp+=1);
+//        };
     }
 
     public boolean isDostepne() {
@@ -115,6 +122,7 @@ public class Game {
     }
 
     public Player getPlayer(int id){
+        System.out.println(id);
         return players[id];
     }
 

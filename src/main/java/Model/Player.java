@@ -1,11 +1,14 @@
 package Model;
 
+import Cards.Card;
+
 import java.util.Random;
 
 public class Player {
     private boolean stun;
     private int stunLen;
     private boolean lost;
+    private Card CurrentCard;
 
     public int getStunLen() {
         return stunLen;
@@ -93,6 +96,14 @@ public class Player {
 
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    public Card getCurrentCard() {
+        return CurrentCard;
+    }
+
+    public void setCurrentCard(Card currentCard) {
+        CurrentCard = currentCard;
     }
 
     @Override

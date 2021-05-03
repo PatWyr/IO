@@ -29,40 +29,47 @@ public class SpecialField extends Field {
             var = player.getPosition();
             var += tmp.getForward();
             player.setPosition(var);
+            player.setCurrentCard(tmp);
             return;
         } if(tmp.getBackward() != 0) {
             System.out.println("Backward");
             var = player.getPosition();
             var += tmp.getBackward();
             player.setPosition(var);
+            player.setCurrentCard(tmp);
             return;
         } if(tmp.isGoStart()) {
             System.out.println("Start");
             player.setPosition(0);
+            player.setCurrentCard(tmp);
             return;
         } if(tmp.getMoneyUp() != 0) {
             System.out.println("MoneyUp");
             var = player.getMoney();
             var += tmp.getMoneyUp();
             player.setMoney(var);
+            player.setCurrentCard(tmp);
             return;
         } if(tmp.getMoneyDown() != 0) {
             System.out.println("MoneyDown");
             var = player.getMoney();
             var += tmp.getMoneyDown();
             player.setMoney(var);
+            player.setCurrentCard(tmp);
             return;
         } if(tmp.getECTSUp() != 0) {
             System.out.println("EctsUp");
             var = player.getECTS();
             var += tmp.getECTSUp();
             player.setECTS(var);
+            player.setCurrentCard(tmp);
             return;
         } if(tmp.getECTSDown() != 0) {
             System.out.println("EctsDown");
             var = player.getECTS();
             var += tmp.getECTSDown();
             player.setECTS(var);
+            player.setCurrentCard(tmp);
             return;
         }
     }

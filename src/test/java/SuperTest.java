@@ -40,6 +40,7 @@ public class SuperTest {
         game.nextTurn();
         game.getPlayer(3).setMoney(-10);
 //        System.out.println(game.getPlayer(3).toString());
+        System.out.println("LOST");
         judge.checkLost(Arrays.asList(game.getPlayers()));
 //        System.out.println(game.getPlayers().length);
 //        System.out.println(game.getPlayer(0).toString());

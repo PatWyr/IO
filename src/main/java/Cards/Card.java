@@ -55,6 +55,10 @@ public abstract class Card {
         return ECTSDown;
     }
 
+    public String getCardUrl() {
+        return CardUrl;
+    }
+
     @Override
     public String toString() {
         return "Card{" +

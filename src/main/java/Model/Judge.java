@@ -27,11 +27,13 @@ public class Judge {
             if(players.get(i).getECTS() == 30){
                 Player winner = players.get(i);
                 for(int j = 0 ; j< game.getPlayersNo() ; j++){
+                    System.out.println("cos");
                     players.get(j).setLost(true);
                 }
                 winner.setLost(false);
                return true;
             } else if(board.getLaps()>3){
+
                 return true;
             }
         }
