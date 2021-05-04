@@ -3,6 +3,9 @@ package GUI;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -22,6 +25,12 @@ public class GUIFunctions {
             + "-fx-font-size: 38;-fx-border-color: #000000; -fx-border-width: 3px;";
 
     String style3;
+
+    String style5 = "-fx-background-color: #a9a9a9;"
+            + "-fx-font-size: 38;-fx-border-color: #000000; -fx-border-width: 3px;-fx-font: 100px Tahoma;\n" +
+            "-fx-fill: white;\n"+
+            "    -fx-stroke: black;\n" +
+            "    -fx-stroke-width: 3;";
 
 
 
@@ -52,10 +61,24 @@ public class GUIFunctions {
         button2.setDisable(true);
     }
 
-    public void historyOfWinners() throws FileNotFoundException {
+    public void historyOfWinners(String stylexd) throws FileNotFoundException {
+        Text text123 = new Text("History of winners");
+        text123.setStyle(style5);
+        text123.setX(450);
+        text123.setY(80);
+        Image imgON = new Image(new FileInputStream("mon.png"));
+        ImageView viewON = new ImageView(imgON);
+        viewON.setX(0);
+        viewON.setY(230);
+
+
         Stage stageHistoryOfWinners = new Stage();
         stageHistoryOfWinners.setTitle("History");
         Button buttonClose = new Button("Close");
+        buttonClose.setLayoutY(800);
+        buttonClose.setLayoutX(1400);
+
+
         File myObj = new File("History.txt");
         Scanner myReader = new Scanner(myObj);
         String data="";
@@ -66,13 +89,17 @@ public class GUIFunctions {
         }
         myReader.close();
         Text text = new Text(data);
+        text.setY(130);
+        text.setX(450);
         text.setStyle(style);
         buttonClose.setStyle(style);
 
-        VBox layoutHistoryOfWinners = new VBox(10);
-        layoutHistoryOfWinners.getChildren().addAll(text,buttonClose);
-        layoutHistoryOfWinners.setStyle(("-fx-background-color: grey"));
-        Scene sceneHistoryOfWinners = new Scene(layoutHistoryOfWinners, 1200, 600);
+        Pane layoutHistoryOfWinners = new Pane();
+
+        layoutHistoryOfWinners.getChildren().addAll(text123,viewON,text,buttonClose);
+        layoutHistoryOfWinners.setStyle(stylexd);
+
+        Scene sceneHistoryOfWinners = new Scene(layoutHistoryOfWinners, 1700, 900);
         stageHistoryOfWinners.setScene(sceneHistoryOfWinners);
         stageHistoryOfWinners.show();
         buttonClose.setOnAction(event -> {

@@ -29,18 +29,18 @@ public class Board implements Observable {
 
     public void prepareBoard() {
         fields.add(new NormalField(0,"Start",0,0,null));
-        fields.add(new NormalField(1,"Komputerowe wspomaganie",50,1,null));
-        fields.add(new NormalField(2,"Kulturowe i etyczne aspekty",100,2,null));
+        fields.add(new NormalField(1,"AUTOCAD",50,1,null));
+        fields.add(new NormalField(2,"Kulturowe i etyczne ",100,2,null));
         fields.add(new SpecialField(3,"Wez karte"));
-        fields.add(new NormalField(4,"Podstawy zarzadzania projektam",100,2,null));
-        fields.add(new NormalField(5,"Podstawy analizy cyklu zycia",100,2,null));
+        fields.add(new NormalField(4,"Podstawy zarzadzania ",100,2,null));
+        fields.add(new NormalField(5,"Podstawy analizy ",100,2,null));
         fields.add(new NormalField(6,"Pracownia problemowa",100,2,null));
-        fields.add(new SpecialField(7,"Platny parking"));
-        fields.add(new NormalField(8,"Wprowadzenie do informatyki",150,3,null));
-        fields.add(new NormalField(9,"Podstawy grafiki komputerowej",150,3,null));
-        fields.add(new NormalField(10,"Systemy wbudowne",150,3,null));
+        fields.add(new SpecialField(7,"Wez karte"));
+        fields.add(new NormalField(8,"Wprowadzenie do inf",150,3,null));
+        fields.add(new NormalField(9,"Telekomunikacja i przet",150,3,null));
+        fields.add(new NormalField(10,"Podstawy grafiki komp",150,3,null));
         fields.add(new SpecialField(11,"Wez karte"));
-        fields.add(new NormalField(12,"Telekomunikacja i przetwarzanie",200,4,null));
+        fields.add(new NormalField(12,"Systemy Wbudowane",200,4,null));
         fields.add(new NormalField(13,"Technologie XML",200,4,null));
         fields.add(new SpecialField(14,"Wez karte"));
         fields.add(new NormalField(15,"Fizyka I",200,4,null));
@@ -48,13 +48,13 @@ public class Board implements Observable {
         fields.add(new SpecialField(17,"Wez karte"));
         fields.add(new NormalField(18,"Matematyka dyskretna",200,4,null));
         fields.add(new NormalField(19,"Programowanie obiektowe",250,5,null));
-        fields.add(new NormalField(20,"Systemy wbudowane",250,5,null));
+        fields.add(new NormalField(20,"Systemy Operacyjne",250,5,null));
         fields.add(new SpecialField(21, "Przerwa obiadowa"));
-        fields.add(new NormalField(22,"Podstawy sieci komputerowych",250,5,null));
-        fields.add(new NormalField(23,"Programowanie komponentowe",300,6,null));
-        fields.add(new NormalField(24,"Inzynieria oprogramowania",300,6,null));
+        fields.add(new NormalField(22,"Podstawy sieci komput",250,5,null));
+        fields.add(new NormalField(23,"Programowanie kompo",300,6,null));
+        fields.add(new NormalField(24,"Inzynieria opro",300,6,null));
         fields.add(new SpecialField(25,"Wez karte"));
-        fields.add(new NormalField(26,"Algorytmy i struktury danych",300,6,null));
+        fields.add(new NormalField(26,"Algorytmy",300,6,null));
         fields.add(new NormalField(27,"Matematyka",400,8,null));
 
     }

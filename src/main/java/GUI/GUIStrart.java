@@ -24,8 +24,6 @@ import java.util.List;
 
 
 
-
-
 public class GUIStrart extends Application implements EventHandler<ActionEvent>{
     GUIFunctions guiFunctions = new GUIFunctions();
     Stage window;
@@ -33,6 +31,7 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
     Button buttonHistoryOfWinners;
     Button buttonChangeBackground;
     Button buttonStartGame;
+    Pane root;
 
     boolean music = false;
 
@@ -44,8 +43,17 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
     String style = "-fx-background-color: #a9a9a9;"
             + "-fx-font-size: 38;-fx-border-color: #000000; -fx-border-width: 3px;";
 
-
-    String style3 = "-fx-background-color: grey";
+    String style5 = "-fx-background-color: #a9a9a9;"
+            + "-fx-font-size: 38;-fx-border-color: #000000; -fx-border-width: 3px;-fx-font: 100px Tahoma;\n" +
+            "-fx-fill: white;\n"+
+            "    -fx-stroke: black;\n" +
+            "    -fx-stroke-width: 3;";
+    String style6 = "-fx-background-color: #a9a9a9;"
+            + "-fx-font-size: 38;-fx-border-color: #000000; -fx-border-width: 3px;-fx-font: 80px Tahoma;\n" +
+            "-fx-fill: white;\n"+
+            "    -fx-stroke: black;\n" +
+            "    -fx-stroke-width: 3;";
+    String style3 = "-fx-background-color: #808080";
 
 
 
@@ -57,41 +65,68 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
         buttonChangeBackground.setStyle(style);
         buttonHistoryOfWinners.setStyle(style);
         buttonStartGame.setStyle(style);
-//        Image imgON = new Image(new FileInputStream("Monopoly_Student.png"));
-//        ImageView viewON = new ImageView(imgON);
-        VBox layout = new VBox(10);
-        scene = new Scene(layout,1700, 900);
+        Image imgON = new Image(new FileInputStream("mon.png"));
+        ImageView viewON = new ImageView(imgON);
+        viewON.setX(0);
+        viewON.setY(0);
+        buttonChangeBackground.setLayoutY(720);
+        buttonChangeBackground.setLayoutX(1200);
+        buttonHistoryOfWinners.setLayoutY(720);
+        buttonHistoryOfWinners.setLayoutX(750);
+        buttonStartGame.setLayoutY(720);
+        buttonStartGame.setLayoutX(200);
+
+        root = new Pane(viewON,buttonChangeBackground,buttonHistoryOfWinners,buttonStartGame);
+        root.setStyle(style3);
+        scene = new Scene(root,1700, 900);
         window = stage;
         window.setTitle("Monopoly");
-        layout.setPadding(new Insets(15, 15, 15, 15));
-        layout.getChildren().addAll(buttonChangeBackground,buttonHistoryOfWinners,buttonStartGame);
-        //layout.setStyle(("-fx-background-color: grey"));
-        BackgroundImage myBI= new BackgroundImage(new Image(new FileInputStream("mon.png")),
-                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-                BackgroundSize.DEFAULT);
-        layout.setBackground(new Background(myBI));
+
 
         window.setScene(scene);
         window.show();
 
         buttonChangeBackground.setOnAction(event -> {
-            style3 = changeBackground(layout);
-        });
-        buttonHistoryOfWinners.setOnAction(event -> {
             try {
-                guiFunctions.historyOfWinners();
+                style3 = changeBackground(root);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         });
-        buttonStartGame.setOnAction(event ->startGame(layout));
+        buttonHistoryOfWinners.setOnAction(event -> {
+            try {
+                guiFunctions.historyOfWinners(style3);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
+        buttonStartGame.setOnAction(event -> {
+            try {
+                startGame(root);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
 
-    public void startGame(VBox layout){
+    public void startGame(Pane layout) throws FileNotFoundException {
+        Text text123 = new Text("Choose Number OF Players");
+        text123.setStyle(style5);
+        text123.setX(280);
+        text123.setY(80);
 
         Button buttonChooseNumberOfPlayers = new Button("Set number of players");
         ComboBox<String> comboboxChooseNumberOfPlayers = new ComboBox<>();
+        Image imgON = new Image(new FileInputStream("mon.png"));
+        ImageView viewON = new ImageView(imgON);
+        viewON.setX(0);
+        viewON.setY(220);
+        comboboxChooseNumberOfPlayers.setLayoutX(600);
+        comboboxChooseNumberOfPlayers.setLayoutY(100);
+        buttonChooseNumberOfPlayers.setLayoutX(800);
+        buttonChooseNumberOfPlayers.setLayoutY(100);
+
         comboboxChooseNumberOfPlayers.setStyle(style);
         buttonChooseNumberOfPlayers.setStyle(style);
         comboboxChooseNumberOfPlayers.getItems().addAll(
@@ -99,10 +134,8 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
                 "3",
                 "4"
         );
-        layout.getChildren().remove(buttonChangeBackground);
-        layout.getChildren().remove(buttonStartGame);
-        layout.getChildren().remove(buttonHistoryOfWinners);
-        layout.getChildren().addAll(comboboxChooseNumberOfPlayers,buttonChooseNumberOfPlayers);
+        layout.getChildren().clear();
+        layout.getChildren().addAll(text123,viewON,comboboxChooseNumberOfPlayers,buttonChooseNumberOfPlayers);
 
         buttonChooseNumberOfPlayers.setOnAction(event -> {
             if(comboboxChooseNumberOfPlayers.getValue().equals("2")){
@@ -112,21 +145,34 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
             }else if(comboboxChooseNumberOfPlayers.getValue().equals("4")){
                 NumberOfPlayers = 4;
             }
-            layout.getChildren().remove(comboboxChooseNumberOfPlayers);
-            layout.getChildren().remove(buttonChooseNumberOfPlayers);
-            ChooseColorOfPawnsAndNameThem(layout);
+           layout.getChildren().clear();
+            try {
+                ChooseColorOfPawnsAndNameThem(layout);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         });
 
     }
 
-    public void ChooseColorOfPawnsAndNameThem(VBox layout){
-        layout.setStyle(style3);
+    public void ChooseColorOfPawnsAndNameThem(Pane layout) throws FileNotFoundException {
+        List<String> AlreadyIs = new ArrayList<>();
+        Image imgON = new Image(new FileInputStream("mon1.png"));
+        ImageView viewON = new ImageView(imgON);
+        viewON.setX(640);
+        viewON.setY(480);
+        int tmp =0;
+        Text text2 = new Text("");
+        text2.setY(65);
+        text2.setX(500);
+        text2.setStyle(style6);
         for(int i =1; i<=NumberOfPlayers; i++){
             ComboBox<String> comboboxChooseColorOfPawn = new ComboBox<>();
             GridPane gridPane = new GridPane();
             String textString = "Write Name of Player : "+i;
             Text text = new Text(textString);
             Text text1 = new Text("Choose Color");
+
             TextField textField = new TextField();
             Button button = new Button("set");
             comboboxChooseColorOfPawn.getItems().addAll(
@@ -134,23 +180,56 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
                     "BLUE",
                     "GREEN",
                     "YELLOW"
-
             );
             text1.setStyle(style);
             comboboxChooseColorOfPawn.setStyle(style);
             text.setStyle(style);
             textField.setStyle(style);
             button.setStyle(style);
-            gridPane.add(text,1,i);
-            gridPane.add(textField,2,i);
-            gridPane.add(text1,3,i);
-            gridPane.add(comboboxChooseColorOfPawn,4,i);
-            gridPane.add(button,5,i);
-            layout.getChildren().addAll(gridPane);
+            text1.setY(150+tmp);
+            text1.setX(1000);
+            text.setX(50);
+            text.setY(150+tmp);
+            textField.setLayoutX(500);
+            textField.setLayoutY(100*i);
+            comboboxChooseColorOfPawn.setLayoutX(1300);
+            comboboxChooseColorOfPawn.setLayoutY(100*i);
+            button.setLayoutX(1580);
+            button.setLayoutY(100*i);
+            button.setMaxSize(140,100);
+            button.setMaxSize(140,100);
+            layout.getChildren().addAll(text,text1,textField,button,comboboxChooseColorOfPawn);
+            tmp+=100;
             button.setOnAction(event -> {
-                String xd = textField.getText();
-                names.add(xd);
-                Order.add(comboboxChooseColorOfPawn.getValue());
+                boolean check = true;
+                for(int x =0; x <AlreadyIs.size(); x++ ){
+                    if(comboboxChooseColorOfPawn.getValue().equals(AlreadyIs.get(x))){
+                        check=false;
+                    }
+                }
+
+                if(check&&!comboboxChooseColorOfPawn.getValue().equals("")){
+                    AlreadyIs.add(comboboxChooseColorOfPawn.getValue());
+                    Image imgOFF = null;
+                    try {
+                        imgOFF = new Image(new FileInputStream("ok.png"));
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    ImageView viewOFF = new ImageView(imgOFF);
+                    button.setGraphic(viewOFF);
+                    button.setStyle(style3);
+                    button.setText("");
+                    button.setDisable(true);
+                    String xd = textField.getText();
+                    names.add(xd);
+                    Order.add(comboboxChooseColorOfPawn.getValue());
+                    text2.setText("");
+                } else {
+                    text2.setText("Color Already Used");
+
+                }
+
 
             });
 
@@ -158,7 +237,9 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
         }
         Button button = new Button("done");
         button.setStyle(style);
-        layout.getChildren().addAll(button);
+        button.setLayoutY(580);
+        button.setLayoutX(50);
+        layout.getChildren().addAll(button,viewON,text2);
         button.setOnAction(event -> {
             layout.getChildren().clear();
             try {
@@ -177,25 +258,44 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
         });
     }
 
-    public String changeBackground(VBox layout){
+    public String changeBackground(Pane layout) throws FileNotFoundException {
+        Image imgON = new Image(new FileInputStream("mon.png"));
+        ImageView viewON = new ImageView(imgON);
+        viewON.setX(0);
+        viewON.setY(230);
         Stage stageChangeBackground = new Stage();
         stageChangeBackground.setTitle("changeBackground");
+
         Text info = new Text("Choose color of background");
+        info.setX(200);
+        info.setY(100);
         Button buttonChangeColor = new Button("Change color");
         ComboBox<String> comboboxChangeColor = new ComboBox<>();
-        info.setStyle(style);
+        comboboxChangeColor.setLayoutX(600);
+        comboboxChangeColor.setLayoutY(150);
+        buttonChangeColor.setLayoutX(800);
+        buttonChangeColor.setLayoutY(150);
+
+        info.setStyle(style5);
         buttonChangeColor.setStyle(style);
         comboboxChangeColor.setStyle(style);
         comboboxChangeColor.getItems().addAll(
                 "RED",
                 "BLUE",
-                "GREEN"
+                "GREEN",
+                "GREY"
         );
-        VBox layoutChangeBackground = new VBox(10);
-        layoutChangeBackground.getChildren().addAll(info,comboboxChangeColor,buttonChangeColor);
-        layoutChangeBackground.setStyle(("-fx-background-color: grey"));
 
-        Scene sceneChangeBackground = new Scene(layoutChangeBackground, 1200, 600);
+        Pane layoutChangeBackground = new Pane();
+
+        layoutChangeBackground.getChildren().addAll(viewON,info,comboboxChangeColor,buttonChangeColor);
+
+        layoutChangeBackground.setStyle(style3);
+
+
+
+
+        Scene sceneChangeBackground = new Scene(layoutChangeBackground, 1700, 900);
 
 
         stageChangeBackground.setScene(sceneChangeBackground);
@@ -210,6 +310,9 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
             }else if(comboboxChangeColor.getValue().equals("GREEN")){
                 layout.setStyle(("-fx-background-color: Green"));
                 style3 = "-fx-background-color: Green";
+            }else if(comboboxChangeColor.getValue().equals("GREY")) {
+                layout.setStyle(("-fx-background-color: Grey"));
+                style3 = "-fx-background-color: grey";
             }
             stageChangeBackground.close();
 

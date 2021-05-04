@@ -73,6 +73,17 @@ public class GUIGame {
     String style2 = "-fx-background-color: #a9a9a9;"
             + "-fx-font-size: 20;-fx-border-color: #000000; -fx-border-width: 3px;";
 
+    String style5 = "-fx-background-color: #a9a9a9;"
+            + "-fx-font-size: 38;-fx-border-color: #000000; -fx-border-width: 3px;-fx-font: 28px Tahoma;\n" +
+            "-fx-fill: black;\n"+
+            "    -fx-stroke: black;\n" +
+            "    -fx-stroke-width: 1;";
+    String style6 = "-fx-background-color: #a9a9a9;"
+            + "-fx-font-size: 38;-fx-border-color: #000000; -fx-border-width: 3px;-fx-font: 20px Tahoma;\n" +
+            "-fx-fill: black;\n"+
+            "    -fx-stroke: black;\n" +
+            "    -fx-stroke-width: 0.5;";
+
     String style3 = "-fx-background-color: grey";
 
     String style4 = "-fx-background-color: #a9a9a9;"
@@ -101,9 +112,10 @@ public class GUIGame {
         ImageView viewON = new ImageView(imgON);
         Image imgOFF = new Image(new FileInputStream("NoVolume.png"));
         ImageView viewOFF = new ImageView(imgOFF);
+        buttonMusic.setStyle(style3);
 
         buttonMusic.setGraphic(viewOFF);
-        buttonMusic.setLayoutX(1600);
+        buttonMusic.setLayoutX(1580);
         buttonMusic.setLayoutY(0);
 
         Text roll = new Text();
@@ -112,8 +124,8 @@ public class GUIGame {
         roll.setY(50);
         PlayerTurn.setX(600);
         PlayerTurn.setY(50);
-        roll.setStyle(style);
-        PlayerTurn.setStyle(style);
+        roll.setStyle(style5);
+        PlayerTurn.setStyle(style5);
 
         buttonBuy.setStyle(style2);
         buttonRoll.setStyle(style2);
@@ -141,7 +153,8 @@ public class GUIGame {
         }
 
         System.out.println(InputStream);
-        Image image = new Image(new FileInputStream("Plansza800x800.png"));
+//        Image image = new Image(new FileInputStream("Plansza800x800.png"));
+        Image image = new Image(new FileInputStream("Plansza2.png"));
         Image image1 = new Image(InputStream.get(0));
         Image image2 = new Image(InputStream.get(1));
         Image image3 = new Image(InputStream.get(2));
@@ -152,10 +165,10 @@ public class GUIGame {
         ImageView imageView3 = new ImageView(image3);
         ImageView imageView4 = new ImageView(image4);
 
-        imageView.setX(450);
-        imageView.setY(100);
-        imageView.setFitHeight(800);
-        imageView.setFitWidth(800);
+        imageView.setX(50);
+        imageView.setY(14);
+        imageView.setFitHeight(889);
+        imageView.setFitWidth(1627);
         buttonRoll.setLayoutX(700);
         buttonRoll.setLayoutY(920);
         buttonNextTurn.setLayoutX(780);
@@ -182,218 +195,218 @@ public class GUIGame {
         }
 
         if(NumberOfPlayers==2) {
-            imageView1.setX(1200);
+            imageView1.setX(1227);
             imageView1.setY(850);
 
-            imageView2.setX(1200);
+            imageView2.setX(1227);
             imageView2.setY(800);
             root = new Pane(imageView,imageView1,imageView2,buttonMusic);
             root.getChildren().add(buttonRoll);
             root.getChildren().add(buttonNextTurn);
             root.getChildren().add(buttonBuy);
-            textP11 = new Text("Player : "+names.get(0)+" Color : "+Order.get(0));
-            textP12 = new Text("Money : " + game.getPlayer(0).getMoney());
-            textP13 = new Text("ECTS : " + game.getPlayer(0).getECTS());
+            textP11 = new Text("Player     "+Order.get(0));
+            textP12 = new Text("Money     " + game.getPlayer(0).getMoney());
+            textP13 = new Text("ECTS       " + game.getPlayer(0).getECTS());
             textP14 = new Text("");
 
-            textP21 = new Text("Player : "+names.get(1)+" Color : "+Order.get(1));
-            textP22 = new Text("Money : " + game.getPlayer(1).getMoney());
-            textP23 = new Text("ECTS : " + game.getPlayer(1).getECTS());
+            textP21 = new Text("Player     "+Order.get(1));
+            textP22 = new Text("Money     " + game.getPlayer(1).getMoney());
+            textP23 = new Text("ECTS       " + game.getPlayer(1).getECTS());
             textP24 = new Text("");
 
-            textP11.setX(20);
-            textP11.setY(100);
-            textP12.setX(20);
-            textP12.setY(140);
-            textP13.setX(20);
-            textP13.setY(180);
-            textP14.setX(20);
-            textP14.setY(220);
+            textP11.setX(100);
+            textP11.setY(160);
+            textP12.setX(100);
+            textP12.setY(210);
+            textP13.setX(100);
+            textP13.setY(255);
+            textP14.setX(100);
+            textP14.setY(300);
 
-            textP21.setX(20);
-            textP21.setY(820);
-            textP22.setX(20);
-            textP22.setY(860);
-            textP23.setX(20);
-            textP23.setY(900);
-            textP24.setX(20);
-            textP24.setY(940);
+            textP21.setX(100);
+            textP21.setY(635);
+            textP22.setX(100);
+            textP22.setY(685);
+            textP23.setX(100);
+            textP23.setY(730);
+            textP24.setX(100);
+            textP24.setY(775);
+
             root.getChildren().addAll(textP11,textP12,textP13,textP14,textP21,textP22,textP23,textP24);
-            textP11.setStyle(style2);
-            textP12.setStyle(style2);
-            textP13.setStyle(style2);
-            textP14.setStyle(style2);
+            textP11.setStyle(style5);
+            textP12.setStyle(style5);
+            textP13.setStyle(style5);
+            textP14.setStyle(style6);
 
-            textP21.setStyle(style2);
-            textP22.setStyle(style2);
-            textP23.setStyle(style2);
-            textP24.setStyle(style2);
+            textP21.setStyle(style5);
+            textP22.setStyle(style5);
+            textP23.setStyle(style5);
+            textP24.setStyle(style6);
 
 
             root.setStyle(style3);
 
 
         }else if(NumberOfPlayers==3){
-            imageView1.setX(1200);
+            imageView1.setX(1227);
             imageView1.setY(850);
 
-            imageView2.setX(1200);
+            imageView2.setX(1227);
             imageView2.setY(800);
 
-            imageView3.setX(1150);
+            imageView3.setX(1177);
             imageView3.setY(850);
             root = new Pane(imageView,imageView1,imageView2,imageView3,buttonMusic);
             root.getChildren().add(buttonRoll);
             root.getChildren().add(buttonNextTurn);
             root.getChildren().add(buttonBuy);
-            textP11 = new Text("Player : "+names.get(0)+" Color : "+Order.get(0));
-            textP12 = new Text("Money : " + game.getPlayer(0).getMoney());
-            textP13 = new Text("ECTS : " + game.getPlayer(0).getECTS());
+            textP11 = new Text("Player     "+Order.get(0));
+            textP12 = new Text("Money     " + game.getPlayer(0).getMoney());
+            textP13 = new Text("ECTS       " + game.getPlayer(0).getECTS());
             textP14 = new Text("");
 
-            textP21 = new Text("Player : "+names.get(1)+" Color : "+Order.get(1));
-            textP22 = new Text("Money : " + game.getPlayer(1).getMoney());
-            textP23 = new Text("ECTS : " + game.getPlayer(1).getECTS());
+            textP21 = new Text("Player     "+Order.get(1));
+            textP22 = new Text("Money     " + game.getPlayer(1).getMoney());
+            textP23 = new Text("ECTS       " + game.getPlayer(1).getECTS());
             textP24 = new Text("");
 
-            textP31 = new Text("Player : "+names.get(2)+" Color : "+Order.get(2));
-            textP32 = new Text("Money : " + game.getPlayer(2).getMoney());
-            textP33 = new Text("ECTS : " + game.getPlayer(2).getECTS());
+            textP31 = new Text("Player     "+Order.get(2));
+            textP32 = new Text("Money     " + game.getPlayer(2).getMoney());
+            textP33 = new Text("ECTS       " + game.getPlayer(2).getECTS());
             textP34 = new Text("");
+            textP11.setX(100);
+            textP11.setY(160);
+            textP12.setX(100);
+            textP12.setY(210);
+            textP13.setX(100);
+            textP13.setY(255);
+            textP14.setX(100);
+            textP14.setY(300);
 
-            textP11.setX(20);
-            textP11.setY(100);
-            textP12.setX(20);
-            textP12.setY(140);
-            textP13.setX(20);
-            textP13.setY(180);
-            textP14.setX(20);
-            textP14.setY(220);
+            textP21.setX(100);
+            textP21.setY(635);
+            textP22.setX(100);
+            textP22.setY(685);
+            textP23.setX(100);
+            textP23.setY(730);
+            textP24.setX(100);
+            textP24.setY(775);
 
-            textP21.setX(20);
-            textP21.setY(820);
-            textP22.setX(20);
-            textP22.setY(860);
-            textP23.setX(20);
-            textP23.setY(900);
-            textP24.setX(20);
-            textP24.setY(940);
-
-            textP31.setX(1270);
-            textP31.setY(100);
-            textP32.setX(1270);
-            textP32.setY(140);
-            textP33.setX(1270);
-            textP33.setY(180);
-            textP34.setX(1270);
-            textP34.setY(220);
+            textP31.setX(1290);
+            textP31.setY(160);
+            textP32.setX(1290);
+            textP32.setY(210);
+            textP33.setX(1290);
+            textP33.setY(255);
+            textP34.setX(1290);
+            textP34.setY(300);
             root.getChildren().addAll(textP11,textP12,textP13,textP14,textP21,textP22,textP23,textP24,textP31,textP32,textP33,textP34);
-            textP11.setStyle(style2);
-            textP12.setStyle(style2);
-            textP13.setStyle(style2);
-            textP14.setStyle(style2);
+            textP11.setStyle(style5);
+            textP12.setStyle(style5);
+            textP13.setStyle(style5);
+            textP14.setStyle(style6);
 
-            textP21.setStyle(style2);
-            textP22.setStyle(style2);
-            textP23.setStyle(style2);
-            textP24.setStyle(style2);
+            textP21.setStyle(style5);
+            textP22.setStyle(style5);
+            textP23.setStyle(style5);
+            textP24.setStyle(style6);
 
-            textP31.setStyle(style2);
-            textP32.setStyle(style2);
-            textP33.setStyle(style2);
-            textP34.setStyle(style2);
+            textP31.setStyle(style5);
+            textP32.setStyle(style5);
+            textP33.setStyle(style5);
+            textP34.setStyle(style6);
             root.setStyle(style3);
 
         }else if(NumberOfPlayers==4){
-            imageView1.setX(1200);
+            imageView1.setX(1227);
             imageView1.setY(850);
 
-            imageView2.setX(1200);
+            imageView2.setX(1227);
             imageView2.setY(800);
 
-            imageView3.setX(1150);
+            imageView3.setX(1177);
             imageView3.setY(850);
 
-            imageView4.setX(1150);
+            imageView4.setX(1177);
             imageView4.setY(800);
             root = new Pane(imageView,imageView1,imageView2,imageView3,imageView4,buttonMusic);
             root.getChildren().add(buttonRoll);
             root.getChildren().add(buttonNextTurn);
             root.getChildren().add(buttonBuy);
-            textP11 = new Text("Player : "+names.get(0)+" Color : "+Order.get(0));
-            textP12 = new Text("Money : " + game.getPlayer(0).getMoney());
-            textP13 = new Text("ECTS : " + game.getPlayer(0).getECTS());
+            textP11 = new Text("Player     "+Order.get(0));
+            textP12 = new Text("Money     " + game.getPlayer(0).getMoney());
+            textP13 = new Text("ECTS       " + game.getPlayer(0).getECTS());
             textP14 = new Text("");
 
-            textP21 = new Text("Player : "+names.get(1)+" Color : "+Order.get(1));
-            textP22 = new Text("Money : " + game.getPlayer(1).getMoney());
-            textP23 = new Text("ECTS : " + game.getPlayer(1).getECTS());
+            textP21 = new Text("Player     "+Order.get(1));
+            textP22 = new Text("Money     " + game.getPlayer(1).getMoney());
+            textP23 = new Text("ECTS       " + game.getPlayer(1).getECTS());
             textP24 = new Text("");
 
-            textP31 = new Text("Player : "+names.get(2)+" Color : "+Order.get(2));
-            textP32 = new Text("Money : " + game.getPlayer(2).getMoney());
-            textP33 = new Text("ECTS : " + game.getPlayer(2).getECTS());
+            textP31 = new Text("Player     "+Order.get(2));
+            textP32 = new Text("Money     " + game.getPlayer(2).getMoney());
+            textP33 = new Text("ECTS       " + game.getPlayer(2).getECTS());
             textP34 = new Text("");
 
-            textP41 = new Text("Player : "+names.get(3)+" Color : "+Order.get(3));
-            textP42 = new Text("Money : " + game.getPlayer(3).getMoney());
-            textP43 = new Text("ECTS : " + game.getPlayer(3).getECTS());
+            textP41 = new Text("Player     "+Order.get(3));
+            textP42 = new Text("Money     " + game.getPlayer(3).getMoney());
+            textP43 = new Text("ECTS       " + game.getPlayer(3).getECTS());
             textP44 = new Text("");
-            textP11.setX(20);
-            textP11.setY(100);
-            textP12.setX(20);
-            textP12.setY(140);
-            textP13.setX(20);
-            textP13.setY(180);
-            textP14.setX(20);
-            textP14.setY(220);
+            textP11.setX(100);
+            textP11.setY(160);
+            textP12.setX(100);
+            textP12.setY(210);
+            textP13.setX(100);
+            textP13.setY(255);
+            textP14.setX(100);
+            textP14.setY(300);
 
-            textP21.setX(20);
-            textP21.setY(820);
-            textP22.setX(20);
-            textP22.setY(860);
-            textP23.setX(20);
-            textP23.setY(900);
-            textP24.setX(20);
-            textP24.setY(940);
+            textP21.setX(100);
+            textP21.setY(635);
+            textP22.setX(100);
+            textP22.setY(685);
+            textP23.setX(100);
+            textP23.setY(730);
+            textP24.setX(100);
+            textP24.setY(775);
 
-            textP31.setX(1270);
-            textP31.setY(100);
-            textP32.setX(1270);
-            textP32.setY(140);
-            textP33.setX(1270);
-            textP33.setY(180);
-            textP34.setX(1270);
-            textP34.setY(220);
+            textP31.setX(1290);
+            textP31.setY(160);
+            textP32.setX(1290);
+            textP32.setY(210);
+            textP33.setX(1290);
+            textP33.setY(255);
+            textP34.setX(1290);
+            textP34.setY(300);
 
-            textP41.setX(1270);
-            textP41.setY(820);
-            textP42.setX(1270);
-            textP42.setY(860);
-            textP43.setX(1270);
-            textP43.setY(900);
-            textP44.setX(1270);
-            textP44.setY(940);
+            textP41.setX(1290);
+            textP41.setY(635);
+            textP42.setX(1290);
+            textP42.setY(685);
+            textP43.setX(1290);
+            textP43.setY(730);
+            textP44.setX(1290);
+            textP44.setY(775);
             root.getChildren().addAll(textP11,textP12,textP13,textP14,textP21,textP22,textP23,textP24,textP31,textP32,textP33,textP34,textP41,textP42,textP43,textP44);
-            textP11.setStyle(style2);
-            textP12.setStyle(style2);
-            textP13.setStyle(style2);
-            textP14.setStyle(style2);
+            textP11.setStyle(style5);
+            textP12.setStyle(style5);
+            textP13.setStyle(style5);
+            textP14.setStyle(style6);
 
-            textP21.setStyle(style2);
-            textP22.setStyle(style2);
-            textP23.setStyle(style2);
-            textP24.setStyle(style2);
+            textP21.setStyle(style5);
+            textP22.setStyle(style5);
+            textP23.setStyle(style5);
+            textP24.setStyle(style6);
 
-            textP31.setStyle(style2);
-            textP32.setStyle(style2);
-            textP33.setStyle(style2);
-            textP34.setStyle(style2);
+            textP31.setStyle(style5);
+            textP32.setStyle(style5);
+            textP33.setStyle(style5);
+            textP34.setStyle(style6);
 
-            textP41.setStyle(style2);
-            textP42.setStyle(style2);
-            textP43.setStyle(style2);
-            textP44.setStyle(style2);
+            textP41.setStyle(style5);
+            textP42.setStyle(style5);
+            textP43.setStyle(style5);
+            textP44.setStyle(style6);
             root.setStyle(style3);
 
         }
@@ -441,45 +454,50 @@ public class GUIGame {
         game.requestForBuy();
         button.setDisable(true);
         if(FakeNumberOfPlayers==2){
-
-            textP12.setText("Money : " + game.getPlayer(0).getMoney());
-            textP13.setText("ECTS : " + game.getPlayer(0).getECTS());
+            textP12.setText("Money     " + game.getPlayer(0).getMoney());
+            textP13.setText("ECTS       " + game.getPlayer(0).getECTS());
             textP14.setText(String.valueOf(game.getBoughtFields(game.getPlayer(0))));
 
-            textP22.setText("Money : " + game.getPlayer(1).getMoney());
-            textP23.setText("ECTS : " + game.getPlayer(1).getECTS());
+            textP22.setText("Money     " + game.getPlayer(1).getMoney());
+            textP23.setText("ECTS       " + game.getPlayer(1).getECTS());
             textP24.setText(String.valueOf(game.getBoughtFields(game.getPlayer(1))));
 
         }else if(FakeNumberOfPlayers==3){
-
-            textP12.setText("Money : " + game.getPlayer(0).getMoney());
-            textP13.setText("ECTS : " + game.getPlayer(0).getECTS());
+            textP12.setText("Money     " + game.getPlayer(0).getMoney());
+            textP13.setText("ECTS       " + game.getPlayer(0).getECTS());
             textP14.setText(String.valueOf(game.getBoughtFields(game.getPlayer(0))));
 
-            textP22.setText("Money : " + game.getPlayer(1).getMoney());
-            textP23.setText("ECTS : " + game.getPlayer(1).getECTS());
+            textP22.setText("Money     " + game.getPlayer(1).getMoney());
+            textP23.setText("ECTS       " + game.getPlayer(1).getECTS());
             textP24.setText(String.valueOf(game.getBoughtFields(game.getPlayer(1))));
 
-            textP32.setText("Money : " + game.getPlayer(2).getMoney());
-            textP33.setText("ECTS : " + game.getPlayer(2).getECTS());
+            textP32.setText("Money     " + game.getPlayer(2).getMoney());
+            textP33.setText("ECTS       " + game.getPlayer(2).getECTS());
             textP34.setText(String.valueOf(game.getBoughtFields(game.getPlayer(2))));
 
         }else if(FakeNumberOfPlayers==4){
-            textP12.setText("Money : " + game.getPlayer(0).getMoney());
-            textP13.setText("ECTS : " + game.getPlayer(0).getECTS());
+            textP12.setText("Money     " + game.getPlayer(0).getMoney());
+            textP13.setText("ECTS       " + game.getPlayer(0).getECTS());
             textP14.setText(String.valueOf(game.getBoughtFields(game.getPlayer(0))));
 
-            textP22.setText("Money : " + game.getPlayer(1).getMoney());
-            textP23.setText("ECTS : " + game.getPlayer(1).getECTS());
+            textP22.setText("Money     " + game.getPlayer(1).getMoney());
+            textP23.setText("ECTS       " + game.getPlayer(1).getECTS());
             textP24.setText(String.valueOf(game.getBoughtFields(game.getPlayer(1))));
 
-            textP32.setText("Money : " + game.getPlayer(2).getMoney());
-            textP33.setText("ECTS : " + game.getPlayer(2).getECTS());
+            textP32.setText("Money     " + game.getPlayer(2).getMoney());
+            textP33.setText("ECTS       " + game.getPlayer(2).getECTS());
             textP34.setText(String.valueOf(game.getBoughtFields(game.getPlayer(2))));
 
-            textP42.setText("Money : " + game.getPlayer(3).getMoney());
-            textP43.setText("ECTS : " + game.getPlayer(3).getECTS());
+
+            textP42.setText("Money     " + game.getPlayer(3).getMoney());
+            textP43.setText("ECTS       " + game.getPlayer(3).getECTS());
             textP44.setText(String.valueOf(game.getBoughtFields(game.getPlayer(3))));
+
+
+
+
+
+
 
         }
 
@@ -609,38 +627,39 @@ public class GUIGame {
         button1.setDisable(true);
         button2.setDisable(false);
         roll2.setText(" Rolled : "+ roll);
-        player.setText("Player : "+names.get(TurnCalculator%NumberOfPlayers));
+        player.setText("Player : "+Order.get(TurnCalculator%NumberOfPlayers));
 
         if(FakeNumberOfPlayers==2){
-            textP12.setText("Money : " + game.getPlayer(0).getMoney());
-            textP13.setText("ECTS : " + game.getPlayer(0).getECTS());
+            textP12.setText("Money     " + game.getPlayer(0).getMoney());
+            textP13.setText("ECTS       " + game.getPlayer(0).getECTS());
 
-            textP22.setText("Money : " + game.getPlayer(1).getMoney());
-            textP23.setText("ECTS : " + game.getPlayer(1).getECTS());
+            textP22.setText("Money     " + game.getPlayer(1).getMoney());
+            textP23.setText("ECTS       " + game.getPlayer(1).getECTS());
 
 
         }else if(FakeNumberOfPlayers==3){
-            textP12.setText("Money : " + game.getPlayer(0).getMoney());
-            textP13.setText("ECTS : " + game.getPlayer(0).getECTS());
+            textP12.setText("Money     " + game.getPlayer(0).getMoney());
+            textP13.setText("ECTS       " + game.getPlayer(0).getECTS());
 
-            textP22.setText("Money : " + game.getPlayer(1).getMoney());
-            textP23.setText("ECTS : " + game.getPlayer(1).getECTS());
+            textP22.setText("Money     " + game.getPlayer(1).getMoney());
+            textP23.setText("ECTS       " + game.getPlayer(1).getECTS());
 
-            textP32.setText("Money : " + game.getPlayer(2).getMoney());
-            textP33.setText("ECTS : " + game.getPlayer(2).getECTS());
+            textP32.setText("Money     " + game.getPlayer(2).getMoney());
+            textP33.setText("ECTS       " + game.getPlayer(2).getECTS());
+
 
         }else if(FakeNumberOfPlayers==4){
-            textP12.setText("Money : " + game.getPlayer(0).getMoney());
-            textP13.setText("ECTS : " + game.getPlayer(0).getECTS());
+            textP12.setText("Money     " + game.getPlayer(0).getMoney());
+            textP13.setText("ECTS       " + game.getPlayer(0).getECTS());
 
-            textP22.setText("Money : " + game.getPlayer(1).getMoney());
-            textP23.setText("ECTS : " + game.getPlayer(1).getECTS());
+            textP22.setText("Money     " + game.getPlayer(1).getMoney());
+            textP23.setText("ECTS       " + game.getPlayer(1).getECTS());
 
-            textP32.setText("Money : " + game.getPlayer(2).getMoney());
-            textP33.setText("ECTS : " + game.getPlayer(2).getECTS());
+            textP32.setText("Money     " + game.getPlayer(2).getMoney());
+            textP33.setText("ECTS       " + game.getPlayer(2).getECTS());
 
-            textP42.setText("Money : " + game.getPlayer(3).getMoney());
-            textP43.setText("ECTS : " + game.getPlayer(3).getECTS());
+            textP42.setText("Money     " + game.getPlayer(3).getMoney());
+            textP43.setText("ECTS       " + game.getPlayer(3).getECTS());
 
         }
         Logger logger = new Logger(game.getPlayer(TurnCalculator%NumberOfPlayers),0);
@@ -655,34 +674,32 @@ public class GUIGame {
 
 
     public void move(ImageView a,int roll,int position){
-      //  System.out.println("pozycja to : "+position);
-       // System.out.println("X : "+a.getX());
-      //  System.out.println("Y : "+a.getY());
-       // System.out.println("Tura : "+TurnCalculator%NumberOfPlayers);
+
+
 
         if(position==0){
             if(TurnCalculator%NumberOfPlayers==0) {
                 Piece1X = 0;
                 Piece1Y = 1;
-                a.setX(1200);
+                a.setX(1227);
                 a.setY(850);
                 return;
             }else if(TurnCalculator%NumberOfPlayers==1){
                 Piece2X = 0;
                 Piece2Y = 1;
-                a.setX(1200);
+                a.setX(1227);
                 a.setY(800);
                 return;
             }else if(TurnCalculator%NumberOfPlayers==2){
                 Piece3X = 0;
                 Piece3Y = 1;
-                a.setX(1150);
+                a.setX(1177);
                 a.setY(850);
                 return;
             } else if(TurnCalculator%NumberOfPlayers==3){
                 Piece4X = 0;
                 Piece4Y = 1;
-                a.setX(1150);
+                a.setX(1177);
                 a.setY(800);
                 return;
             }
