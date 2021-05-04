@@ -2,6 +2,7 @@ package GUI;
 import Model.Board;
 import Model.Game;
 import Model.Judge;
+import Model.Logger;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -538,7 +539,7 @@ public class GUIGame {
         int position = game.getPlayer(TurnCalculator%NumberOfPlayers).getPosition();
         //game.getPlayer(TurnCalculator%NumberOfPlayers).setECTS(30);
 //        game.getPlayer(TurnCalculator%NumberOfPlayers).setMoney(-100000);
-        System.out.println("xdd"+game.getPlayer(TurnCalculator%NumberOfPlayers).getECTS());
+       // System.out.println("xdd"+game.getPlayer(TurnCalculator%NumberOfPlayers).getECTS());
         if(judge.checkWinner(Arrays.asList(game.getPlayers()))){
             EndGame(Game);
         }
@@ -593,9 +594,9 @@ public class GUIGame {
         }
 
 
-        System.out.println("ilegraczy : "+game.getPlayersNo());
-        System.out.println("roll : "+roll);
-        System.out.println("przed ruchem : "+position2);
+       // System.out.println("ilegraczy : "+game.getPlayersNo());
+       // System.out.println("roll : "+roll);
+       // System.out.println("przed ruchem : "+position2);
         if(position-position2<-3){
             move(a,position-position2,0);
             move(a,position,position);
@@ -642,7 +643,9 @@ public class GUIGame {
             textP43.setText(String.valueOf("ECTS : "+game.getPlayer(3).getECTS()));
 
         }
+        Logger logger = new Logger(game.getPlayer(TurnCalculator%NumberOfPlayers),0);
         TurnCalculator++;
+        logger.update();
     }
 
 
@@ -652,10 +655,10 @@ public class GUIGame {
 
 
     public void move(ImageView a,int roll,int position){
-        System.out.println("pozycja to : "+position);
-        System.out.println("X : "+a.getX());
-        System.out.println("Y : "+a.getY());
-        System.out.println("Tura : "+TurnCalculator%NumberOfPlayers);
+      //  System.out.println("pozycja to : "+position);
+       // System.out.println("X : "+a.getX());
+      //  System.out.println("Y : "+a.getY());
+       // System.out.println("Tura : "+TurnCalculator%NumberOfPlayers);
 
         if(position==0){
             if(TurnCalculator%NumberOfPlayers==0) {
@@ -776,9 +779,9 @@ public class GUIGame {
 
             }
         }
-        System.out.println("X : "+a.getX());
-        System.out.println("Y : "+a.getY());
-        System.out.println("---------------------------------------");
+       // System.out.println("X : "+a.getX());
+       // System.out.println("Y : "+a.getY());
+       // System.out.println("---------------------------------------");
 
     }
 }

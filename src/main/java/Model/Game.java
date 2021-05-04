@@ -80,7 +80,7 @@ public class Game {
 
 
     public Player getPlayer(int id){
-        System.out.println(id);
+        //System.out.println(id);
         return players[id];
     }
 
