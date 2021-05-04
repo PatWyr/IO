@@ -1,7 +1,6 @@
 package Model;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
 
 
 //wzorzec builder Inner Static Fluent Builder
@@ -12,8 +11,8 @@ public class Game {
     private int playersNo;
     private  Board board = null;
     private Player[] players;
-    private boolean requestForRoll = false;
-    private boolean requestForBuy = false;
+    private final boolean requestForRoll = false;
+    private final boolean requestForBuy = false;
     private int turn = 0;
 //    Judge judge = Judge.getInstance(this,board);
 
@@ -82,10 +81,7 @@ public class Game {
     }
 
     public boolean isDostepne() {
-        if (board.getOneField(players[turn].getPosition()) instanceof NormalField && board.getOneField(players[turn].getPosition()).getOwner() == null) {
-            return true;
-        }
-        return false;
+        return board.getOneField(players[turn].getPosition()) instanceof NormalField && board.getOneField(players[turn].getPosition()).getOwner() == null;
     }
 
     public void requestForBuy() {

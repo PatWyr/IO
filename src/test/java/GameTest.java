@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class GameTest {
     private Game game;
     private Board board;
-    private List<String> names = List.of("1","2","3","4");
+    private final List<String> names = List.of("1","2","3","4");
 
 
     @BeforeEach

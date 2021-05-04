@@ -5,7 +5,7 @@ import Cards.ListOfCards;
 import java.util.Random;
 
 public class SpecialField extends Field {
-    private ListOfCards listOfCards = new ListOfCards();
+    private final ListOfCards listOfCards = new ListOfCards();
 
 
     public SpecialField(int position, String name) {

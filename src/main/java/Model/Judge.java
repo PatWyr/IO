@@ -11,8 +11,8 @@ public class Judge {
     private static Judge judge;
 
     private Judge(Game game,Board board) {
-        this.board = board;
-        this.game = game;
+        Judge.board = board;
+        Judge.game = game;
     }
 
     public static Judge getInstance(Game game,Board board){

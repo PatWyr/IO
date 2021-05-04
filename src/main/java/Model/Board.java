@@ -12,7 +12,7 @@ public class Board implements Observable {
     List<Field> fieldsFree = new ArrayList<>();
     List<Field> fieldsOwned = new ArrayList<>();
     List<Player> stunnedPlayers = new ArrayList<>();
-    private Set<Observer> observers = new HashSet<>();
+    private final Set<Observer> observers = new HashSet<>();
 
     public Board() {
         this.laps = 0;
