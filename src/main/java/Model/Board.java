@@ -117,17 +117,6 @@ public class Board implements Observable {
         return fields;
     }
 
-    public List<Field> getFieldsFree() {
-        return fieldsFree;
-    }
-
-    public List<Field> getFieldsOwned() {
-        return fieldsOwned;
-    }
-
-    public List<Player> getStunnedPlayers() {
-        return stunnedPlayers;
-    }
 
     @Override
     public boolean equals(Object o) {
