@@ -145,7 +145,11 @@ public class Game {
             return this;
         }
 
-        public Builder players(Player[] players) {
+        public Builder players(List<String> names) {
+            players = new Player[playersNo];
+            for( int i=0;i<playersNo;i++){
+                players[i]=new Player(names.get(i));
+            }
             this.players = players;
             return this;
         }

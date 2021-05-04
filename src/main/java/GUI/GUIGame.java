@@ -1,19 +1,22 @@
 package GUI;
-import java.io.*;
-import java.nio.channels.NotYetBoundException;
-import java.util.*;
 import Model.Board;
 import Model.Game;
 import Model.Judge;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javax.sound.sampled.*;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class GUIGame {
@@ -84,7 +87,8 @@ public class GUIGame {
         Order = order1;
         NumberOfPlayers = xd;
         board = new Board();
-        game = new Game(true,0,NumberOfPlayers,names,board);
+        game = new Game.Builder().running(true).round(0).playerNo(NumberOfPlayers).board(board).players(names).build();
+       // game = new Game(true,0,NumberOfPlayers,names,board);
         System.out.println(names);
         System.out.println(Order);
         board.addGameToFields(game);
@@ -532,7 +536,7 @@ public class GUIGame {
         int position2 = game.getPlayer(TurnCalculator%NumberOfPlayers).getPosition();
         int roll =game.requestForRoll();
         int position = game.getPlayer(TurnCalculator%NumberOfPlayers).getPosition();
-        game.getPlayer(TurnCalculator%NumberOfPlayers).setECTS(30);
+        //game.getPlayer(TurnCalculator%NumberOfPlayers).setECTS(30);
 //        game.getPlayer(TurnCalculator%NumberOfPlayers).setMoney(-100000);
         System.out.println("xdd"+game.getPlayer(TurnCalculator%NumberOfPlayers).getECTS());
         if(judge.checkWinner(Arrays.asList(game.getPlayers()))){
