@@ -1,7 +1,11 @@
-package Model;
+package GUI;
 import java.io.*;
 import java.net.URL;
 import java.util.*;
+
+import Model.Board;
+import Model.Game;
+import Model.Judge;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,7 +40,8 @@ import static javax.sound.sampled.AudioFormat.Encoding.PCM_SIGNED;
 
 
 
-public class main extends Application implements EventHandler<ActionEvent>{
+
+public class GUIStrart extends Application implements EventHandler<ActionEvent>{
     Stage window;
     Scene scene;
     Board board;
@@ -296,21 +301,21 @@ public class main extends Application implements EventHandler<ActionEvent>{
     }
 
     public void  music() {
-            Thread thread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        FileInputStream fileInputStream = new FileInputStream("xd.mp3");
-                        Player player = new Player(fileInputStream);
-                        player.play();
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    FileInputStream fileInputStream = new FileInputStream("xd.mp3");
+                    Player player = new Player(fileInputStream);
+                    player.play();
 
 
-                    } catch (JavaLayerException | FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
+                } catch (JavaLayerException | FileNotFoundException e) {
+                    e.printStackTrace();
                 }
-            });
-            thread.start();
+            }
+        });
+        thread.start();
 
     }
     public void game() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
