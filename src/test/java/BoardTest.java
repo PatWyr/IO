@@ -1,16 +1,16 @@
 import Model.Board;
-import Model.Field;
 import Model.NormalField;
 import Model.Player;
+import Model.SimpleFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 public class BoardTest {
 
     private Board board;
     private Player player;
+    SimpleFactory factory = new SimpleFactory();
 
     @BeforeEach
     public void prepare(){
@@ -51,6 +51,7 @@ public class BoardTest {
 
     @Test
     public void ownershipTest(){
+        assertEquals(factory.creatField("Normal",1).getOwner(),null);
         NormalField testField;
         testField = (NormalField) board.getOneField(1);
         testField.setOwner(player);

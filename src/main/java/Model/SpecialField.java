@@ -5,7 +5,7 @@ import Cards.ListOfCards;
 import java.util.Random;
 
 public class SpecialField extends Field {
-    private ListOfCards listOfCards = new ListOfCards();
+    private final ListOfCards listOfCards = new ListOfCards();
 
 
     public SpecialField(int position, String name) {
@@ -15,7 +15,7 @@ public class SpecialField extends Field {
     public Card getCard(){
         Card tmp;
         Random random = new Random();
-        int rand = random.nextInt(16);
+        int rand = random.nextInt(14);
         tmp = listOfCards.getListOfCards().get(rand);
         return tmp;
     }

@@ -1,7 +1,5 @@
 package Model;
-import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
 
 
 //wzorzec builder Inner Static Fluent Builder
@@ -12,10 +10,7 @@ public class Game {
     private int playersNo;
     private  Board board = null;
     private Player[] players;
-    private boolean requestForRoll = false;
-    private boolean requestForBuy = false;
     private int turn = 0;
-//    Judge judge = Judge.getInstance(this,board);
 
     public int getTurn() {
         return turn;
@@ -34,23 +29,6 @@ public class Game {
         for( int i=0;i<playersNo;i++){
             players[i]=new Player(names.get(i));
         }
-    }
-
-    public void RemovePlayer() {
-        Player[] newplayers= new Player[playersNo-1];
-        int z =0;
-        for( int i=0;i<playersNo;i++){
-            if(!players[i].isLost()){
-                newplayers[z]= players[i];
-//                System.out.println(newplayers[z].toString());
-                z++;
-            }
-        }
-        playersNo=playersNo-1;
-        System.out.println(playersNo);
-        players=newplayers;
-        turn-=1;
-        nextTurn();
     }
 
     //main constructor
@@ -75,17 +53,10 @@ public class Game {
         } else {
             turn++;
         }
-//        if(Arrays.stream(players).anyMatch(player -> player.getPosition()>27)){
-//            int tmp = board.getLaps();
-//            board.setLaps(tmp+=1);
-//        };
     }
 
     public boolean isDostepne() {
-        if (board.getOneField(players[turn].getPosition()) instanceof NormalField && board.getOneField(players[turn].getPosition()).getOwner() == null) {
-            return true;
-        }
-        return false;
+        return board.getOneField(players[turn].getPosition()) instanceof NormalField && board.getOneField(players[turn].getPosition()).getOwner() == null;
     }
 
     public void requestForBuy() {
@@ -100,15 +71,6 @@ public class Game {
 
 
 
-    public boolean endControl() {
-        if(board.getLaps()>3){
-            return true;
-        } if(Arrays.stream(players).anyMatch(Player::isLost)){
-            //TODO
-        }
-        return false;
-    }
-
     public int playerRound(int id) {
         int roll = players[id].rollDice();
         board.movePlayer(players[id],roll);
@@ -116,10 +78,6 @@ public class Game {
         return roll;
     }
 
-
-    public void update(){
-        //TODO
-    }
 
     public Player getPlayer(int id){
         System.out.println(id);

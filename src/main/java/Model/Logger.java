@@ -2,7 +2,7 @@ package Model;
 
 public class Logger implements Observer {
 
-    private Player player;
+    private final Player player;
     private int move;
 
     public Logger(Player player, int move) {

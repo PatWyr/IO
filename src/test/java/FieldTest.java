@@ -10,7 +10,7 @@ public class FieldTest {
 
     private Board board;
     private Game game;
-    private List<String> names = List.of("1","2","3","4");
+    private final List<String> names = List.of("1","2","3","4");
 
     @BeforeEach
     public void prepare(){

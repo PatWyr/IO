@@ -15,10 +15,7 @@ public class PlayerTest {
     @Test
     public void rollTest(){
         int roll = player.rollDice();
-        boolean test = false;
-        if(roll>=1 && roll <=6){
-            test = true;
-        }
+        boolean test = roll >= 1 && roll <= 6;
         assertEquals(true,test);
     }
 
