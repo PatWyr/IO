@@ -7,13 +7,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,6 +44,7 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
     String style = "-fx-background-color: #a9a9a9;"
             + "-fx-font-size: 38;-fx-border-color: #000000; -fx-border-width: 3px;";
 
+
     String style3 = "-fx-background-color: grey";
 
 
@@ -53,19 +57,25 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
         buttonChangeBackground.setStyle(style);
         buttonHistoryOfWinners.setStyle(style);
         buttonStartGame.setStyle(style);
-
+//        Image imgON = new Image(new FileInputStream("Monopoly_Student.png"));
+//        ImageView viewON = new ImageView(imgON);
         VBox layout = new VBox(10);
         scene = new Scene(layout,1700, 900);
         window = stage;
         window.setTitle("Monopoly");
         layout.setPadding(new Insets(15, 15, 15, 15));
         layout.getChildren().addAll(buttonChangeBackground,buttonHistoryOfWinners,buttonStartGame);
-        layout.setStyle(("-fx-background-color: grey"));
+        //layout.setStyle(("-fx-background-color: grey"));
+        BackgroundImage myBI= new BackgroundImage(new Image(new FileInputStream("mon.png")),
+                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        layout.setBackground(new Background(myBI));
+
         window.setScene(scene);
         window.show();
 
         buttonChangeBackground.setOnAction(event -> {
-            style3 = guiFunctions.changeBackground(layout);
+            style3 = changeBackground(layout);
         });
         buttonHistoryOfWinners.setOnAction(event -> {
             try {
@@ -110,7 +120,7 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
     }
 
     public void ChooseColorOfPawnsAndNameThem(VBox layout){
-
+        layout.setStyle(style3);
         for(int i =1; i<=NumberOfPlayers; i++){
             ComboBox<String> comboboxChooseColorOfPawn = new ComboBox<>();
             GridPane gridPane = new GridPane();
@@ -165,6 +175,46 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
                 e.printStackTrace();
             }
         });
+    }
+
+    public String changeBackground(VBox layout){
+        Stage stageChangeBackground = new Stage();
+        stageChangeBackground.setTitle("changeBackground");
+        Text info = new Text("Choose color of background");
+        Button buttonChangeColor = new Button("Change color");
+        ComboBox<String> comboboxChangeColor = new ComboBox<>();
+        info.setStyle(style);
+        buttonChangeColor.setStyle(style);
+        comboboxChangeColor.setStyle(style);
+        comboboxChangeColor.getItems().addAll(
+                "RED",
+                "BLUE",
+                "GREEN"
+        );
+        VBox layoutChangeBackground = new VBox(10);
+        layoutChangeBackground.getChildren().addAll(info,comboboxChangeColor,buttonChangeColor);
+        layoutChangeBackground.setStyle(("-fx-background-color: grey"));
+
+        Scene sceneChangeBackground = new Scene(layoutChangeBackground, 1200, 600);
+
+
+        stageChangeBackground.setScene(sceneChangeBackground);
+        stageChangeBackground.show();
+        buttonChangeColor.setOnAction(event -> {
+            if(comboboxChangeColor.getValue().equals("RED")){
+                layout.setStyle(("-fx-background-color: Red"));
+                style3 = "-fx-background-color: Red";
+            }else if(comboboxChangeColor.getValue().equals("BLUE")){
+                layout.setStyle(("-fx-background-color: Blue"));
+                style3 = "-fx-background-color: Blue";
+            }else if(comboboxChangeColor.getValue().equals("GREEN")){
+                layout.setStyle(("-fx-background-color: Green"));
+                style3 = "-fx-background-color: Green";
+            }
+            stageChangeBackground.close();
+
+        });
+        return style3;
     }
 
 

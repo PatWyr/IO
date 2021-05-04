@@ -21,47 +21,10 @@ public class GUIFunctions {
     String style = "-fx-background-color: #a9a9a9;"
             + "-fx-font-size: 38;-fx-border-color: #000000; -fx-border-width: 3px;";
 
-    String style3 = "-fx-background-color: grey";
+    String style3;
 
 
-    public String changeBackground(VBox layout){
-        Stage stageChangeBackground = new Stage();
-        stageChangeBackground.setTitle("changeBackground");
-        Text info = new Text("Choose color of background");
-        Button buttonChangeColor = new Button("Change color");
-        ComboBox<String> comboboxChangeColor = new ComboBox<>();
-        info.setStyle(style);
-        buttonChangeColor.setStyle(style);
-        comboboxChangeColor.setStyle(style);
-        comboboxChangeColor.getItems().addAll(
-                "RED",
-                "BLUE",
-                "GREEN"
-        );
-        VBox layoutChangeBackground = new VBox(10);
-        layoutChangeBackground.getChildren().addAll(info,comboboxChangeColor,buttonChangeColor);
-        layoutChangeBackground.setStyle(("-fx-background-color: grey"));
 
-        Scene sceneChangeBackground = new Scene(layoutChangeBackground, 1200, 600);
-
-
-        stageChangeBackground.setScene(sceneChangeBackground);
-        stageChangeBackground.show();
-        buttonChangeColor.setOnAction(event -> {
-            if(comboboxChangeColor.getValue().equals("RED")){
-                layout.setStyle(("-fx-background-color: Red"));
-                style3 = "-fx-background-color: Red";
-            }else if(comboboxChangeColor.getValue().equals("BLUE")){
-                layout.setStyle(("-fx-background-color: Blue"));
-                style3 = "-fx-background-color: Blue";
-            }else if(comboboxChangeColor.getValue().equals("GREEN")){
-                layout.setStyle(("-fx-background-color: Green"));
-                style3 = "-fx-background-color: Green";
-            }
-            stageChangeBackground.close();
-        });
-        return style3;
-    }
     public void  music() {
          thread = new Thread(new Runnable() {
             @Override
