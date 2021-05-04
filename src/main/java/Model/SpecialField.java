@@ -15,7 +15,7 @@ public class SpecialField extends Field {
     public Card getCard(){
         Card tmp;
         Random random = new Random();
-        int rand = random.nextInt(16);
+        int rand = random.nextInt(14);
         tmp = listOfCards.getListOfCards().get(rand);
         return tmp;
     }
