@@ -13,6 +13,6 @@ public class Logger implements Observer {
     @Override
     public void update() {
         move = player.getPosition();
-        System.out.println("Player "+ player.toString() + "moved to "+ move);
+        System.out.println("Player "+ player + "moved to "+ move);
     }
 }

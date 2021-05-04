@@ -33,8 +33,8 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
 
     boolean music = false;
 
-    private List<String> names = new ArrayList<>();
-    private List<String> Order = new ArrayList<>();
+    private final List<String> names = new ArrayList<>();
+    private final List<String> Order = new ArrayList<>();
 
     int NumberOfPlayers = 0;
 

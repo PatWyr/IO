@@ -77,7 +77,7 @@ public class GUIGame {
 
     String style4 = "-fx-background-color: #a9a9a9;"
             + "-fx-font-size: 52;-fx-border-color: #000000; -fx-border-width: 5px;";
-    private List<Integer> Coordinates = List.of(-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,0,-100,0,-100,0,-100,0,
+    private final List<Integer> Coordinates = List.of(-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,-100,0,0,-100,0,-100,0,-100,0,
             -100,0,-100,0,-100,0,-100,100,0,100,0,100,0,100,0,100,0,100,0,100,0,0,100,0,100,0,100,0,100,0,100,0,100,0,100);
 
 
@@ -192,14 +192,14 @@ public class GUIGame {
             root.getChildren().add(buttonNextTurn);
             root.getChildren().add(buttonBuy);
             textP11 = new Text("Player : "+names.get(0)+" Color : "+Order.get(0));
-            textP12 = new Text(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
-            textP13 = new Text(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
-            textP14 = new Text(String.valueOf(""));
+            textP12 = new Text("Money : " + game.getPlayer(0).getMoney());
+            textP13 = new Text("ECTS : " + game.getPlayer(0).getECTS());
+            textP14 = new Text("");
 
             textP21 = new Text("Player : "+names.get(1)+" Color : "+Order.get(1));
-            textP22 = new Text(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
-            textP23 = new Text(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
-            textP24 = new Text(String.valueOf(""));
+            textP22 = new Text("Money : " + game.getPlayer(1).getMoney());
+            textP23 = new Text("ECTS : " + game.getPlayer(1).getECTS());
+            textP24 = new Text("");
 
             textP11.setX(20);
             textP11.setY(100);
@@ -247,19 +247,19 @@ public class GUIGame {
             root.getChildren().add(buttonNextTurn);
             root.getChildren().add(buttonBuy);
             textP11 = new Text("Player : "+names.get(0)+" Color : "+Order.get(0));
-            textP12 = new Text(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
-            textP13 = new Text(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
-            textP14 = new Text(String.valueOf(""));
+            textP12 = new Text("Money : " + game.getPlayer(0).getMoney());
+            textP13 = new Text("ECTS : " + game.getPlayer(0).getECTS());
+            textP14 = new Text("");
 
             textP21 = new Text("Player : "+names.get(1)+" Color : "+Order.get(1));
-            textP22 = new Text(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
-            textP23 = new Text(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
-            textP24 = new Text(String.valueOf(""));
+            textP22 = new Text("Money : " + game.getPlayer(1).getMoney());
+            textP23 = new Text("ECTS : " + game.getPlayer(1).getECTS());
+            textP24 = new Text("");
 
             textP31 = new Text("Player : "+names.get(2)+" Color : "+Order.get(2));
-            textP32 = new Text(String.valueOf("Money : "+game.getPlayer(2).getMoney()));
-            textP33 = new Text(String.valueOf("ECTS : "+game.getPlayer(2).getECTS()));
-            textP34 = new Text(String.valueOf(""));
+            textP32 = new Text("Money : " + game.getPlayer(2).getMoney());
+            textP33 = new Text("ECTS : " + game.getPlayer(2).getECTS());
+            textP34 = new Text("");
 
             textP11.setX(20);
             textP11.setY(100);
@@ -321,24 +321,24 @@ public class GUIGame {
             root.getChildren().add(buttonNextTurn);
             root.getChildren().add(buttonBuy);
             textP11 = new Text("Player : "+names.get(0)+" Color : "+Order.get(0));
-            textP12 = new Text(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
-            textP13 = new Text(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
-            textP14 = new Text(String.valueOf(""));
+            textP12 = new Text("Money : " + game.getPlayer(0).getMoney());
+            textP13 = new Text("ECTS : " + game.getPlayer(0).getECTS());
+            textP14 = new Text("");
 
             textP21 = new Text("Player : "+names.get(1)+" Color : "+Order.get(1));
-            textP22 = new Text(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
-            textP23 = new Text(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
-            textP24 = new Text(String.valueOf(""));
+            textP22 = new Text("Money : " + game.getPlayer(1).getMoney());
+            textP23 = new Text("ECTS : " + game.getPlayer(1).getECTS());
+            textP24 = new Text("");
 
             textP31 = new Text("Player : "+names.get(2)+" Color : "+Order.get(2));
-            textP32 = new Text(String.valueOf("Money : "+game.getPlayer(2).getMoney()));
-            textP33 = new Text(String.valueOf("ECTS : "+game.getPlayer(2).getECTS()));
-            textP34 = new Text(String.valueOf(""));
+            textP32 = new Text("Money : " + game.getPlayer(2).getMoney());
+            textP33 = new Text("ECTS : " + game.getPlayer(2).getECTS());
+            textP34 = new Text("");
 
             textP41 = new Text("Player : "+names.get(3)+" Color : "+Order.get(3));
-            textP42 = new Text(String.valueOf("Money : "+game.getPlayer(3).getMoney()));
-            textP43 = new Text(String.valueOf("ECTS : "+game.getPlayer(3).getECTS()));
-            textP44 = new Text(String.valueOf(""));
+            textP42 = new Text("Money : " + game.getPlayer(3).getMoney());
+            textP43 = new Text("ECTS : " + game.getPlayer(3).getECTS());
+            textP44 = new Text("");
             textP11.setX(20);
             textP11.setY(100);
             textP12.setX(20);
@@ -442,43 +442,43 @@ public class GUIGame {
         button.setDisable(true);
         if(FakeNumberOfPlayers==2){
 
-            textP12.setText(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
-            textP13.setText(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
+            textP12.setText("Money : " + game.getPlayer(0).getMoney());
+            textP13.setText("ECTS : " + game.getPlayer(0).getECTS());
             textP14.setText(String.valueOf(game.getBoughtFields(game.getPlayer(0))));
 
-            textP22.setText(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
-            textP23.setText(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
+            textP22.setText("Money : " + game.getPlayer(1).getMoney());
+            textP23.setText("ECTS : " + game.getPlayer(1).getECTS());
             textP24.setText(String.valueOf(game.getBoughtFields(game.getPlayer(1))));
 
         }else if(FakeNumberOfPlayers==3){
 
-            textP12.setText(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
-            textP13.setText(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
+            textP12.setText("Money : " + game.getPlayer(0).getMoney());
+            textP13.setText("ECTS : " + game.getPlayer(0).getECTS());
             textP14.setText(String.valueOf(game.getBoughtFields(game.getPlayer(0))));
 
-            textP22.setText(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
-            textP23.setText(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
+            textP22.setText("Money : " + game.getPlayer(1).getMoney());
+            textP23.setText("ECTS : " + game.getPlayer(1).getECTS());
             textP24.setText(String.valueOf(game.getBoughtFields(game.getPlayer(1))));
 
-            textP32.setText(String.valueOf("Money : "+game.getPlayer(2).getMoney()));
-            textP33.setText(String.valueOf("ECTS : "+game.getPlayer(2).getECTS()));
+            textP32.setText("Money : " + game.getPlayer(2).getMoney());
+            textP33.setText("ECTS : " + game.getPlayer(2).getECTS());
             textP34.setText(String.valueOf(game.getBoughtFields(game.getPlayer(2))));
 
         }else if(FakeNumberOfPlayers==4){
-            textP12.setText(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
-            textP13.setText(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
+            textP12.setText("Money : " + game.getPlayer(0).getMoney());
+            textP13.setText("ECTS : " + game.getPlayer(0).getECTS());
             textP14.setText(String.valueOf(game.getBoughtFields(game.getPlayer(0))));
 
-            textP22.setText(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
-            textP23.setText(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
+            textP22.setText("Money : " + game.getPlayer(1).getMoney());
+            textP23.setText("ECTS : " + game.getPlayer(1).getECTS());
             textP24.setText(String.valueOf(game.getBoughtFields(game.getPlayer(1))));
 
-            textP32.setText(String.valueOf("Money : "+game.getPlayer(2).getMoney()));
-            textP33.setText(String.valueOf("ECTS : "+game.getPlayer(2).getECTS()));
+            textP32.setText("Money : " + game.getPlayer(2).getMoney());
+            textP33.setText("ECTS : " + game.getPlayer(2).getECTS());
             textP34.setText(String.valueOf(game.getBoughtFields(game.getPlayer(2))));
 
-            textP42.setText(String.valueOf("Money : "+game.getPlayer(3).getMoney()));
-            textP43.setText(String.valueOf("ECTS : "+game.getPlayer(3).getECTS()));
+            textP42.setText("Money : " + game.getPlayer(3).getMoney());
+            textP43.setText("ECTS : " + game.getPlayer(3).getECTS());
             textP44.setText(String.valueOf(game.getBoughtFields(game.getPlayer(3))));
 
         }
@@ -608,39 +608,39 @@ public class GUIGame {
         }
         button1.setDisable(true);
         button2.setDisable(false);
-        roll2.setText(" Rolled : "+String.valueOf(roll));
+        roll2.setText(" Rolled : "+ roll);
         player.setText("Player : "+names.get(TurnCalculator%NumberOfPlayers));
 
         if(FakeNumberOfPlayers==2){
-            textP12.setText(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
-            textP13.setText(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
+            textP12.setText("Money : " + game.getPlayer(0).getMoney());
+            textP13.setText("ECTS : " + game.getPlayer(0).getECTS());
 
-            textP22.setText(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
-            textP23.setText(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
+            textP22.setText("Money : " + game.getPlayer(1).getMoney());
+            textP23.setText("ECTS : " + game.getPlayer(1).getECTS());
 
 
         }else if(FakeNumberOfPlayers==3){
-            textP12.setText(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
-            textP13.setText(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
+            textP12.setText("Money : " + game.getPlayer(0).getMoney());
+            textP13.setText("ECTS : " + game.getPlayer(0).getECTS());
 
-            textP22.setText(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
-            textP23.setText(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
+            textP22.setText("Money : " + game.getPlayer(1).getMoney());
+            textP23.setText("ECTS : " + game.getPlayer(1).getECTS());
 
-            textP32.setText(String.valueOf("Money : "+game.getPlayer(2).getMoney()));
-            textP33.setText(String.valueOf("ECTS : "+game.getPlayer(2).getECTS()));
+            textP32.setText("Money : " + game.getPlayer(2).getMoney());
+            textP33.setText("ECTS : " + game.getPlayer(2).getECTS());
 
         }else if(FakeNumberOfPlayers==4){
-            textP12.setText(String.valueOf("Money : "+game.getPlayer(0).getMoney()));
-            textP13.setText(String.valueOf("ECTS : "+game.getPlayer(0).getECTS()));
+            textP12.setText("Money : " + game.getPlayer(0).getMoney());
+            textP13.setText("ECTS : " + game.getPlayer(0).getECTS());
 
-            textP22.setText(String.valueOf("Money : "+game.getPlayer(1).getMoney()));
-            textP23.setText(String.valueOf("ECTS : "+game.getPlayer(1).getECTS()));
+            textP22.setText("Money : " + game.getPlayer(1).getMoney());
+            textP23.setText("ECTS : " + game.getPlayer(1).getECTS());
 
-            textP32.setText(String.valueOf("Money : "+game.getPlayer(2).getMoney()));
-            textP33.setText(String.valueOf("ECTS : "+game.getPlayer(2).getECTS()));
+            textP32.setText("Money : " + game.getPlayer(2).getMoney());
+            textP33.setText("ECTS : " + game.getPlayer(2).getECTS());
 
-            textP42.setText(String.valueOf("Money : "+game.getPlayer(3).getMoney()));
-            textP43.setText(String.valueOf("ECTS : "+game.getPlayer(3).getECTS()));
+            textP42.setText("Money : " + game.getPlayer(3).getMoney());
+            textP43.setText("ECTS : " + game.getPlayer(3).getECTS());
 
         }
         Logger logger = new Logger(game.getPlayer(TurnCalculator%NumberOfPlayers),0);
