@@ -60,7 +60,7 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
     @Override
     public void start(Stage stage) throws Exception {
         buttonChangeBackground = new Button("Change BackGround");
-        buttonHistoryOfWinners = new Button("Histo ry");
+        buttonHistoryOfWinners = new Button("History");
         buttonStartGame = new Button("Start New Game");
         buttonChangeBackground.setStyle(style);
         buttonHistoryOfWinners.setStyle(style);
