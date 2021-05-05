@@ -60,7 +60,7 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
     @Override
     public void start(Stage stage) throws Exception {
         buttonChangeBackground = new Button("Change BackGround");
-        buttonHistoryOfWinners = new Button("History");
+        buttonHistoryOfWinners = new Button("Histo ry");
         buttonStartGame = new Button("Start New Game");
         buttonChangeBackground.setStyle(style);
         buttonHistoryOfWinners.setStyle(style);
@@ -174,7 +174,7 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
             Text text1 = new Text("Choose Color");
 
             TextField textField = new TextField();
-            Button button = new Button("set");
+            Button button = new Button("Set");
             comboboxChooseColorOfPawn.getItems().addAll(
                     "RED",
                     "BLUE",
@@ -235,7 +235,7 @@ public class GUIStrart extends Application implements EventHandler<ActionEvent>{
 
 
         }
-        Button button = new Button("done");
+        Button button = new Button("Done");
         button.setStyle(style);
         button.setLayoutY(580);
         button.setLayoutX(50);
